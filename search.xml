@@ -4,6 +4,145 @@
   
     
     <entry>
+      <title><![CDATA[markdown语法]]></title>
+      <url>http://emloxe.github.io/2017/02/26/markdown%E8%AF%AD%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>常用的markdown语法<br><a id="more"></a></p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p># 代表一级标题<br>## 代表二级标题<br>以此类推</p>
+<p>除此之外<br>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">This is an H1</div><div class="line">=============</div><div class="line"></div><div class="line">This is an H2</div><div class="line">-------------</div><div class="line"></div><div class="line"># 这是 H1</div><div class="line"></div><div class="line">## 这是 H2</div><div class="line"></div><div class="line">###### 这是 H6</div></pre></td></tr></table></figure>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表使用星号、加号或是减号作为列表标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">*   Red</div><div class="line">*   Green</div><div class="line">*   Blue</div><div class="line"></div><div class="line">等同于：</div><div class="line"></div><div class="line">+   Red</div><div class="line">+   Green</div><div class="line">+   Blue</div><div class="line"></div><div class="line">也等同于：</div><div class="line"></div><div class="line">-   Red</div><div class="line">-   Green</div><div class="line">-   Blue</div></pre></td></tr></table></figure></p>
+<p>有序列表则使用数字接着一个英文句点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">1.  Bird</div><div class="line">2.  McHale</div><div class="line">3.  Parish</div><div class="line"></div><div class="line">等同于：</div><div class="line"></div><div class="line">1.  Bird</div><div class="line">1.  McHale</div><div class="line">1.  Parish</div><div class="line"></div><div class="line">等同于：</div><div class="line"></div><div class="line">2.  Bird</div><div class="line">1.  McHale</div><div class="line">3.  Parish</div></pre></td></tr></table></figure></p>
+<p>列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.  This is a list item with two paragraphs. Lorem ipsum dolor</div><div class="line">    sit amet, consectetuer adipiscing elit. Aliquam hendrerit</div><div class="line">    mi posuere lectus.</div><div class="line"></div><div class="line">    Vestibulum enim wisi, viverra nec, fringilla in, laoreet</div><div class="line">    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</div><div class="line">    sit amet velit.</div><div class="line"></div><div class="line">2.  Suspendisse id sem consectetuer libero luctus adipiscing.</div></pre></td></tr></table></figure></p>
+<p>如果要在列表项目内放进引用，那 &gt; 就需要缩进：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">*   A list item with a blockquote:</div><div class="line"></div><div class="line">    &gt; This is a blockquote</div><div class="line">    &gt; inside a list item.</div></pre></td></tr></table></figure></p>
+<p>如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">*   一列表项包含一个列表区块：</div><div class="line"></div><div class="line">        &lt;代码写在这&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>第一行为标题栏，<code>:---:</code>表示居中对齐，<code>:---</code>左对齐，<code>---:</code>右对齐<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">| 名称          | 默认值        |说明  |</div><div class="line">|:-------------:|:-------------:|:-----|</div><div class="line">| dom           |无默认值，必填 | 传入的dom |</div><div class="line">| speed     	| 40            | 滚动速度|</div></pre></td></tr></table></figure></p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><strong>地址链接</strong> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[百度](https://www.baidu.com)</div></pre></td></tr></table></figure></p>
+<p><strong>图片链接</strong> <br><br>括号内可用相对地址，也可用绝对地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![Alt text](/path/to/img.jpg)</div></pre></td></tr></table></figure></p>
+<p><strong>自动链接</strong> <br></p>
+<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;http://example.com/&gt;</div></pre></td></tr></table></figure></p>
+<p>Markdown 会转为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;address@example.com&gt;</div></pre></td></tr></table></figure></p>
+<p>Markdown 会转成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;</div><div class="line">&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;</div><div class="line">&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;</div><div class="line">&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>在浏览器里面，这段字串（其实是<code>&lt;a href=&quot;mailto:address@example.com&quot;&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「address@example.com」链接。</p>
+<h3 id="文本样式"><a href="#文本样式" class="headerlink" title="文本样式"></a>文本样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">加粗 :**Bold**</div><div class="line">斜体字 :*Italics*</div><div class="line">删除线 :~~text~~</div><div class="line">高亮 :==text==</div><div class="line">段落 : 段落之间空一行</div><div class="line">换行符 : 一行结束时输入两个空格</div><div class="line">列表 :* 添加星号成为一个新的列表项。</div></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>如果要标记一小段行内代码，你可以用反引号把它包起来`，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Use the `printf()` function.</div></pre></td></tr></table></figure></p>
+<p>会产生：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">* * *</div><div class="line"></div><div class="line">***</div><div class="line"></div><div class="line">*****</div><div class="line"></div><div class="line">- - -</div><div class="line"></div><div class="line">---------------------------------------</div></pre></td></tr></table></figure></p>
+<h3 id="区块引用-Blockquotes"><a href="#区块引用-Blockquotes" class="headerlink" title="区块引用 Blockquotes"></a>区块引用 Blockquotes</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</div><div class="line">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</div></pre></td></tr></table></figure>
+<p>Markdown 也允许你偷懒只在整个段落的第一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</div><div class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</div></pre></td></tr></table></figure></p>
+<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt; ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt; This is the first level of quoting.</div><div class="line">&gt;</div><div class="line">&gt; &gt; This is nested blockquote.</div><div class="line">&gt;</div><div class="line">&gt; Back to the first level.</div></pre></td></tr></table></figure></p>
+<p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; ## 这是一个标题。</div><div class="line">&gt; </div><div class="line">&gt; 1.   这是第一行列表项。</div><div class="line">&gt; 2.   这是第二行列表项。</div><div class="line">&gt; </div><div class="line">&gt; 给出一些例子代码：</div><div class="line">&gt; </div><div class="line">&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);</div></pre></td></tr></table></figure></p>
+<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</code></pre></p>
+<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这是一个普通段落：</div><div class="line"></div><div class="line">    这是一个代码区块。</div></pre></td></tr></table></figure></p>
+<h2 id="github代码用法"><a href="#github代码用法" class="headerlink" title="github代码用法"></a>github代码用法</h2><h3 id="文章内部定位"><a href="#文章内部定位" class="headerlink" title="文章内部定位"></a>文章内部定位</h3><p>当文章过长时，可在文章开始时插入目录，<br>在文章内部进行快速跳转</p>
+<p>用标签进行包裹，id用于绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">目录</div><div class="line">[jQuery Lazy Load 图片延迟加载](#lazyLoad)</div><div class="line"></div><div class="line">需要跳转的地方</div><div class="line">&lt;a id=&quot;lazyLoad&quot;&gt;jQuery Lazy Load 图片延迟加载&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> markdown </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> markdown </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[图片自适应]]></title>
+      <url>http://emloxe.github.io/2017/02/25/%E5%9B%BE%E7%89%87%E8%87%AA%E9%80%82%E5%BA%94/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="background全屏图片自适应"><a href="#background全屏图片自适应" class="headerlink" title="background全屏图片自适应"></a>background全屏图片自适应</h2><p>平常全屏宽度的图片，<code>&lt;div&gt;&lt;img src=&quot;&quot; /&gt;&lt;/div&gt;</code>会将div设置为100%，img的width设置为100%，img高度不设置使其高度自适应，就可以实现图片自适应。但是背景图应该设置在background中，直接用img展示又不是很友好。<br>用background<code>&lt;div style=&quot;background: url(&#39;&#39;)&quot;&gt;&lt;/div&gt;</code>，就需要div的宽高。div宽度100%，会根据父元素的宽度进行计算，而div高度需要自适应。div的height用百分比会根据父元素的高度进行计算，而而实际上div应该需要根据background图片高度进行展示，这就有些矛盾了。一般情况下，会直接将div限定高，宽度自适应，图片很可能会被拉伸，展示效果非常不好。<br>最近看到百度2017技术学院的用background设置的非常巧妙,学习如下。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">  .a&#123;</div><div class="line">    width: 100%; </div><div class="line">    height: 0; </div><div class="line">    padding-top: 30%;      </div><div class="line">    position: relative;</div><div class="line">  &#125;</div><div class="line">  .b&#123; </div><div class="line">    background: url("") no-repeat scroll center center / 100% 100%;</div><div class="line">    position: absolute;</div><div class="line">    height: 100%;</div><div class="line">    width: 100%;</div><div class="line">    bottom: 0;</div><div class="line">    left: 0;</div><div class="line">    right: 0;</div><div class="line">    top: 0;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"a"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"b"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p> <strong>知识要点</strong><br>width,height以百分比计算是分别根据父元素的宽高决定的，而padding、margin的四个方向的值是根据父元素宽度计算的。知道背景图长宽比，就可以设置padding-top值，以上例子是按照长宽比为100:30设置的 <code>padding-top: 30%</code>背景刚好可以自适应了。<br><code>.b{position: absolute;left:0}</code>left是根据padding位置确定的。</p>
+<h2 id="img图片展示效果"><a href="#img图片展示效果" class="headerlink" title="img图片展示效果"></a>img图片展示效果</h2><p>宽高确定的div，在background中的背景图有background-size指定背景图片的大小；background-position指定背景图像的位置  </p>
+<h3 id="background-size配置"><a href="#background-size配置" class="headerlink" title="background-size配置"></a>background-size配置</h3><p>默认值为auto  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">length</td>
+<td style="text-align:left">设置背景图片高度和宽度。第一个值设置宽度，第二个值设置的高度。如果只给出一个值，第二个是设置为”atuo(自动)”</td>
+</tr>
+<tr>
+<td style="text-align:center">percentage</td>
+<td style="text-align:left">将计算相对于背景定位区域的百分比。第一个值设置宽度，第二个值设置的高度。如果只给出一个值，第二个是设置为”auto(自动)”</td>
+</tr>
+<tr>
+<td style="text-align:center">cover</td>
+<td style="text-align:left">此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。</td>
+</tr>
+<tr>
+<td style="text-align:center">contain</td>
+<td style="text-align:left">此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。</td>
+</tr>
+</tbody>
+</table>
+<p>background-position<br>默认值为：0% 0%  </p>
+<p>在固定宽度的div中设置<code>background-position: center; background-size: cover;</code>就可以让图片撑满div居中显示。但是用background就就没有办法使用慢加载等功能。  </p>
+<p>其实在css3中<code>&lt;div&gt;&lt;img src=&quot;&quot; /&gt;&lt;/div&gt;</code><br>div内部的img也可以形如background属性一样使用<br>img的<strong>object-fill</strong>属性形如background-size  </p>
+<h3 id="object-fill"><a href="#object-fill" class="headerlink" title="object-fill"></a>object-fill</h3><p>默认值： none  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">none</td>
+<td style="text-align:left">保持原有尺寸比例。</td>
+</tr>
+<tr>
+<td style="text-align:center">fill</td>
+<td style="text-align:left">替换内容拉伸填满整个content box, 不保证保持原有的比例。相当于with: 100%; height: 100%;</td>
+</tr>
+<tr>
+<td style="text-align:center">cover</td>
+<td style="text-align:left">此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。</td>
+</tr>
+<tr>
+<td style="text-align:center">contain</td>
+<td style="text-align:left">此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。</td>
+</tr>
+<tr>
+<td style="text-align:center">scale-down</td>
+<td style="text-align:left">就好像依次设置了none或contain, 最终呈现的是尺寸比较小的那个。</td>
+</tr>
+</tbody>
+</table>
+<p>img的<strong>object-position</strong>属性形如background-position<br>object-position默认值就是 50% 50%;  </p>
+<p>设置<code>object-fill: cover;</code>就可以让图片撑满div居中显示。  </p>
+<p><strong>注意</strong><br>object-fill有兼容性问题，GitHub上有<a href="https://github.com/anselmh/object-fit" target="_blank" rel="external">pollfill</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[常用js函数整理.md]]></title>
       <url>http://emloxe.github.io/2017/02/20/%E5%B8%B8%E7%94%A8js%E5%87%BD%E6%95%B0%E6%95%B4%E7%90%86/</url>
       <content type="html"><![CDATA[<p>平常自己写代码，总会有些许封装好的函数可以反复利用，整理出来以供以后使用方便</p>
@@ -19,6 +158,18 @@
 <p><a href="https://github.com/emloxe/zwj-blog/blob/master/js/%E5%88%86%E9%A1%B5.md" target="_blank" rel="external">详情</a></p>
 ]]></content>
       
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
         
     </entry>
     
