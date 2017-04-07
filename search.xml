@@ -99,6 +99,32 @@
     </entry>
     
     <entry>
+      <title><![CDATA[数据处理总结]]></title>
+      <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
+<a id="more"></a>
+<h2 id="二维数据的累加"><a href="#二维数据的累加" class="headerlink" title="二维数据的累加"></a>二维数据的累加</h2><h3 id="堆积数据"><a href="#堆积数据" class="headerlink" title="堆积数据"></a>堆积数据</h3><p>例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">	[<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>],</div><div class="line">	[<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>需要改变数据的结构为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArr = [</div><div class="line">	[<span class="number">11</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">9</span>],</div><div class="line">	[<span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">6</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>即newArr[0] 为arr[0]+arr[1]+arr[2]<br>即newArr[1] 为arr[1]+arr[2]<br>即newArr[2] 为arr[2]</p>
+<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * [spData description]</div><div class="line"> * @param  &#123;数组&#125; series 二维数组对象</div><div class="line"> * @return &#123;数组&#125;        返回新创建二维数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> newData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">	<span class="keyword">var</span> arr = [];</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> len = series.length - <span class="number">1</span>, i = len; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">		<span class="keyword">if</span> (i == len) &#123;</div><div class="line">			arr = series[len];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">var</span> arrPre = series[i<span class="number">-1</span>];</div><div class="line">		<span class="keyword">var</span> sArr = [];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, lenj = arr.length; j &lt; lenj; j++) &#123;</div><div class="line">		 	sArr.push(arr[j]+arrPre[j]);</div><div class="line">		&#125; </div><div class="line">		newData[i<span class="number">-1</span>] = sArr;</div><div class="line">		arr = sArr; </div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> newData;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[canvas基本操作]]></title>
       <url>http://emloxe.github.io/2017/03/23/canvas%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<p>canvas基本操作的学习</p>
@@ -136,32 +162,6 @@
             <tag> html5 </tag>
             
             <tag> canvas </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[数据处理总结]]></title>
-      <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
-<a id="more"></a>
-<h2 id="二维数据的累加"><a href="#二维数据的累加" class="headerlink" title="二维数据的累加"></a>二维数据的累加</h2><h3 id="堆积数据"><a href="#堆积数据" class="headerlink" title="堆积数据"></a>堆积数据</h3><p>例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">	[<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>],</div><div class="line">	[<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>需要改变数据的结构为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArr = [</div><div class="line">	[<span class="number">11</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">9</span>],</div><div class="line">	[<span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">6</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>即newArr[0] 为arr[0]+arr[1]+arr[2]<br>即newArr[1] 为arr[1]+arr[2]<br>即newArr[2] 为arr[2]</p>
-<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * [spData description]</div><div class="line"> * @param  &#123;数组&#125; series 二维数组对象</div><div class="line"> * @return &#123;数组&#125;        返回新创建二维数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> newData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">	<span class="keyword">var</span> arr = [];</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> len = series.length - <span class="number">1</span>, i = len; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">		<span class="keyword">if</span> (i == len) &#123;</div><div class="line">			arr = series[len];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">var</span> arrPre = series[i<span class="number">-1</span>];</div><div class="line">		<span class="keyword">var</span> sArr = [];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, lenj = arr.length; j &lt; lenj; j++) &#123;</div><div class="line">		 	sArr.push(arr[j]+arrPre[j]);</div><div class="line">		&#125; </div><div class="line">		newData[i<span class="number">-1</span>] = sArr;</div><div class="line">		arr = sArr; </div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> newData;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> js </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> js </tag>
             
         </tags>
         
