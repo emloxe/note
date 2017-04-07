@@ -4,9 +4,37 @@
   
     
     <entry>
+      <title><![CDATA[js原型链探究]]></title>
+      <url>http://emloxe.github.io/2017/04/07/js%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%8E%A2%E7%A9%B6/</url>
+      <content type="html"><![CDATA[<p>js原型链学习</p>
+<a id="more"></a>
+<h2 id="原型链传递"><a href="#原型链传递" class="headerlink" title="原型链传递"></a>原型链传递</h2><p>定义代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line">a.prototype.isa = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'a'</span>);&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">b.prototype = <span class="keyword">new</span> a();</div><div class="line">b.prototype.isb = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'b'</span>);&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> c = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">c.prototype = <span class="keyword">new</span> b();</div><div class="line">c.prototype.isc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'c'</span>);&#125;</div></pre></td></tr></table></figure></p>
+<p>原型链将c,b,a联系在了一起<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> c();</div><div class="line">d.isc()  <span class="comment">// 'c'</span></div><div class="line">d.isb()  <span class="comment">// 'b'</span></div><div class="line">d.isa()  <span class="comment">// 'a'</span></div></pre></td></tr></table></figure></p>
+<p>d返回的是this，是一个引用(详见我的另一篇文章 js’=’复制还是引用)<br>在这里对原来原型链上的方法改变都会产生影响<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a.prototype.isa = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'change a'</span>);&#125;</div><div class="line">d.isa()  <span class="comment">// 'change a'</span></div></pre></td></tr></table></figure></p>
+<p>原型链上会存在覆盖现象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">c.prototype.isa = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'c a'</span>);&#125;</div><div class="line">d.isa()  <span class="comment">// 'c a'</span></div></pre></td></tr></table></figure></p>
+<p>c原型链上的<code>isa</code>覆盖了a上的<code>isa</code></p>
+<p>原型链上的方法可以调用任意在原型链上的方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a.prototype.getIsc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">this</span>.isc()&#125;</div><div class="line">c.prototype.getIsa = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">this</span>.isa()&#125;</div><div class="line">d.getIsc()  <span class="comment">// 'c'</span></div><div class="line">d.getIsa()  <span class="comment">// 'c a'  代码是依次执行的，这里存在覆盖，c原型链上的`isa`覆盖了a上的`isa`</span></div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[canvas图表绘制总结]]></title>
       <url>http://emloxe.github.io/2017/03/29/canvas%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
+      <content type="html"><![CDATA[<p>最近一直在用canvas绘制统计图表，本记录学习过程和思想<br><a id="more"></a></p>
 <h2 id="方法思路"><a href="#方法思路" class="headerlink" title="方法思路"></a>方法思路</h2><h3 id="预定义配置参数"><a href="#预定义配置参数" class="headerlink" title="预定义配置参数"></a>预定义配置参数</h3><h3 id="位置确定"><a href="#位置确定" class="headerlink" title="位置确定"></a>位置确定</h3><p>每个区域的位置需要事先确定好，图例的位置需要根据标题的占据位置来进行变更，而主体部分需要事先确定标题和图例的位置<br>所以每个绘制后就需要将needH给传递出来</p>
 <p>绘制步骤</p>
 <ol>
@@ -36,7 +64,7 @@
     <entry>
       <title><![CDATA[js'='的作用]]></title>
       <url>http://emloxe.github.io/2017/03/24/js'='%E5%A4%8D%E5%88%B6%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
+      <content type="html"><![CDATA[<p>js中’=’是赋值还是引用？<br><a id="more"></a></p>
 <h2 id="基本类型中“-”"><a href="#基本类型中“-”" class="headerlink" title="基本类型中“=”"></a>基本类型中“=”</h2><p>“=”右边为基本类型<br>基本类型有</p>
 <ul>
 <li>Undefined</li>
@@ -53,32 +81,6 @@
 <p>将引用类型[Object]赋值给a，a又赋值给b，实际上在a、b变量都会创建一个对对象{c: 1}的指针，a、b任何一个改变{c: 1}的值，a、b之间都会改变<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a.c = <span class="number">2</span>;</div><div class="line"><span class="built_in">console</span>.log(a.c, b.c);  <span class="comment">// 2 2</span></div><div class="line">b.c = <span class="number">3</span>;</div><div class="line"><span class="built_in">console</span>.log(a.c, b.c);  <span class="comment">// 3 3</span></div></pre></td></tr></table></figure></p>
 <p>注意：只有拥有相同的指针才会相互影响</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;<span class="attr">c</span>: <span class="number">1</span>&#125;;</div><div class="line"><span class="keyword">var</span> b = a;  <span class="comment">// a、b拥有相同的指针</span></div><div class="line"><span class="built_in">console</span>.log(a.c, b.c); <span class="comment">// 1 1</span></div><div class="line"></div><div class="line"><span class="comment">// a重新赋值，也就是a的指针发生了改变，b的指针未变，这时a、b不会相互影响了</span></div><div class="line">a = &#123;<span class="attr">c</span>: <span class="number">2</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(a.c, b.c);  <span class="comment">// 2 1</span></div><div class="line">b.c = <span class="number">5</span>;</div><div class="line"><span class="built_in">console</span>.log(a.c, b.c);  <span class="comment">// 2 5</span></div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> js </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> js </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[数据处理总结]]></title>
-      <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
-<a id="more"></a>
-<h2 id="二维数据的累加"><a href="#二维数据的累加" class="headerlink" title="二维数据的累加"></a>二维数据的累加</h2><h3 id="堆积数据"><a href="#堆积数据" class="headerlink" title="堆积数据"></a>堆积数据</h3><p>例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">	[<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>],</div><div class="line">	[<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>需要改变数据的结构为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArr = [</div><div class="line">	[<span class="number">11</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">9</span>],</div><div class="line">	[<span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">6</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>即newArr[0] 为arr[0]+arr[1]+arr[2]<br>即newArr[1] 为arr[1]+arr[2]<br>即newArr[2] 为arr[2]</p>
-<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * [spData description]</div><div class="line"> * @param  &#123;数组&#125; series 二维数组对象</div><div class="line"> * @return &#123;数组&#125;        返回新创建二维数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> newData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">	<span class="keyword">var</span> arr = [];</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> len = series.length - <span class="number">1</span>, i = len; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">		<span class="keyword">if</span> (i == len) &#123;</div><div class="line">			arr = series[len];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">var</span> arrPre = series[i<span class="number">-1</span>];</div><div class="line">		<span class="keyword">var</span> sArr = [];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, lenj = arr.length; j &lt; lenj; j++) &#123;</div><div class="line">		 	sArr.push(arr[j]+arrPre[j]);</div><div class="line">		&#125; </div><div class="line">		newData[i<span class="number">-1</span>] = sArr;</div><div class="line">		arr = sArr; </div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> newData;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -140,6 +142,32 @@
     </entry>
     
     <entry>
+      <title><![CDATA[数据处理总结]]></title>
+      <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
+<a id="more"></a>
+<h2 id="二维数据的累加"><a href="#二维数据的累加" class="headerlink" title="二维数据的累加"></a>二维数据的累加</h2><h3 id="堆积数据"><a href="#堆积数据" class="headerlink" title="堆积数据"></a>堆积数据</h3><p>例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">	[<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>],</div><div class="line">	[<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>需要改变数据的结构为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArr = [</div><div class="line">	[<span class="number">11</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">9</span>],</div><div class="line">	[<span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">6</span>],</div><div class="line">	[<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>即newArr[0] 为arr[0]+arr[1]+arr[2]<br>即newArr[1] 为arr[1]+arr[2]<br>即newArr[2] 为arr[2]</p>
+<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * [spData description]</div><div class="line"> * @param  &#123;数组&#125; series 二维数组对象</div><div class="line"> * @return &#123;数组&#125;        返回新创建二维数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> newData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">	<span class="keyword">var</span> arr = [];</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> len = series.length - <span class="number">1</span>, i = len; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">		<span class="keyword">if</span> (i == len) &#123;</div><div class="line">			arr = series[len];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">var</span> arrPre = series[i<span class="number">-1</span>];</div><div class="line">		<span class="keyword">var</span> sArr = [];</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, lenj = arr.length; j &lt; lenj; j++) &#123;</div><div class="line">		 	sArr.push(arr[j]+arrPre[j]);</div><div class="line">		&#125; </div><div class="line">		newData[i<span class="number">-1</span>] = sArr;</div><div class="line">		arr = sArr; </div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> newData;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[requireJS学习笔记]]></title>
       <url>http://emloxe.github.io/2017/03/17/requireJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -176,12 +204,17 @@
 <p>>npm init</p>
 </blockquote>
 <p>会自动生成  package.json</p>
-<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><blockquote>
+<h3 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h3><p>全局安装</p>
+<blockquote>
+<p>>npm install webpack -g</p>
+</blockquote>
+<p>然后安装到项目依赖中</p>
+<blockquote>
 <p>>npm install webpack –save-dev</p>
 </blockquote>
 <p>安装好后，就可以用webpack打包文件了</p>
 <blockquote>
-<p>>webpack index.js index.bundle.js</p>
+<p>>webpack  index.js  index.bundle.js</p>
 </blockquote>
 <p>index.js 要打包的文件，事先编好<br>index.bundle.js 要生成的打包好的文件，命其名</p>
 <h2 id="结构目录"><a href="#结构目录" class="headerlink" title="结构目录"></a>结构目录</h2><p>创建大概的结构目录</p>
@@ -203,7 +236,7 @@ dist 静态资源文件
 <h2 id="webpack配置文件"><a href="#webpack配置文件" class="headerlink" title="webpack配置文件"></a>webpack配置文件</h2><h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><p>默认定义的配置文件名为<br>webpack.config.js</p>
 <p>如果配置文件名称不想用这个改为 eg：webpack.dev.config.js<br>可在运行时<code>webpack ---config webpack.dev.config.js</code></p>
 <p>每次这样写会有点麻烦<br>可以在package.json中,scripts下加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;webpack&quot;: &quot;webpack --config webpack.dev.config.js&quot;</div></pre></td></tr></table></figure></p>
-<p>–config除此之外 还可以有</p>
+<p>–config除此之外 还可以有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 当项目逐渐变大，webpack 的编译时间会变长，可以通过参数让编译的输出内容带有进度和颜色</div><div class="line">$ webpack --progress --colors</div><div class="line">// 如果不想每次修改模块后都重新编译，那么可以启动监听模式。</div><div class="line">// 开启监听模式后，没有变化的模块会在编译后缓存到内存中，而不会每次都被重新编译，所以监听模式的整体速度是很快的</div><div class="line">$ webpack --progress --colors --watch</div></pre></td></tr></table></figure></p>
 <h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>webpack.config.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports&#123;</div><div class="line">	<span class="attr">entry</span>: <span class="string">'./src/script/index.js'</span>,   <span class="comment">// 打包入口文件</span></div><div class="line">	output: &#123;</div><div class="line">		<span class="attr">path</span>: <span class="string">'./dist/js'</span>,   <span class="comment">// 打包好的文件放在。。</span></div><div class="line">		filename: <span class="string">'bundle.js'</span>   <span class="comment">// 打包好的文件名叫什么</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h4 id="entry-打包入口"><a href="#entry-打包入口" class="headerlink" title="entry 打包入口"></a>entry 打包入口</h4><p>如果有多个入口<br>entry 的值除了可以写成 字符串<br>还可以写成数组，对象。共有3种方式</p>
 <ol>
@@ -254,7 +287,7 @@ dist 静态资源文件
       <url>http://emloxe.github.io/2017/03/14/canvas%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<p>慕课网<a href="http://www.imooc.com/learn/476" target="_blank" rel="external">Canvas玩转图像处理</a>学习笔记</p>
 <a id="more"></a>
-<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="创建canvas-并获取"><a href="#创建canvas-并获取" class="headerlink" title="创建canvas,并获取"></a>创建canvas,并获取</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"display: block; margin: 0 auto;border: 1px solid #aaa"</span>&gt;</span></div><div class="line">	您的浏览器不支持canvas</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">	var canvas = document.getElementById("canvas");</div><div class="line">	var context = canvas.getContext("2d");</div><div class="line"></div><div class="line">	window.onload = function()&#123;</div><div class="line">		// canvas的宽高最好不要写在样式中</div><div class="line">		canvas.width = 800;</div><div class="line">		canvas.height = 500;</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="创建canvas-并获取"><a href="#创建canvas-并获取" class="headerlink" title="创建canvas,并获取"></a>创建canvas,并获取</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"display: block; margin: 0 auto;border: 1px solid #aaa"</span>&gt;</span></div><div class="line">	您的浏览器不支持canvas</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line">	<span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line"></div><div class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// canvas的宽高最好不要写在样式中</span></div><div class="line">		canvas.width = <span class="number">800</span>;</div><div class="line">		canvas.height = <span class="number">500</span>;</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="drawImage"><a href="#drawImage" class="headerlink" title="drawImage"></a>drawImage</h3><p><code>context.drawImage()</code>将图片绘制在canvas中</p>
 <h4 id="context-drawImage-img-dx-dy"><a href="#context-drawImage-img-dx-dy" class="headerlink" title="context.drawImage(img, dx, dy)"></a>context.drawImage(img, dx, dy)</h4><p>img:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">'2017031401.png'</span>;</div></pre></td></tr></table></figure></p>
 <p>dx，dy 绘制img在canvas上的起点<br>dx：左定位<br>dy：上定位</p>
