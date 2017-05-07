@@ -417,7 +417,7 @@
       
         <p>慕课网<a href="http://www.imooc.com/learn/476" target="_blank" rel="external">Canvas玩转图像处理</a>学习笔记</p>
 <a id="more"></a>
-<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="创建canvas-并获取"><a href="#创建canvas-并获取" class="headerlink" title="创建canvas,并获取"></a>创建canvas,并获取</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"display: block; margin: 0 auto;border: 1px solid #aaa"</span>&gt;</span></div><div class="line">	您的浏览器不支持canvas</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">	<span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line">	<span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line"></div><div class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// canvas的宽高最好不要写在样式中</span></div><div class="line">		canvas.width = <span class="number">800</span>;</div><div class="line">		canvas.height = <span class="number">500</span>;</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="创建canvas-并获取"><a href="#创建canvas-并获取" class="headerlink" title="创建canvas,并获取"></a>创建canvas,并获取</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"display: block; margin: 0 auto;border: 1px solid #aaa"</span>&gt;</span></div><div class="line">	您的浏览器不支持canvas</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">	var canvas = document.getElementById("canvas");</div><div class="line">	var context = canvas.getContext("2d");</div><div class="line"></div><div class="line">	window.onload = function()&#123;</div><div class="line">		// canvas的宽高最好不要写在样式中</div><div class="line">		canvas.width = 800;</div><div class="line">		canvas.height = 500;</div><div class="line">	&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="drawImage"><a href="#drawImage" class="headerlink" title="drawImage"></a>drawImage</h3><p><code>context.drawImage()</code>将图片绘制在canvas中</p>
 <h4 id="context-drawImage-img-dx-dy"><a href="#context-drawImage-img-dx-dy" class="headerlink" title="context.drawImage(img, dx, dy)"></a>context.drawImage(img, dx, dy)</h4><p>img:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">'2017031401.png'</span>;</div></pre></td></tr></table></figure></p>
 <p>dx，dy 绘制img在canvas上的起点<br>dx：左定位<br>dy：上定位</p>
@@ -580,7 +580,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -589,7 +589,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -598,7 +598,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
