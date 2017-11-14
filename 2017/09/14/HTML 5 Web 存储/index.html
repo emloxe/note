@@ -102,7 +102,7 @@ sessionStorage - 针对一个 session 的数据存储
 
 localStorage遵循同源策略的,作用范围在该域名下采用键值对存储，值只能是字符串
 浏览器支持性判断123456if(！window.localStorage)&amp;#123;  alert(&amp;quo">
-<meta property="og:updated_time" content="2017-09-21T15:09:36.186Z">
+<meta property="og:updated_time" content="2017-10-17T14:51:04.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML 5 Web 存储">
 <meta name="twitter:description" content="在客户端存储数据HTML5 提供了两种在客户端存储数据的新方法：
@@ -355,8 +355,8 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-09-21T23:09:36+08:00">
-                2017-09-21
+              <time title="更新于" itemprop="dateModified" datetime="2017-10-17T22:51:04+08:00">
+                2017-10-17
               </time>
             
           </span>
@@ -446,7 +446,14 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
 <h3 id="时间限定"><a href="#时间限定" class="headerlink" title="时间限定"></a>时间限定</h3><p>localStorage 方法存储的数据没有时间限制。<br>想要清除存在该域名的数据，需要手动清除。</p>
 <p>可以在第一次存储数据的时候，存储数据的创建时间，判断时间是否超过，进行移除操作</p>
 <h2 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h2><p>调用形式与localstorage相同，但关闭浏览器后，数据自动清空</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.w3school.com.cn/html5/html_5_webstorage.asp" target="_blank" rel="external">W3C HTML 5 Web 存储</a></p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h3 id="创建和存储-cookie"><a href="#创建和存储-cookie" class="headerlink" title="创建和存储 cookie"></a>创建和存储 cookie</h3><p>在这个例子中我们要创建一个存储访问者名字的 cookie。当访问者首次访问网站时，他们会被要求填写姓名。名字会存储于 cookie 中。当访问者再次访问网站时，他们就会收到欢迎词。<br>首先，我们会创建一个可在 cookie 变量中存储访问者姓名的函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">c_name,value,expiredays</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> exdate=<span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">  exdate.setDate(exdate.getDate()+expiredays);</div><div class="line">  <span class="built_in">document</span>.cookie=c_name + <span class="string">"="</span> +<span class="built_in">escape</span>(value) + ((expiredays==<span class="literal">null</span>) ? <span class="string">""</span> : <span class="string">";expires="</span>+exdate.toGMTString())+<span class="string">";path=/"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这个函数中的参数存有 cookie 的名称、值以及过期天数。在上面这个函数中，expiredays为1，则设置过期时间为1天。<br>设置<code>;path=/</code>可以让cookie在主域内共享<br>注释：<br>toGMTString()方法可根据格林威治时间 (GMT) 把 Date 对象转换为字符串，并返回结果。<br>escape() 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串。</p>
+<p>在上面的函数中，我们首先将天数转换为有效的日期，然后，我们将 cookie 名称、值及其过期日期存入 document.cookie 对象。<br>之后，我们要创建另一个函数来检查是否已设置 cookie：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">c_name</span>)</span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="built_in">document</span>.cookie.length&gt;<span class="number">0</span>)&#123;</div><div class="line">    <span class="keyword">var</span> c_start=<span class="built_in">document</span>.cookie.indexOf(c_name + <span class="string">"="</span>)</div><div class="line">    <span class="keyword">if</span> (c_start!=<span class="number">-1</span>)&#123; </div><div class="line">      c_start=c_start + c_name.length+<span class="number">1</span> ;</div><div class="line">      <span class="keyword">var</span> c_end=<span class="built_in">document</span>.cookie.indexOf(<span class="string">";"</span>,c_start);</div><div class="line">      <span class="keyword">if</span> (c_end==<span class="number">-1</span>)&#123;</div><div class="line">      	c_end=<span class="built_in">document</span>.cookie.length</div><div class="line">      &#125; </div><div class="line">      <span class="keyword">return</span> <span class="built_in">unescape</span>(<span class="built_in">document</span>.cookie.substring(c_start,c_end));</div><div class="line">    &#125; </div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="string">""</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="清除cookie"><a href="#清除cookie" class="headerlink" title="清除cookie"></a>清除cookie</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearCookie</span>(<span class="params">name</span>) </span>&#123;  </div><div class="line">  setCookie(name, <span class="string">""</span>, <span class="number">-1</span>);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="关于禁用"><a href="#关于禁用" class="headerlink" title="关于禁用"></a>关于禁用</h2><p>cookie 用户计算机可以直接禁用cookie的写入<br>localstorage 浏览器在无痕的状态下，可以禁止setItem，但是可以读取数据 </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.w3school.com.cn/html5/html_5_webstorage.asp" target="_blank" rel="external">W3C HTML 5 Web 存储</a><br><a href="http://www.w3school.com.cn/js/js_cookies.asp" target="_blank" rel="external">JavaScript Cookies</a><br><a href="http://www.w3school.com.cn/jsref/jsref_toGMTString.asp" target="_blank" rel="external">JavaScript toGMTString() 方法</a><br><a href="http://www.w3school.com.cn/jsref/jsref_escape.asp" target="_blank" rel="external">JavaScript escape() 函数</a></p>
 <p><a href="http://www.cnblogs.com/st-leslie/p/5617130.html" target="_blank" rel="external">localStorage使用总结</a></p>
 
       
@@ -482,8 +489,8 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/14/html处理兼容样式/" rel="next" title="html处理兼容样式">
-                <i class="fa fa-chevron-left"></i> html处理兼容样式
+              <a href="/2017/08/01/js数组对象/" rel="next" title="js数组对象">
+                <i class="fa fa-chevron-left"></i> js数组对象
               </a>
             
           </div>
@@ -492,8 +499,8 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/20/npm常用的快捷方式/" rel="prev" title="npm常用的快捷方式">
-                npm常用的快捷方式 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/14/html处理兼容样式/" rel="prev" title="html处理兼容样式">
+                html处理兼容样式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -587,7 +594,7 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -596,7 +603,7 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -605,7 +612,7 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -678,7 +685,7 @@ localStorage遵循同源策略的,作用范围在该域名下采用键值对存�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器支持性判断"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器支持性判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增"><span class="nav-number">1.2.1.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删"><span class="nav-number">1.2.2.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改"><span class="nav-number">1.2.3.</span> <span class="nav-text">改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查"><span class="nav-number">1.2.4.</span> <span class="nav-text">查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间限定"><span class="nav-number">1.3.</span> <span class="nav-text">时间限定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器支持性判断"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器支持性判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增"><span class="nav-number">1.2.1.</span> <span class="nav-text">增</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删"><span class="nav-number">1.2.2.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改"><span class="nav-number">1.2.3.</span> <span class="nav-text">改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查"><span class="nav-number">1.2.4.</span> <span class="nav-text">查</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间限定"><span class="nav-number">1.3.</span> <span class="nav-text">时间限定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">3.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和存储-cookie"><span class="nav-number">3.1.</span> <span class="nav-text">创建和存储 cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除cookie"><span class="nav-number">3.2.</span> <span class="nav-text">清除cookie</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于禁用"><span class="nav-number">4.</span> <span class="nav-text">关于禁用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
