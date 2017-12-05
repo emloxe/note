@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://emloxe.github.io/images/2017071102.png">
 <meta property="og:image" content="http://emloxe.github.io/images/2017071103.png">
 <meta property="og:image" content="http://emloxe.github.io/images/2017071104.png">
-<meta property="og:updated_time" content="2017-10-17T14:51:04.261Z">
+<meta property="og:updated_time" content="2017-12-05T14:24:41.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css重写form表单样式">
 <meta name="twitter:description" content="form表单在浏览器器中有不同的样式，在这里对样式进行重写，使表单样式在各个浏览器显示的基本一致">
@@ -342,8 +342,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-10-17T22:51:04+08:00">
-                2017-10-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-05T22:24:41+08:00">
+                2017-12-05
               </time>
             
           </span>
@@ -418,7 +418,7 @@
 
       
         <p>form表单在浏览器器中有不同的样式，在这里对样式进行重写，使表单样式在各个浏览器显示的基本一致<br><a id="more"></a></p>
-<h2 id="input与button"><a href="#input与button" class="headerlink" title="input与button"></a>input与button</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"green"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="input与button"><a href="#input与button" class="headerlink" title="input与button"></a>input与button</h2><h3 id="初始状态查看"><a href="#初始状态查看" class="headerlink" title="初始状态查看"></a>初始状态查看</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"green"</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>以上三个元素都设置宽高为100px，content设置<code>1px solid #000</code>的边框,设置<code>span</code>    <code>display: inline-block</code><br>在不引入任何 reset.css 状态下，如图显示(谷歌)</p>
 <p><img src="/images/2017071101.png" alt="images"></p>
 <p>button input span 都为 inline-block 结构，设置<code>vertical-align: top;</code>显示如下（谷歌）</p>
@@ -427,7 +427,8 @@
 <p><img src="/images/2017071103.png" alt="images"></p>
 <p>发现谷歌自动将<code>button</code>和<code>input</code>元素设置为<code>box-sizing:border-box;</code>, 默认有<code>border: 1px solid buttonface; padding: 6px;</code></p>
 <p>火狐、ie和谷歌效果基本相同，就是默认的边框样式不同<br><img src="/images/2017071104.png" alt="images"></p>
-<h2 id="谷歌"><a href="#谷歌" class="headerlink" title="谷歌"></a>谷歌</h2><p>解决谷歌浏览器中的input背景色默认是黄色<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-webkit-autofill</span> &#123;</div><div class="line">    <span class="attribute">-webkit-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0px</span> <span class="number">1000px</span> white inset <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h3><p>以下样式参考boostrap</p>
+<h2 id="谷歌特殊样式"><a href="#谷歌特殊样式" class="headerlink" title="谷歌特殊样式"></a>谷歌特殊样式</h2><p>解决谷歌浏览器中的input背景色默认是黄色<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-webkit-autofill</span> &#123;</div><div class="line">    <span class="attribute">-webkit-box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0px</span> <span class="number">1000px</span> white inset <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -460,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/26/css居中/" rel="next" title="css居中">
-                <i class="fa fa-chevron-left"></i> css居中
+              <a href="/2017/06/26/position总结/" rel="next" title="position总结">
+                <i class="fa fa-chevron-left"></i> position总结
               </a>
             
           </div>
@@ -565,7 +566,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -574,7 +575,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -583,7 +584,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -656,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#input与button"><span class="nav-number">1.</span> <span class="nav-text">input与button</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谷歌"><span class="nav-number">2.</span> <span class="nav-text">谷歌</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#input与button"><span class="nav-number">1.</span> <span class="nav-text">input与button</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始状态查看"><span class="nav-number">1.1.</span> <span class="nav-text">初始状态查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写"><span class="nav-number">1.2.</span> <span class="nav-text">重写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谷歌特殊样式"><span class="nav-number">2.</span> <span class="nav-text">谷歌特殊样式</span></a></li></ol></div>
             
 
           </div>
