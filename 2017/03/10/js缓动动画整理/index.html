@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="返回顶部代码123456// requestAnimationFrame的兼容处理if (!window.requestAnimationFrame) &amp;#123;    requestAnimationFrame = function(fn) &amp;#123;        setTimeout(fn, 17);    &amp;#125;;	&amp;#125;
-123456789101112131415161">
+<meta name="description" content="返回顶部代码123456// requestAnimationFrame的兼容处理if (!window.requestAnimationFrame) &amp;#123;    requestAnimationFrame = function(fn) &amp;#123;        setTimeout(fn, 17);    &amp;#125;;  &amp;#125;
+12345678910111213141516">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js缓动动画整理">
 <meta property="og:url" content="http://emloxe.github.io/2017/03/10/js缓动动画整理/index.html">
 <meta property="og:site_name" content="zwj-blog">
-<meta property="og:description" content="返回顶部代码123456// requestAnimationFrame的兼容处理if (!window.requestAnimationFrame) &amp;#123;    requestAnimationFrame = function(fn) &amp;#123;        setTimeout(fn, 17);    &amp;#125;;	&amp;#125;
-123456789101112131415161">
-<meta property="og:updated_time" content="2017-03-13T15:40:11.960Z">
+<meta property="og:description" content="返回顶部代码123456// requestAnimationFrame的兼容处理if (!window.requestAnimationFrame) &amp;#123;    requestAnimationFrame = function(fn) &amp;#123;        setTimeout(fn, 17);    &amp;#125;;  &amp;#125;
+12345678910111213141516">
+<meta property="og:updated_time" content="2017-12-16T16:45:35.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js缓动动画整理">
-<meta name="twitter:description" content="返回顶部代码123456// requestAnimationFrame的兼容处理if (!window.requestAnimationFrame) &amp;#123;    requestAnimationFrame = function(fn) &amp;#123;        setTimeout(fn, 17);    &amp;#125;;	&amp;#125;
-123456789101112131415161">
+<meta name="twitter:description" content="返回顶部代码123456// requestAnimationFrame的兼容处理if (!window.requestAnimationFrame) &amp;#123;    requestAnimationFrame = function(fn) &amp;#123;        setTimeout(fn, 17);    &amp;#125;;  &amp;#125;
+12345678910111213141516">
 
 
 
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-03-13T23:40:11+08:00">
-                2017-03-13
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-17T00:45:35+08:00">
+                2017-12-17
               </time>
             
           </span>
@@ -416,12 +416,12 @@
 
       
         <a id="more"></a>
-<h2 id="返回顶部"><a href="#返回顶部" class="headerlink" title="返回顶部"></a>返回顶部</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// requestAnimationFrame的兼容处理</span></div><div class="line"><span class="keyword">if</span> (!<span class="built_in">window</span>.requestAnimationFrame) &#123;</div><div class="line">    requestAnimationFrame = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">        setTimeout(fn, <span class="number">17</span>);</div><div class="line">    &#125;;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="返回顶部"><a href="#返回顶部" class="headerlink" title="返回顶部"></a>返回顶部</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// requestAnimationFrame的兼容处理</span></div><div class="line"><span class="keyword">if</span> (!<span class="built_in">window</span>.requestAnimationFrame) &#123;</div><div class="line">    requestAnimationFrame = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">        setTimeout(fn, <span class="number">17</span>);</div><div class="line">    &#125;;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 滚动到顶部缓动实现，由快到慢</span></div><div class="line"><span class="comment">// rate表示缓动速率，默认是2，范围是1到无穷大，速率值越小，运动越快。</span></div><div class="line"><span class="keyword">var</span> backToTop = <span class="function"><span class="keyword">function</span> (<span class="params">rate</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> doc = <span class="built_in">document</span>.body.scrollTop? <span class="built_in">document</span>.body : <span class="built_in">document</span>.documentElement;</div><div class="line">    <span class="keyword">var</span> scrollTop = doc.scrollTop;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> top = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        scrollTop = scrollTop + (<span class="number">0</span> - scrollTop) / (rate || <span class="number">2</span>);</div><div class="line">        </div><div class="line">        <span class="comment">// 临界判断，终止动画</span></div><div class="line">        <span class="keyword">if</span> (scrollTop &lt; <span class="number">1</span>) &#123;</div><div class="line">            doc.scrollTop = <span class="number">0</span>;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        doc.scrollTop = scrollTop;</div><div class="line">        <span class="comment">// 运行动画</span></div><div class="line">        requestAnimationFrame(top);    </div><div class="line">    &#125;;</div><div class="line">    top();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h3 id="页面滚动到指定位置"><a href="#页面滚动到指定位置" class="headerlink" title="页面滚动到指定位置"></a>页面滚动到指定位置</h3><p><strong>抽象封装</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 添加监听事件的方法</div><div class="line"> * @param A &#123;number&#125; 起始位置</div><div class="line"> * @param B &#123;number&#125; 目标位置</div><div class="line"> * @param rate &#123;number&#125; 缓动速率</div><div class="line"> * @param callback &#123;function&#125; 是变化的位置回调，支持两个参数，value和isEnding，表示当前的位置值（数值）以及是否动画结束了（布尔值）；</div><div class="line"> */</div><div class="line"><span class="built_in">Math</span>.easeout = <span class="function"><span class="keyword">function</span> (<span class="params">A, B, rate, callback</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (A == B || <span class="keyword">typeof</span> A != <span class="string">'number'</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;    </div><div class="line">    &#125;</div><div class="line">    B = B || <span class="number">0</span>;</div><div class="line">    rate = rate || <span class="number">2</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> step = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        A = A + (B - A) / rate;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (A &lt; <span class="number">1</span>) &#123;</div><div class="line">            callback(B, <span class="literal">true</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        callback(A, <span class="literal">false</span>);</div><div class="line">        requestAnimationFrame(step);    </div><div class="line">    &#125;;</div><div class="line">    step();</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doc = <span class="built_in">document</span>.body.scrollTop? <span class="built_in">document</span>.body : <span class="built_in">document</span>.documentElement;</div><div class="line"><span class="built_in">Math</span>.easeout(doc.scrollTop, <span class="number">0</span>, <span class="number">4</span>, <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    doc.scrollTop = value;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p><strong>参考</strong><br>    <a href="http://www.zhangxinxu.com/wordpress/?p=5875" target="_blank" rel="external">张鑫旭 分享一个即插即用的私藏缓动动画JS小算法</a></p>
+<p><strong>参考</strong><br>  <a href="http://www.zhangxinxu.com/wordpress/?p=5875" target="_blank" rel="external">张鑫旭 分享一个即插即用的私藏缓动动画JS小算法</a></p>
 
       
     </div>
@@ -542,7 +542,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
