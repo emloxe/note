@@ -4,11 +4,90 @@
   
     
     <entry>
-      <title></title>
-      <url>http://emloxe.github.io/2017/12/17/README/</url>
-      <content type="html"><![CDATA[<h1 id="zwj-blog"><a href="#zwj-blog" class="headerlink" title="zwj-blog"></a>zwj-blog</h1><p>张雯瑾的学习日记</p>
+      <title><![CDATA[ajax异步顺序问题解决]]></title>
+      <url>http://emloxe.github.io/2017/12/22/ajax%E5%BC%82%E6%AD%A5%E9%A1%BA%E5%BA%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="es5以前的解决办法"><a href="#es5以前的解决办法" class="headerlink" title="es5以前的解决办法"></a>es5以前的解决办法</h2><ol>
+<li><p>等待上一个Ajax完成后执行下一个<br>这种情况比较容易解决，直接通过回调就可以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">  ...</div><div class="line">  callback&amp;&amp;callback()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">  ...</div><div class="line">  callback&amp;&amp;callback()</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// ajax(...)是某个库中的某个ajax函数</span></div><div class="line">ajax(<span class="string">'http://some.url.1'</span>, foo( ajax(<span class="string">'http://some.url.2'</span>, bar) ))</div></pre></td></tr></table></figure>
+</li>
+<li><p>等待ajax都完成时，再执行baz</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a, b;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">  ...</div><div class="line">  if(a&amp;&amp;b)&#123;</div><div class="line">    callback&amp;&amp;callback()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">  ...</div><div class="line">  if(a&amp;&amp;b)&#123;</div><div class="line">    callback&amp;&amp;callback()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// ajax(...)是某个库中的某个ajax函数</span></div><div class="line">ajax(<span class="string">'http://some.url.1'</span>, foo(baz))</div><div class="line">ajax(<span class="string">'http://some.url.2'</span>, bar(baz))</div></pre></td></tr></table></figure>
+<ol>
+<li>第一个完成的执行回调</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">  ...</div><div class="line">  if(!a)&#123;</div><div class="line">    a++</div><div class="line">    callback&amp;&amp;callback()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">  ...</div><div class="line">  if(!a)&#123;</div><div class="line">    a++</div><div class="line">    callback&amp;&amp;callback()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">baz</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">// ajax(...)是某个库中的某个ajax函数</span></div><div class="line">ajax(<span class="string">'http://some.url.1'</span>, foo(baz))</div><div class="line">ajax(<span class="string">'http://some.url.2'</span>, bar(baz))</div></pre></td></tr></table></figure>
+<h2 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h2><p>在es6中引入了promise</p>
 ]]></content>
       
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> ajax </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[获取input[type=file]上传文件文件名及扩展名]]></title>
+      <url>http://emloxe.github.io/2017/12/21/%E8%8E%B7%E5%8F%96input%5Btype=file%5D%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E5%90%8D%E5%8F%8A%E6%89%A9%E5%B1%95%E5%90%8D/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="上传文件信息的获取"><a href="#上传文件信息的获取" class="headerlink" title="上传文件信息的获取"></a>上传文件信息的获取</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"myfile"</span> <span class="attr">id</span>=<span class="string">"myfile"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"mybtn"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript">  </span></div><div class="line">  <span class="comment">//获取一个上传文件的扩展名  </span></div><div class="line">  <span class="keyword">var</span> myfile = <span class="built_in">document</span>.getElementById(<span class="string">'myfile'</span>);  </div><div class="line">  <span class="built_in">console</span>.log(myfile.files);   <span class="comment">// 打印可以看到需要的值</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="类型的限定"><a href="#类型的限定" class="headerlink" title="类型的限定"></a>类型的限定</h3><p>accept<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"fileId1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/png,image/gif"</span> <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="多文件上传"><a href="#多文件上传" class="headerlink" title="多文件上传"></a>多文件上传</h3><p>multiple<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input id=&quot;fileId2&quot; type=&quot;file&quot; multiple=&quot;multiple&quot; name=&quot;file&quot; /&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 文件传输 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[获取input[type=file]上传文件文件名及扩展名]]></title>
+      <url>http://emloxe.github.io/2017/12/21/ajax%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E7%AD%89%E6%96%87%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="上传文件信息的获取"><a href="#上传文件信息的获取" class="headerlink" title="上传文件信息的获取"></a>上传文件信息的获取</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"myfile"</span> <span class="attr">id</span>=<span class="string">"myfile"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"mybtn"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript">  </span></div><div class="line">  <span class="comment">//获取一个上传文件的扩展名  </span></div><div class="line">  <span class="keyword">var</span> myfile = <span class="built_in">document</span>.getElementById(<span class="string">'myfile'</span>);  </div><div class="line">  <span class="built_in">console</span>.log(myfile.files);   <span class="comment">// 打印可以看到需要的值</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="类型的限定"><a href="#类型的限定" class="headerlink" title="类型的限定"></a>类型的限定</h3><p>accept<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"fileId1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/png,image/gif"</span> <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="多文件上传"><a href="#多文件上传" class="headerlink" title="多文件上传"></a>多文件上传</h3><p>multiple<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input id=&quot;fileId2&quot; type=&quot;file&quot; multiple=&quot;multiple&quot; name=&quot;file&quot; /&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 文件传输 </tag>
+            
+        </tags>
         
     </entry>
     
@@ -443,31 +522,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[html处理兼容样式]]></title>
-      <url>http://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
-<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 兼容 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 兼容 </tag>
-            
-            <tag> html </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[HTML 5 Web 存储]]></title>
       <url>http://emloxe.github.io/2017/09/14/HTML%205%20Web%20%E5%AD%98%E5%82%A8/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -509,6 +563,31 @@
             <tag> html5 </tag>
             
             <tag> 存储 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[html处理兼容样式]]></title>
+      <url>http://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
+<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 兼容 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 兼容 </tag>
+            
+            <tag> html </tag>
             
         </tags>
         
@@ -1032,34 +1111,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[css居中]]></title>
-      <url>http://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
-      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
-<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
-<p>多个block元素可用css3的flex</p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
-<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
-<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div><div class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> css </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> css </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[position总结]]></title>
       <url>http://emloxe.github.io/2017/06/26/position%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>position 一共有static relative absolute fixed等属性值<br><a id="more"></a></p>
@@ -1079,6 +1130,34 @@
 </li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html" target="_blank" rel="external">http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[css居中]]></title>
+      <url>http://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
+      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
+<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
+<p>多个block元素可用css3的flex</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
+<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
+<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div><div class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1719,7 +1798,7 @@ dist 静态资源文件
       <url>http://emloxe.github.io/2017/03/14/canvas%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<p>慕课网<a href="http://www.imooc.com/learn/476" target="_blank" rel="external">Canvas玩转图像处理</a>学习笔记</p>
 <a id="more"></a>
-<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="创建canvas-并获取"><a href="#创建canvas-并获取" class="headerlink" title="创建canvas,并获取"></a>创建canvas,并获取</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"display: block; margin: 0 auto;border: 1px solid #aaa"</span>&gt;</span></div><div class="line">  您的浏览器不支持canvas</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">  var canvas = document.getElementById("canvas");</div><div class="line">  var context = canvas.getContext("2d");</div><div class="line"></div><div class="line">  window.onload = function()&#123;</div><div class="line">    // canvas的宽高最好不要写在样式中</div><div class="line">    canvas.width = 800;</div><div class="line">    canvas.height = 500;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h2><h3 id="创建canvas-并获取"><a href="#创建canvas-并获取" class="headerlink" title="创建canvas,并获取"></a>创建canvas,并获取</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"display: block; margin: 0 auto;border: 1px solid #aaa"</span>&gt;</span></div><div class="line">  您的浏览器不支持canvas</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</div><div class="line">  <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line"></div><div class="line">  <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// canvas的宽高最好不要写在样式中</span></div><div class="line">    canvas.width = <span class="number">800</span>;</div><div class="line">    canvas.height = <span class="number">500</span>;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="drawImage"><a href="#drawImage" class="headerlink" title="drawImage"></a>drawImage</h3><p><code>context.drawImage()</code>将图片绘制在canvas中</p>
 <h4 id="context-drawImage-img-dx-dy"><a href="#context-drawImage-img-dx-dy" class="headerlink" title="context.drawImage(img, dx, dy)"></a>context.drawImage(img, dx, dy)</h4><p>img:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">'2017031401.png'</span>;</div></pre></td></tr></table></figure></p>
 <p>dx，dy 绘制img在canvas上的起点<br>dx：左定位<br>dy：上定位</p>
@@ -2281,6 +2360,30 @@ dist 静态资源文件
 <h2 id="第三方服务"><a href="#第三方服务" class="headerlink" title="第三方服务"></a>第三方服务</h2><p>评论<a href="http://duoshuo.com" target="_blank" rel="external">多说</a><br>网站分析<a href="http://ta.qq.com/" target="_blank" rel="external">腾讯分析</a><br>阅读次数统计<a href="https://leancloud.cn" target="_blank" rel="external">leancloud</a><br><a href="http://http://zhanzhang.baidu.com" target="_blank" rel="external">百度站长平台</a></p>
 ]]></content>
       
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js类型检测]]></title>
+      <url>http://emloxe.github.io/2017/01/10/js%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// p 为未知类型</span></div><div class="line"><span class="keyword">if</span>( p !== <span class="literal">null</span> &amp;&amp; ( <span class="keyword">typeof</span> p === <span class="string">'object'</span> || <span class="keyword">typeof</span> p === <span class="string">'function'</span>) &amp;&amp; <span class="keyword">typeof</span> p.ten === <span class="string">'function'</span> )&#123;</div><div class="line">  <span class="comment">// 为promise类型</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// 不是promise类型</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 类型检测 </tag>
+            
+        </tags>
         
     </entry>
     
