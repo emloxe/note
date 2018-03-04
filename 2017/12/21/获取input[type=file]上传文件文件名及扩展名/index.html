@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://emloxe.github.io/2017/12/21/获取input[type=file]上传文件文件名及扩展名/index.html">
 <meta property="og:site_name" content="zwj-blog">
 <meta property="og:description" content="上传文件信息的获取123456789&amp;lt;body&amp;gt;    &amp;lt;input type=&quot;file&quot; name=&quot;myfile&quot; id=&quot;myfile&quot; value=&quot;&quot; /&amp;gt;    &amp;lt;button id=&quot;mybtn&quot;&amp;gt;点击&amp;lt;/button&amp;gt;  &amp;lt;/body&amp;gt;  &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;">
-<meta property="og:updated_time" content="2018-01-23T08:47:36.256Z">
+<meta property="og:updated_time" content="2018-01-23T08:47:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="获取input[type=file]上传文件文件名及扩展名">
 <meta name="twitter:description" content="上传文件信息的获取123456789&amp;lt;body&amp;gt;    &amp;lt;input type=&quot;file&quot; name=&quot;myfile&quot; id=&quot;myfile&quot; value=&quot;&quot; /&amp;gt;    &amp;lt;button id=&quot;mybtn&quot;&amp;gt;点击&amp;lt;/button&amp;gt;  &amp;lt;/body&amp;gt;  &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;">
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-23T16:47:36+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-23T16:47:38+08:00">
                 2018-01-23
               </time>
             
@@ -413,7 +413,7 @@
 
       
         <a id="more"></a>
-<h2 id="上传文件信息的获取"><a href="#上传文件信息的获取" class="headerlink" title="上传文件信息的获取"></a>上传文件信息的获取</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"myfile"</span> <span class="attr">id</span>=<span class="string">"myfile"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"mybtn"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined">  </span></div><div class="line">  //获取一个上传文件的扩展名  </div><div class="line">  var myfile = document.getElementById('myfile');  </div><div class="line">  console.log(myfile.files);   // 打印可以看到需要的值</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="上传文件信息的获取"><a href="#上传文件信息的获取" class="headerlink" title="上传文件信息的获取"></a>上传文件信息的获取</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"myfile"</span> <span class="attr">id</span>=<span class="string">"myfile"</span> <span class="attr">value</span>=<span class="string">""</span> /&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"mybtn"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript">  </span></div><div class="line">  <span class="comment">//获取一个上传文件的扩展名  </span></div><div class="line">  <span class="keyword">var</span> myfile = <span class="built_in">document</span>.getElementById(<span class="string">'myfile'</span>);  </div><div class="line">  <span class="built_in">console</span>.log(myfile.files);   <span class="comment">// 打印可以看到需要的值</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="类型的限定"><a href="#类型的限定" class="headerlink" title="类型的限定"></a>类型的限定</h3><p>accept<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"fileId1"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">accept</span>=<span class="string">"image/png,image/gif"</span> <span class="attr">name</span>=<span class="string">"file"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
 <h3 id="多文件上传"><a href="#多文件上传" class="headerlink" title="多文件上传"></a>多文件上传</h3><p>multiple<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input id=&quot;fileId2&quot; type=&quot;file&quot; multiple=&quot;multiple&quot; name=&quot;file&quot; /&gt;</div></pre></td></tr></table></figure></p>
 
@@ -450,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/30/js判断浏览器是否为手机端/" rel="next" title="js判断浏览器是否为手机端">
-                <i class="fa fa-chevron-left"></i> js判断浏览器是否为手机端
+              <a href="/2017/12/15/load与DOMContentLoaded/" rel="next" title="load与DOMContentLoaded">
+                <i class="fa fa-chevron-left"></i> load与DOMContentLoaded
               </a>
             
           </div>
@@ -493,8 +493,7 @@
 
 
 <!-- UY BEGIN  友言评论 -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2151567"></script>
+
 <!-- UY END -->
 
         </div>
@@ -538,7 +537,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -556,7 +555,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
