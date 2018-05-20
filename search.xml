@@ -640,6 +640,31 @@
     </entry>
     
     <entry>
+      <title><![CDATA[html处理兼容样式]]></title>
+      <url>http://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
+<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 兼容 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 兼容 </tag>
+            
+            <tag> html </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML 5 Web 存储]]></title>
       <url>http://emloxe.github.io/2017/09/14/HTML%205%20Web%20%E5%AD%98%E5%82%A8/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -687,25 +712,24 @@
     </entry>
     
     <entry>
-      <title><![CDATA[html处理兼容样式]]></title>
-      <url>http://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
-<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
+      <title><![CDATA[js防嵌套]]></title>
+      <url>http://emloxe.github.io/2017/08/23/js%E9%98%B2%E5%B5%8C%E5%A5%97/</url>
+      <content type="html"><![CDATA[<p>js防止页面被其他网站iframe嵌套<br><a id="more"></a><br>代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(top.location!=self.location)&#123;</div><div class="line">  top.location.href=self.location.href;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码可将页面重定向到被嵌套的页面</p>
 ]]></content>
       
         <categories>
             
-            <category> 兼容 </category>
+            <category> js </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> 兼容 </tag>
+            <tag> js </tag>
             
-            <tag> html </tag>
+            <tag> 类型检测 </tag>
             
         </tags>
         
@@ -1119,10 +1143,13 @@
     
     <entry>
       <title><![CDATA[重写css样式]]></title>
-      <url>http://emloxe.github.io/2017/07/13/%E9%87%8D%E5%86%99css%E6%A0%B7%E5%BC%8F/</url>
+      <url>http://emloxe.github.io/2017/07/13/css%E9%87%8D%E5%86%99%E6%A0%B7%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>零碎的css相关知识<br><a id="more"></a></p>
-<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="chrome字体缩放"><a href="#chrome字体缩放" class="headerlink" title="chrome字体缩放"></a>chrome字体缩放</h3><p>-webkit-text-size-adjust<br>当样式表里font-size<12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用 <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html&#123;-webkit-text-size-adjust:none;&#125;</div></pre></td></tr></table></12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用></p>
+<p>-webkit-text-size-adjust放在body上会导致页面缩放失效<br>body会继承定义在html的样式<br>用-webkit-text-size-adjust不要定义成可继承的或全局的</p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="a链接"><a href="#a链接" class="headerlink" title="a链接"></a>a链接</h2><h3 id="消除移动端点击高亮"><a href="#消除移动端点击高亮" class="headerlink" title="消除移动端点击高亮"></a>消除移动端点击高亮</h3><p>-webkit-tap-highlight-color<br>当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。</p>
+<p>示例：设置高亮色为50%透明的红色:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-tap-highlight-color</span>: <span class="selector-tag">rgba</span>(255,0,0,0);</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1142,13 +1169,10 @@
     
     <entry>
       <title><![CDATA[重写css样式]]></title>
-      <url>http://emloxe.github.io/2017/07/13/css%E9%87%8D%E5%86%99%E6%A0%B7%E5%BC%8F/</url>
+      <url>http://emloxe.github.io/2017/07/13/%E9%87%8D%E5%86%99css%E6%A0%B7%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>零碎的css相关知识<br><a id="more"></a></p>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="chrome字体缩放"><a href="#chrome字体缩放" class="headerlink" title="chrome字体缩放"></a>chrome字体缩放</h3><p>-webkit-text-size-adjust<br>当样式表里font-size<12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用 <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html&#123;-webkit-text-size-adjust:none;&#125;</div></pre></td></tr></table></12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用></p>
-<p>-webkit-text-size-adjust放在body上会导致页面缩放失效<br>body会继承定义在html的样式<br>用-webkit-text-size-adjust不要定义成可继承的或全局的</p>
-<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="a链接"><a href="#a链接" class="headerlink" title="a链接"></a>a链接</h2><h3 id="消除移动端点击高亮"><a href="#消除移动端点击高亮" class="headerlink" title="消除移动端点击高亮"></a>消除移动端点击高亮</h3><p>-webkit-tap-highlight-color<br>当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。</p>
-<p>示例：设置高亮色为50%透明的红色:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-tap-highlight-color</span>: <span class="selector-tag">rgba</span>(255,0,0,0);</div></pre></td></tr></table></figure></p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -1229,34 +1253,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[css居中]]></title>
-      <url>http://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
-      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
-<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
-<p>多个block元素可用css3的flex</p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
-<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
-<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div><div class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> css </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> css </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[position总结]]></title>
       <url>http://emloxe.github.io/2017/06/26/position%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>position 一共有static relative absolute fixed等属性值<br><a id="more"></a></p>
@@ -1276,6 +1272,34 @@
 </li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html" target="_blank" rel="external">http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[css居中]]></title>
+      <url>http://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
+      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
+<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
+<p>多个block元素可用css3的flex</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
+<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
+<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div><div class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1522,7 +1546,8 @@
     <entry>
       <title><![CDATA[sublime使用]]></title>
       <url>http://emloxe.github.io/2017/04/25/sublime%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><ul>
+      <content type="html"><![CDATA[<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>windows</p>
+<ul>
 <li><p>Ctrl 多行游标</p>
 </li>
 <li><p>Ctrl+f  查找</p>
@@ -1537,12 +1562,18 @@
 </li>
 <li><p>Ctrl+Shift+/  注释代码</p>
 </li>
-<li><p>Ctrl+[ 减小缩进</p>
+<li><p>Ctrl+[  减小缩进</p>
 </li>
-<li><p>Ctrl+] 增加缩进</p>
+<li><p>Ctrl+]  增加缩进</p>
+</li>
+<li><p>鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑</p>
+</li>
+<li><p>Shift+鼠标右键  可以用鼠标进行竖向多行选择</p>
+</li>
+<li><p>Ctrl+鼠标左键  可以手动选择同时要编辑</p>
+<a id="more"></a>
 </li>
 </ul>
-<a id="more"></a>
 <h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><h3 id="Package-Control插件管理"><a href="#Package-Control插件管理" class="headerlink" title="Package Control插件管理"></a>Package Control插件管理</h3><p>它是用来管理插件的插件,首次使用前也是需要安装的</p>
 <p>首先要安装<br>sublime 安装教程在这里 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a></p>
 <p>过程：<br><code>view -&gt; Show Console</code><br>在下面的出现的输入框中输入（sublime3 版本，sublime2可在以上地址中查询）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;6f4c264a24d933ce70df5dedcf1dcaee&apos; + &apos;ebe013ee18cced0ef93d5f746d80ef60&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure></p>
@@ -1691,62 +1722,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[canvas基本操作]]></title>
-      <url>http://emloxe.github.io/2017/03/23/canvas%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
-      <content type="html"><![CDATA[<p>canvas基本操作的学习</p>
-<a id="more"></a>
-<h2 id="画布创建"><a href="#画布创建" class="headerlink" title="画布创建"></a>画布创建</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"100"</span></span></div><div class="line"><span class="attr">style</span>=<span class="string">"border:1px solid #000000;"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</div><div class="line">  <span class="keyword">var</span> ctx = c.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="直线"><a href="#直线" class="headerlink" title="直线"></a>直线</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.lineWidth = <span class="number">1</span>;  <span class="comment">// 线条宽度</span></div><div class="line">ctx.lineCap = <span class="string">"butt"</span>;  <span class="comment">// 边缘样式，其他属性值还有"round" 圆角，"square" 方角</span></div><div class="line">ctx.strokeStyle=<span class="string">"#FF0000"</span>; <span class="comment">// 线条颜色</span></div><div class="line">ctx.moveTo(<span class="number">0</span>, <span class="number">0</span>);  <span class="comment">// 起始点，移动画笔到(0, 0)</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>);  <span class="comment">// 终点</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
-<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.strokeStyle=<span class="string">"#FF0000"</span>; <span class="comment">// 线条颜色</span></div><div class="line">ctx.fillStyle=<span class="string">"#00FF00"</span>; <span class="comment">// 填充颜色</span></div><div class="line">ctx.rect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">150</span>, <span class="number">100</span>); <span class="comment">// 以(20, 20)为起点绘制宽高为(150, 100)的矩形</span></div><div class="line">ctx.stroke();</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
-<h3 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h3><p>arc(x, y, r, start, stop)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.arc(<span class="number">95</span>,<span class="number">50</span>,<span class="number">40</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
-<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
-<li>font - 定义字体</li>
-<li>ctx.textAlign = “start”;  // 绘制的形式</li>
-<li>ctx.textBaseline = “bottom”;  // 当前文本基线</li>
-<li>ctx.fillText(text, x, y, width) - 在 canvas 上绘制实心的文本</li>
-<li>ctx.strokeText(text, x, y, width) - 在 canvas 上绘制空心的文本</li>
-<li></li>
-</ul>
-<p>width为绘制的宽度，当绘制内容大于width时，内容会被压缩，小于width值时，按原来的比例正常显示<br>注意x,y定义的是绘制的起点，默认textAlign为start，但并不是指文本的左上角位置而是左下角</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ctx.font=<span class="string">"30px Arial"</span>;  <span class="comment">// 字号 字体</span></div><div class="line">ctx.fillText(<span class="string">"Hello World"</span>, <span class="number">20</span>, <span class="number">50</span>);  <span class="comment">// 内容 起始位置</span></div></pre></td></tr></table></figure>
-<p><img src="/images/2017032301.jpg" alt="images"></p>
-<p>textAlign值还有start，end，left，center，right<br><a href="https://emloxe.github.io/e-test/2017032301.html">textAlign展示请点击此处</a></p>
-<p>textBaseline<br>|值|    描述|<br>|:–|:–|<br>|alphabetic|    默认。文本基线是普通的字母基线。|<br>|top|    文本基线是 em 方框的顶端。|<br>|hanging|    文本基线是悬挂基线。|<br>|middle|    文本基线是 em 方框的正中。|<br>|ideographic|    文本基线是表意基线。|<br>|bottom|    文本基线是 em 方框的底端。|</p>
-<p><img src="/images/2017032306.png" alt="images"></p>
-<h2 id="清除画布"><a href="#清除画布" class="headerlink" title="清除画布"></a>清除画布</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.clearRect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">50</span>);  <span class="comment">// 以(20, 20)为起点清除宽高为(100, 50)的矩形</span></div></pre></td></tr></table></figure>
-<h2 id="其他方法属性"><a href="#其他方法属性" class="headerlink" title="其他方法属性"></a>其他方法属性</h2><h3 id="获取文本在canvas画布上的长度"><a href="#获取文本在canvas画布上的长度" class="headerlink" title="获取文本在canvas画布上的长度"></a>获取文本在canvas画布上的长度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.measureText(<span class="string">'hello world'</span>).width</div></pre></td></tr></table></figure>
-<p>实际上 <code>ctx.measureText(&#39;hello world&#39;).width</code>获取的是近似值<br><a href="https://emloxe.github.io/e-test/2017032302.html">效果查看</a></p>
-<h3 id="beginPath-和closePath"><a href="#beginPath-和closePath" class="headerlink" title="beginPath()和closePath()"></a>beginPath()和closePath()</h3><h4 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath()"></a>beginPath()</h4><p>方法开始一条路径，或重置当前的路径</p>
-<p>如下代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</div><div class="line"><span class="keyword">var</span> ctx=c.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
-<p>会画出如下的图<br><img src="/images/2017032302.jpg" alt="images"><br>并不是一条绿色一条紫色的线<br><code>ctx.strokeStyle=&quot;purple&quot;</code>覆盖了<code>ctx.strokeStyle=&quot;green&quot;</code></p>
-<p>这里就需要用beginPath()了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.beginPath()</div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
-<p>会画出如下的图<br><img src="/images/2017032303.jpg" alt="images"></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径  ！！注意这句话在 ctx.beginPath()上面</span></div><div class="line">ctx.beginPath()</div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
-<p>会画出同样的图？？并且第一条线是绿色的<br><img src="/images/2017032303.jpg" alt="images"></p>
-<p>再次改造代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.strokeStyle=<span class="string">"blue"</span>;  <span class="comment">// 蓝色</span></div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径  ++++注意这句话在 ctx.beginPath()上面</span></div><div class="line">ctx.beginPath()</div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色</span></div><div class="line">ctx.strokeStyle=<span class="string">"blue"</span>;  <span class="comment">// 蓝色</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.strokeStyle=<span class="string">"red"</span>;  <span class="comment">// 红色</span></div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色</span></div><div class="line">ctx.beginPath();  </div><div class="line">ctx.strokeStyle=<span class="string">"yellow"</span>;  <span class="comment">// 黄色</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke(); </div><div class="line">ctx.strokeStyle=<span class="string">"black"</span>;  <span class="comment">// 黑色</span></div></pre></td></tr></table></figure>
-<p><img src="/images/2017032305.jpg" alt="images"></p>
-<h4 id="closePath"><a href="#closePath" class="headerlink" title="closePath()"></a>closePath()</h4>]]></content>
-      
-        <categories>
-            
-            <category> canvas </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> html5 </tag>
-            
-            <tag> canvas </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[数据处理总结]]></title>
       <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
@@ -1779,6 +1754,105 @@
         <tags>
             
             <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[canvas基本操作]]></title>
+      <url>http://emloxe.github.io/2017/03/23/canvas%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+      <content type="html"><![CDATA[<p>canvas基本操作的学习</p>
+<a id="more"></a>
+<h2 id="画布创建"><a href="#画布创建" class="headerlink" title="画布创建"></a>画布创建</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"100"</span></span></div><div class="line"><span class="attr">style</span>=<span class="string">"border:1px solid #000000;"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'myCanvas'</span>);</div><div class="line">  <span class="keyword">var</span> ctx = c.getContext(<span class="string">'2d'</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="直线"><a href="#直线" class="headerlink" title="直线"></a>直线</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.lineWidth = <span class="number">1</span>;  <span class="comment">// 线条宽度</span></div><div class="line">ctx.lineCap = <span class="string">'butt'</span>;  <span class="comment">// 边缘样式(线的开始点和结束点)，其他属性值还有"round" 圆角，"square" 方角</span></div><div class="line">ctx.lineJoin = <span class="string">'miter'</span>;  <span class="comment">// 线条的连接样式，其他属性值还有'round','bevel'</span></div><div class="line">ctx.strokeStyle=<span class="string">"#FF0000"</span>; <span class="comment">// 线条颜色</span></div><div class="line">ctx.moveTo(<span class="number">0</span>, <span class="number">0</span>);  <span class="comment">// 起始点，移动画笔到(0, 0)</span></div><div class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>);  <span class="comment">// 终点</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<p>画虚线<br>我们之前用moveTo, lineTo画的都是实线，canvas为我们提供了setLineDash()方法，它可以用来画虚线:</p>
+<p>用法：</p>
+<p>cxt.setLineDash( 数组 )</p>
+<p>参数中这个数组，是由实线和空白组合合成，如：</p>
+<p><code>[ 20, 5 ]</code>: 20px 实线，5px空白</p>
+<p><code>[ 20, 5, 10, 5]</code>: 20px实线，5px空白, 10px实线, 5px空白</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">ctx.lineWidth = <span class="number">5</span>;</div><div class="line">ctx.strokeStyle = <span class="string">'#09f'</span>;</div><div class="line">ctx.beginPath();</div><div class="line">ctx.setLineDash( [ <span class="number">10</span>, <span class="number">5</span> ] );</div><div class="line">ctx.moveTo( <span class="number">100</span>, <span class="number">100</span> );</div><div class="line">ctx.lineTo( <span class="number">600</span>, <span class="number">100</span> );</div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line">ctx.beginPath();</div><div class="line">ctx.setLineDash( [ <span class="number">20</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">5</span> ] );</div><div class="line">ctx.moveTo( <span class="number">100</span>, <span class="number">150</span> );</div><div class="line">ctx.lineTo( <span class="number">600</span>, <span class="number">150</span> );</div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line">ctx.beginPath();</div><div class="line">ctx.setLineDash( [ <span class="number">40</span>, <span class="number">5</span>, <span class="number">20</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">1</span> ] );</div><div class="line">ctx.moveTo( <span class="number">100</span>, <span class="number">200</span> );</div><div class="line">ctx.lineTo( <span class="number">600</span>, <span class="number">200</span> );</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<p><img src="/images/2017032307.png" alt="images"></p>
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.strokeStyle=<span class="string">"#FF0000"</span>; <span class="comment">// 线条颜色</span></div><div class="line">ctx.fillStyle=<span class="string">"#00FF00"</span>; <span class="comment">// 填充颜色</span></div><div class="line">ctx.rect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">150</span>, <span class="number">100</span>); <span class="comment">// 以(20, 20)为起点绘制宽高为(150, 100)的矩形</span></div><div class="line">ctx.stroke();</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<h3 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h3><p>arc(x, y, r, start, stop)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.arc(<span class="number">95</span>,<span class="number">50</span>,<span class="number">40</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
+<li>font - 定义字体</li>
+<li>ctx.textAlign = “start”;  // 绘制的形式</li>
+<li>ctx.textBaseline = “bottom”;  // 当前文本基线</li>
+<li>ctx.fillText(text, x, y, width) - 在 canvas 上绘制实心的文本</li>
+<li>ctx.strokeText(text, x, y, width) - 在 canvas 上绘制空心的文本</li>
+<li></li>
+</ul>
+<p>width为绘制的宽度，当绘制内容大于width时，内容会被压缩，小于width值时，按原来的比例正常显示<br>注意x,y定义的是绘制的起点，默认textAlign为start，但并不是指文本的左上角位置而是左下角</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ctx.font=<span class="string">"30px Arial"</span>;  <span class="comment">// 字号 字体</span></div><div class="line">ctx.fillText(<span class="string">"Hello World"</span>, <span class="number">20</span>, <span class="number">50</span>);  <span class="comment">// 内容 起始位置</span></div></pre></td></tr></table></figure>
+<p><img src="/images/2017032301.jpg" alt="images"></p>
+<p>textAlign值还有start，end，left，center，right<br><a href="https://emloxe.github.io/e-test/2017032301.html">textAlign展示请点击此处</a></p>
+<p>textBaseline</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">值</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">alphabetic</td>
+<td style="text-align:left">默认。文本基线是普通的字母基线。</td>
+</tr>
+<tr>
+<td style="text-align:left">top</td>
+<td style="text-align:left">文本基线是 em 方框的顶端。</td>
+</tr>
+<tr>
+<td style="text-align:left">hanging</td>
+<td style="text-align:left">文本基线是悬挂基线。</td>
+</tr>
+<tr>
+<td style="text-align:left">middle</td>
+<td style="text-align:left">文本基线是 em 方框的正中。</td>
+</tr>
+<tr>
+<td style="text-align:left">ideographic</td>
+<td style="text-align:left">文本基线是表意基线。</td>
+</tr>
+<tr>
+<td style="text-align:left">bottom</td>
+<td style="text-align:left">文本基线是 em 方框的底端。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/2017032306.png" alt="images"></p>
+<h3 id="整体设置透明度"><a href="#整体设置透明度" class="headerlink" title="整体设置透明度"></a>整体设置透明度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.globalAlpha = 0.5;</div></pre></td></tr></table></figure>
+<h2 id="清除画布"><a href="#清除画布" class="headerlink" title="清除画布"></a>清除画布</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.clearRect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">50</span>);  <span class="comment">// 以(20, 20)为起点清除宽高为(100, 50)的矩形</span></div></pre></td></tr></table></figure>
+<h2 id="其他方法属性"><a href="#其他方法属性" class="headerlink" title="其他方法属性"></a>其他方法属性</h2><h3 id="获取文本在canvas画布上的长度"><a href="#获取文本在canvas画布上的长度" class="headerlink" title="获取文本在canvas画布上的长度"></a>获取文本在canvas画布上的长度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.measureText(<span class="string">'hello world'</span>).width</div></pre></td></tr></table></figure>
+<p>实际上 <code>ctx.measureText(&#39;hello world&#39;).width</code>获取的是近似值<br><a href="https://emloxe.github.io/e-test/2017032302.html">效果查看</a></p>
+<h3 id="beginPath-和closePath"><a href="#beginPath-和closePath" class="headerlink" title="beginPath()和closePath()"></a>beginPath()和closePath()</h3><h4 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath()"></a>beginPath()</h4><p>方法开始一条路径，或重置当前的路径</p>
+<p>如下代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>);</div><div class="line"><span class="keyword">var</span> ctx=c.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
+<p>会画出如下的图<br><img src="/images/2017032302.jpg" alt="images"><br>并不是一条绿色一条紫色的线<br><code>ctx.strokeStyle=&quot;purple&quot;</code>覆盖了<code>ctx.strokeStyle=&quot;green&quot;</code></p>
+<p>这里就需要用beginPath()了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.beginPath()</div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
+<p>会画出如下的图<br><img src="/images/2017032303.jpg" alt="images"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径  ！！注意这句话在 ctx.beginPath()上面</span></div><div class="line">ctx.beginPath()</div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<p>会画出同样的图？？并且第一条线是绿色的<br><img src="/images/2017032303.jpg" alt="images"></p>
+<p>再次改造代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一条线            </span></div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色路径</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.strokeStyle=<span class="string">"blue"</span>;  <span class="comment">// 蓝色</span></div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色的路径  ++++注意这句话在 ctx.beginPath()上面</span></div><div class="line">ctx.beginPath()</div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">ctx.lineWidth=<span class="string">"5"</span>;</div><div class="line">ctx.strokeStyle=<span class="string">"green"</span>;  <span class="comment">// 绿色</span></div><div class="line">ctx.strokeStyle=<span class="string">"blue"</span>;  <span class="comment">// 蓝色</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">75</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">75</span>);</div><div class="line">ctx.strokeStyle=<span class="string">"red"</span>;  <span class="comment">// 红色</span></div><div class="line">ctx.stroke();   </div><div class="line"><span class="comment">// 第二条线</span></div><div class="line">ctx.strokeStyle=<span class="string">"purple"</span>;  <span class="comment">// 紫色</span></div><div class="line">ctx.beginPath();  </div><div class="line">ctx.strokeStyle=<span class="string">"yellow"</span>;  <span class="comment">// 黄色</span></div><div class="line">ctx.moveTo(<span class="number">0</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">100</span>);            </div><div class="line">ctx.stroke(); </div><div class="line">ctx.strokeStyle=<span class="string">"black"</span>;  <span class="comment">// 黑色</span></div></pre></td></tr></table></figure>
+<p><img src="/images/2017032305.jpg" alt="images"></p>
+<h4 id="closePath"><a href="#closePath" class="headerlink" title="closePath()"></a>closePath()</h4>]]></content>
+      
+        <categories>
+            
+            <category> canvas </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> html5 </tag>
+            
+            <tag> canvas </tag>
             
         </tags>
         
@@ -2604,30 +2678,6 @@ dist 静态资源文件
 <h2 id="第三方服务"><a href="#第三方服务" class="headerlink" title="第三方服务"></a>第三方服务</h2><p>评论<a href="http://duoshuo.com" target="_blank" rel="external">多说</a><br>网站分析<a href="http://ta.qq.com/" target="_blank" rel="external">腾讯分析</a><br>阅读次数统计<a href="https://leancloud.cn" target="_blank" rel="external">leancloud</a><br><a href="http://http://zhanzhang.baidu.com" target="_blank" rel="external">百度站长平台</a></p>
 ]]></content>
       
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[js防嵌套]]></title>
-      <url>http://emloxe.github.io/2017/01/23/js%E9%98%B2%E5%B5%8C%E5%A5%97/</url>
-      <content type="html"><![CDATA[<p>js防止页面被其他网站iframe嵌套<br><a id="more"></a><br>代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(top.location!=self.location)&#123;</div><div class="line">  top.location.href=self.location.href;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>代码可将页面重定向到被嵌套的页面</p>
-]]></content>
-      
-        <categories>
-            
-            <category> js </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> js </tag>
-            
-            <tag> 类型检测 </tag>
-            
-        </tags>
         
     </entry>
     

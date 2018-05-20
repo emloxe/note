@@ -84,7 +84,8 @@
 
 
 
-<meta name="description" content="常用快捷键
+<meta name="description" content="常用快捷键windows
+
 Ctrl 多行游标
 
 Ctrl+f  查找
@@ -99,14 +100,21 @@ Ctrl+/  注释代码
 
 Ctrl+Shift+/  注释代码
 
-Ctrl+[ 减小缩进
+Ctrl+[  减小缩进
 
-Ctrl+] 增加缩进">
+Ctrl+]  增加缩进
+
+鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑
+
+Shift+鼠标右键  可以用鼠标进行竖向多行选择
+
+C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sublime使用">
 <meta property="og:url" content="http://emloxe.github.io/2017/04/25/sublime使用/index.html">
 <meta property="og:site_name" content="zwj-blog">
-<meta property="og:description" content="常用快捷键
+<meta property="og:description" content="常用快捷键windows
+
 Ctrl 多行游标
 
 Ctrl+f  查找
@@ -121,13 +129,20 @@ Ctrl+/  注释代码
 
 Ctrl+Shift+/  注释代码
 
-Ctrl+[ 减小缩进
+Ctrl+[  减小缩进
 
-Ctrl+] 增加缩进">
-<meta property="og:updated_time" content="2018-03-24T08:45:15.689Z">
+Ctrl+]  增加缩进
+
+鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑
+
+Shift+鼠标右键  可以用鼠标进行竖向多行选择
+
+C">
+<meta property="og:updated_time" content="2018-05-20T14:29:01.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sublime使用">
-<meta name="twitter:description" content="常用快捷键
+<meta name="twitter:description" content="常用快捷键windows
+
 Ctrl 多行游标
 
 Ctrl+f  查找
@@ -142,9 +157,15 @@ Ctrl+/  注释代码
 
 Ctrl+Shift+/  注释代码
 
-Ctrl+[ 减小缩进
+Ctrl+[  减小缩进
 
-Ctrl+] 增加缩进">
+Ctrl+]  增加缩进
+
+鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑
+
+Shift+鼠标右键  可以用鼠标进行竖向多行选择
+
+C">
 
 
 
@@ -398,8 +419,8 @@ Ctrl+] 增加缩进">
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-03-24T16:45:15+08:00">
-                2018-03-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-20T22:29:01+08:00">
+                2018-05-20
               </time>
             
           </span>
@@ -463,7 +484,8 @@ Ctrl+] 增加缩进">
       
 
       
-        <h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><ul>
+        <h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>windows</p>
+<ul>
 <li><p>Ctrl 多行游标</p>
 </li>
 <li><p>Ctrl+f  查找</p>
@@ -478,12 +500,18 @@ Ctrl+] 增加缩进">
 </li>
 <li><p>Ctrl+Shift+/  注释代码</p>
 </li>
-<li><p>Ctrl+[ 减小缩进</p>
+<li><p>Ctrl+[  减小缩进</p>
 </li>
-<li><p>Ctrl+] 增加缩进</p>
+<li><p>Ctrl+]  增加缩进</p>
+</li>
+<li><p>鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑</p>
+</li>
+<li><p>Shift+鼠标右键  可以用鼠标进行竖向多行选择</p>
+</li>
+<li><p>Ctrl+鼠标左键  可以手动选择同时要编辑</p>
+<a id="more"></a>
 </li>
 </ul>
-<a id="more"></a>
 <h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><h3 id="Package-Control插件管理"><a href="#Package-Control插件管理" class="headerlink" title="Package Control插件管理"></a>Package Control插件管理</h3><p>它是用来管理插件的插件,首次使用前也是需要安装的</p>
 <p>首先要安装<br>sublime 安装教程在这里 <a href="https://packagecontrol.io/installation" target="_blank" rel="external">https://packagecontrol.io/installation</a></p>
 <p>过程：<br><code>view -&gt; Show Console</code><br>在下面的出现的输入框中输入（sublime3 版本，sublime2可在以上地址中查询）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;6f4c264a24d933ce70df5dedcf1dcaee&apos; + &apos;ebe013ee18cced0ef93d5f746d80ef60&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure></p>
