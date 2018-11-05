@@ -4,6 +4,124 @@
   
     
     <entry>
+      <title><![CDATA[koa]]></title>
+      <url>http://emloxe.github.io/2018/09/07/koa/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> 框架 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 框架 </tag>
+            
+            <tag> koa </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[gulp]]></title>
+      <url>http://emloxe.github.io/2018/09/07/gulp/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> gulp </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 打包 </tag>
+            
+            <tag> gulp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[rjs]]></title>
+      <url>http://emloxe.github.io/2018/09/01/rjs/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> 打包 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 打包 </tag>
+            
+            <tag> r.js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js点击dom位置计算]]></title>
+      <url>http://emloxe.github.io/2018/09/01/js%E7%82%B9%E5%87%BBdom%E4%BD%8D%E7%BD%AE%E8%AE%A1%E7%AE%97/</url>
+      <content type="html"><![CDATA[<p>获取dom中内部点击等位置<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'www'</span>);</div><div class="line">a.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> x = ev.clientX; <span class="comment">// x coordinate of a mouse pointer</span></div><div class="line">  <span class="keyword">var</span> y = ev.clientY; <span class="comment">// y coordinate of a mouse pointer</span></div><div class="line">  <span class="keyword">var</span> rect = ev.target.getBoundingClientRect() ;</div><div class="line">  <span class="built_in">console</span>.log(x - rect.left, y - rect.top)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>x - rect.left</code>即鼠标在内部点击的横坐标</p>
+<p><code>y - rect.top</code>即鼠标在内部点击的纵坐标</p>
+<p>坐标系x是右向为正，y是下为正</p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[requireJS]]></title>
+      <url>http://emloxe.github.io/2018/08/23/requireJS/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> requireJS </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> requireJS </tag>
+            
+            <tag> 模块化 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[mysql]]></title>
       <url>http://emloxe.github.io/2018/07/22/mysql/</url>
       <content type="html"><![CDATA[<p>mysql总结<br><a id="more"></a></p>
@@ -165,9 +283,11 @@
       <content type="html"><![CDATA[<a id="more"></a>
 <h2 id="使用git初始化"><a href="#使用git初始化" class="headerlink" title="使用git初始化"></a>使用git初始化</h2><h3 id="本地创建一个-git项目推送到远程空仓库"><a href="#本地创建一个-git项目推送到远程空仓库" class="headerlink" title="本地创建一个 git项目推送到远程空仓库"></a>本地创建一个 git项目推送到远程空仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">＃初始化本地仓库</div><div class="line">git init</div><div class="line">＃将本地内容添加至git索引中</div><div class="line">git add .</div><div class="line">＃将索引添加至本地仓库中</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">#添加远程仓库路径</div><div class="line">git remote add origin https://github.com/emloxe/eee.git</div><div class="line">＃将本地内容push至远程仓库中</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
 <h3 id="本地项目代码已写好，远程分支不为空"><a href="#本地项目代码已写好，远程分支不为空" class="headerlink" title="本地项目代码已写好，远程分支不为空"></a>本地项目代码已写好，远程分支不为空</h3><p>需要将本地代码覆盖远程分支代码</p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="合并代码到远程分支"><a href="#合并代码到远程分支" class="headerlink" title="合并代码到远程分支"></a>合并代码到远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &apos;update&apos;</div><div class="line">git push</div></pre></td></tr></table></figure>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="合并代码到远程分支"><a href="#合并代码到远程分支" class="headerlink" title="合并代码到远程分支"></a>合并代码到远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m &apos;update&apos;</div><div class="line">git push</div><div class="line">// 如果是其他分支(dev)可以用 git push origin dev</div></pre></td></tr></table></figure>
 <h3 id="拉取代码"><a href="#拉取代码" class="headerlink" title="拉取代码"></a>拉取代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure>
 <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p><code>error: You have not concluded your merge (MERGE_HEAD exists)</code><br>导致报错的原因可能是在以前pull下来的代码自动合并失败</p>
+<p>手动修改冲突文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git add .</div><div class="line">$ git commit -m &lt;备注本次合并的内容&gt;</div><div class="line">$ git push</div></pre></td></tr></table></figure></p>
+<p>强制覆盖有两种方式</p>
 <p>解决办法一:保留本地的更改,中止合并-&gt;重新合并-&gt;重新拉取<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$:git merge --abort</div><div class="line">$:git reset --merge</div><div class="line">$:git pull</div></pre></td></tr></table></figure></p>
 <p>解决办法二:舍弃本地代码,远端版本覆盖本地版本(慎重)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$:git fetch --all</div><div class="line">$:git reset --hard origin/master</div><div class="line">$:git fetch</div></pre></td></tr></table></figure></p>
 <p>参考<br><a href="https://blog.csdn.net/feng2qing/article/details/56496441" target="_blank" rel="external">https://blog.csdn.net/feng2qing/article/details/56496441</a></p>
@@ -618,8 +738,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[node学习]]></title>
-      <url>http://emloxe.github.io/2017/10/19/node%E5%AD%A6%E4%B9%A0/</url>
+      <title><![CDATA[node]]></title>
+      <url>http://emloxe.github.io/2017/10/19/node/</url>
       <content type="html"><![CDATA[<a id="more"></a>
 <h2 id="搭建一个简单的服务器"><a href="#搭建一个简单的服务器" class="headerlink" title="搭建一个简单的服务器"></a>搭建一个简单的服务器</h2><p>采用http模块搭建<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</div><div class="line">  res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;).listen(<span class="number">8124</span>, <span class="string">"127.0.0.1"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:8124/'</span>);</div></pre></td></tr></table></figure></p>
 <p>使用Express<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.send(<span class="string">'Hello World!'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> server = app.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> host = server.address().address;</div><div class="line">  <span class="keyword">var</span> port = server.address().port;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Example app listening at http://%s:%s'</span>, host, port);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
@@ -648,8 +768,12 @@
 <p>如果你的静态资源存放在多个目录下面，你可以多次调用 express.static 中间件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">app.use(express.static(<span class="string">'public'</span>));</div><div class="line">app.use(express.static(<span class="string">'files'</span>));</div></pre></td></tr></table></figure></p>
 <p>访问静态资源文件时，express.static 中间件会根据目录添加的顺序查找所需的文件。<br>如果你希望所有通过 express.static 访问的文件都存放在一个“虚拟（virtual）”目录（即目录根本不存在）下面，可以通过为静态资源目录指定一个挂载路径的方式来实现，如下所示：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(<span class="string">'/static'</span>, express.static(<span class="string">'public'</span>));</div></pre></td></tr></table></figure></p>
 <p>现在，你就爱可以通过带有 “/static” 前缀的地址来访问 public 目录下面的文件了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">http://localhost:3000/static/images/kitten.jpg</div><div class="line">http://localhost:3000/static/css/style.css</div><div class="line">http://localhost:3000/static/js/app.js</div><div class="line">http://localhost:3000/static/images/bg.png</div><div class="line">http://localhost:3000/static/hello.html</div></pre></td></tr></table></figure></p>
+<p>如果将当前目录都当做静态资源来进行访问可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(express.static(__dirname));</div></pre></td></tr></table></figure></p>
 <h3 id="app-mountpath-子应用程序的路径模式"><a href="#app-mountpath-子应用程序的路径模式" class="headerlink" title="app.mountpath 子应用程序的路径模式"></a>app.mountpath 子应用程序的路径模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> app = express(); <span class="comment">// the main app</span></div><div class="line"><span class="keyword">var</span> admin = express(); <span class="comment">// the sub app</span></div><div class="line"></div><div class="line">admin.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(admin.mountpath); <span class="comment">// /admin</span></div><div class="line">  res.send(<span class="string">'Admin Homepage'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">app.use(<span class="string">'/admin'</span>, admin); <span class="comment">// mount the sub app</span></div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> admin = express();</div><div class="line"></div><div class="line">admin.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(admin.mountpath); <span class="comment">// [ '/admin', '/manager' ]</span></div><div class="line">  res.send(<span class="string">'Admin Homepage'</span>);</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">var</span> secret = express();</div><div class="line">secret.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(secret.mountpath); <span class="comment">// /secret</span></div><div class="line">  res.send(<span class="string">'Admin Secret'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">admin.use(<span class="string">'/secret'</span>, secret); <span class="comment">// load the 'secret' router on '/secr*t', on the 'admin' sub app</span></div><div class="line">app.use([<span class="string">'/admin'</span>, <span class="string">'/manager'</span>], admin); <span class="comment">// load the 'admin' router on '/adm*n' and '/manager', on the parent app</span></div></pre></td></tr></table></figure>
+<h3 id="开启压缩"><a href="#开启压缩" class="headerlink" title="开启压缩"></a>开启压缩</h3><p>安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i compression --save</div></pre></td></tr></table></figure></p>
+<p>使用如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var compression = require(&apos;compression&apos;);</div><div class="line"></div><div class="line">app.use(compression());</div></pre></td></tr></table></figure></p>
+<h3 id="开启跨域允许访问"><a href="#开启跨域允许访问" class="headerlink" title="开启跨域允许访问"></a>开启跨域允许访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">app.use(function(req, res, next) &#123;</div><div class="line">    res.header(&apos;Access-Control-Allow-Origin&apos;, &apos;*&apos;);</div><div class="line">    res.header(&apos;Access-Control-Allow-Headers&apos;, &apos;Origin, X-Requested-With, Content-Type, Accept&apos;);</div><div class="line">    next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><h3 id="图书"><a href="#图书" class="headerlink" title="图书"></a>图书</h3><p>Node即学即用</p>
 <h3 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h3><p><a href="http://www.expressjs.com.cn" target="_blank" rel="external">Express - 基于 Node.js 平台的 web 应用开发框架</a></p>
 ]]></content>
