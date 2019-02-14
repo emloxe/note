@@ -4,6 +4,388 @@
   
     
     <entry>
+      <title><![CDATA[ajax获取不到json数据]]></title>
+      <url>http://emloxe.github.io/2019/01/14/ajax%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0json%E6%95%B0%E6%8D%AE/</url>
+      <content type="html"><![CDATA[<p>本地开启服务，用ajax获取数据时，url是对的，直接在浏览器上输入url也是可以获取到数据的。可以是<code>xhr.response</code>确是null。</p>
+<p>原因是 json的数据结构有问题，在json中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line"> &quot;a&quot;: 123, </div><div class="line"> &quot;b&quot;: 345,  // 就是此处【,】引起的，在模拟数据的时候要注意这种写法</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 国际化 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[rollup]]></title>
+      <url>http://emloxe.github.io/2019/01/08/rollup/</url>
+      <content type="html"><![CDATA[<h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><h2 id="处理es"><a href="#处理es" class="headerlink" title="处理es"></a>处理es</h2><p>rollup.config.dev.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">export default &#123;</div><div class="line">  input: &apos;src/index.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    file: &apos;docs/js/bundle.js&apos;,</div><div class="line">    format: &apos;es&apos;,</div><div class="line">    globals: &#123;</div><div class="line">      $: &apos;$&apos;,</div><div class="line">      echarts: &apos;echarts&apos;,</div><div class="line">    &#125;,</div><div class="line">  &#125;,</div><div class="line">  watch: &#123;</div><div class="line">    include: &apos;src/**&apos;,</div><div class="line">  &#125;,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>rollup.config.release.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">import babel from &apos;rollup-plugin-babel&apos;;</div><div class="line">import resolve from &apos;rollup-plugin-node-resolve&apos;;</div><div class="line">import commonjs from &apos;rollup-plugin-commonjs&apos;;</div><div class="line">import &#123; uglify &#125; from &apos;rollup-plugin-uglify&apos;;</div><div class="line"></div><div class="line">export default &#123;</div><div class="line">  input: &apos;src/editor.js&apos;,</div><div class="line">  output: &#123;</div><div class="line">    file: &apos;docs/js/bundle-editor.js&apos;,</div><div class="line">    name: &apos;cis&apos;,</div><div class="line">    format: &apos;iife&apos;,</div><div class="line">    globals: &#123;</div><div class="line">      mono: &apos;mono&apos;,</div><div class="line">      twaver: &apos;twaver&apos;,</div><div class="line">      $: &apos;$&apos;,</div><div class="line">      echarts: &apos;echarts&apos;,</div><div class="line">    &#125;,</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    resolve(),</div><div class="line">    commonjs(),</div><div class="line">    babel(&#123;</div><div class="line">      exclude: &apos;node_modules/**&apos;,</div><div class="line">      presets: [</div><div class="line">        [</div><div class="line">          &apos;@babel/preset-env&apos;,</div><div class="line">          &#123;</div><div class="line">            useBuiltIns: &apos;usage&apos;,</div><div class="line">          &#125;,</div><div class="line">        ],</div><div class="line">      ],</div><div class="line">    &#125;),</div><div class="line">    uglify(),</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="结合gulp"><a href="#结合gulp" class="headerlink" title="结合gulp"></a>结合gulp</h2><p>在gulpfile.js中写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">const gulp = require(&apos;gulp&apos;);</div><div class="line"></div><div class="line">const rollup = require( &apos;rollup&apos;);</div><div class="line">const babel = require( &apos;rollup-plugin-babel&apos;);</div><div class="line">const resolve = require( &apos;rollup-plugin-node-resolve&apos;);</div><div class="line">const commonjs = require( &apos;rollup-plugin-commonjs&apos;);</div><div class="line"></div><div class="line">function glupBundle(name) &#123;</div><div class="line">  gulp.task(name, async function () &#123;</div><div class="line">    const bundle = await rollup.rollup(&#123;</div><div class="line">      input: `src/chart/com/$&#123;name&#125;.js`,</div><div class="line">      plugins: [</div><div class="line">        resolve(),</div><div class="line">        commonjs(),</div><div class="line">        babel(&#123;</div><div class="line">          exclude: &apos;node_modules/**&apos;,</div><div class="line">          presets: [</div><div class="line">            [</div><div class="line">              &apos;@babel/preset-env&apos;,</div><div class="line">              &#123;</div><div class="line">                useBuiltIns: &apos;usage&apos;,</div><div class="line">              &#125;,</div><div class="line">            ],</div><div class="line">          ],</div><div class="line">        &#125;),</div><div class="line">      ]</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    await bundle.write(&#123;</div><div class="line">      file: `docs/editor/chart/$&#123;name&#125;.js`,</div><div class="line">      format: &apos;umd&apos;,</div><div class="line">      name: name,</div><div class="line">      globals: &#123;</div><div class="line">        mono: &apos;mono&apos;,</div><div class="line">        twaver: &apos;twaver&apos;,</div><div class="line">        $: &apos;$&apos;,</div><div class="line">        echarts: &apos;echarts&apos;,</div><div class="line">        CountUp: &apos;CountUp&apos;,</div><div class="line">        Timer: &apos;Timer&apos;,</div><div class="line">      &#125;,</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let comChartArr = [&apos;AssetRiskChart&apos;, &apos;AttackAreaChart&apos;];</div><div class="line">// 这里写的是循环创建gulp任务（task）</div><div class="line">comChartArr.forEach((v) =&gt; &#123;</div><div class="line">  glupBundle(v);</div><div class="line">&#125;);</div><div class="line">// gulp.task(&apos;default&apos;,gulp.parallel(&apos;taskA&apos;,&apos;taskB&apos;));//并行执行</div><div class="line">// gulp.task(&apos;default&apos;,gulp.series(&apos;taskA&apos;,&apos;taskB&apos;));//按顺序执行</div><div class="line">gulp.task(&quot;default&quot;, gulp.parallel(...comChartArr, async  function () &#123;</div><div class="line">  await console.log(&apos;starting done!&apos;);</div><div class="line">&#125;));</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> rollup </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 打包 </tag>
+            
+            <tag> rollup </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js代码自适应模块规范]]></title>
+      <url>http://emloxe.github.io/2018/12/23/js%E4%BB%A3%E7%A0%81%E8%87%AA%E9%80%82%E5%BA%94%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">root, factory</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</div><div class="line">    <span class="comment">// AMD. Register as an anonymous module.</span></div><div class="line">    define([], factory);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">'object'</span> &amp;&amp; <span class="built_in">module</span>.exports) &#123;</div><div class="line">    <span class="comment">// Node. Does not work with strict CommonJS, but</span></div><div class="line">    <span class="comment">// only CommonJS-like environments that support module.exports,</span></div><div class="line">    <span class="comment">// like Node.</span></div><div class="line">    <span class="built_in">module</span>.exports = factory();</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// Browser globals (root is window)</span></div><div class="line">    root.anime = factory();</div><div class="line">  &#125;</div><div class="line">&#125;(<span class="keyword">this</span>, () =&gt; &#123;</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">anime</span>() </span>&#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> anime;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[css自适应屏幕字号]]></title>
+      <url>http://emloxe.github.io/2018/12/22/css%E8%87%AA%E9%80%82%E5%BA%94%E5%B1%8F%E5%B9%95%E5%AD%97%E4%BD%93/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">html &#123;</div><div class="line">    font-size: 14px;</div><div class="line">&#125;</div><div class="line">@media screen and (min-width: 500px)</div><div class="line">html &#123;</div><div class="line">    font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));</div><div class="line">&#125;</div><div class="line">@media screen and (min-width: 2000px)</div><div class="line">html &#123;</div><div class="line">    font-size: 22px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>body中的子元素设置<code>rem</code>;</p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js实现事件总线]]></title>
+      <url>http://emloxe.github.io/2018/12/21/js%E5%AE%9E%E7%8E%B0%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventBus</span></span>&#123;</div><div class="line">  on()&#123;&#125;</div><div class="line">  emit()&#123;&#125;</div><div class="line">  once()&#123;&#125;</div><div class="line">  off()&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js实现i18n]]></title>
+      <url>http://emloxe.github.io/2018/12/20/js%E5%AE%9E%E7%8E%B0i18n/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">cis.language = <span class="string">'zh'</span>;</div><div class="line">cis.i18n = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">	<span class="keyword">if</span> (cis.language === <span class="string">'zh'</span>) &#123;</div><div class="line">	  <span class="keyword">return</span> cis.i18n.zh[type];</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> cis.i18n.en[type];</div><div class="line">&#125;</div><div class="line"></div><div class="line">cis.i18n.zh = &#123;</div><div class="line">  <span class="string">'cis.web.portal.homepage.baseinfo.assetNum'</span>: <span class="string">'资产总数(台)'</span>,</div><div class="line">  <span class="string">'cis.web.portal.homepage.baseinfo.threatNum'</span>: <span class="string">'威胁事件'</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line">cis.i18n.en = &#123;</div><div class="line">  <span class="string">'cis.web.portal.homepage.baseinfo.assetNum'</span>: <span class="string">'Total Assets'</span>,</div><div class="line">  <span class="string">'cis.web.portal.homepage.baseinfo.threatNum'</span>: <span class="string">' Total Incident'</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上述代码展示<br>设置了 <code>cis.language</code>后</p>
+<p>可以在需要国际化的地方调用</p>
+<p><code>cis.i18n(&#39;cis.web.portal.homepage.baseinfo.assetNum&#39;)</code>返回的数据就是个数数据了</p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 国际化 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js实现i18n]]></title>
+      <url>http://emloxe.github.io/2018/12/20/sublime%E9%85%8D%E7%BD%AEes6/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> 国际化 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[原生组件编写注意事项]]></title>
+      <url>http://emloxe.github.io/2018/12/03/%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6%E7%BC%96%E5%86%99%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">init: function()&#123;&#125;,  // 初始化</div><div class="line">destroy: function()&#123;&#125;,  // 销毁</div></pre></td></tr></table></figure>
+<p>销毁时需要注意，有些添加了事件的监听，注意移除，有动画的先暂停动画。不可直接把节点remove掉。</p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>封装好的组件如果具备动画效果<br>需要在编写的时候进行拆分</p>
+<p>可以编写如下的类型接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">initChart: function()&#123;&#125;,  // 初始功能</div><div class="line">firsRander: function()&#123;&#125;,  // 第一次绘制，此刻开始入场动画</div></pre></td></tr></table></figure>
+<p>如果该组件有持续动画，应具备暂停，开始功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">start: function()&#123;&#125;,</div><div class="line">pause: function()&#123;&#125;,</div></pre></td></tr></table></figure></p>
+<h2 id="数据对接"><a href="#数据对接" class="headerlink" title="数据对接"></a>数据对接</h2><h3 id="传入数据为多层对象"><a href="#传入数据为多层对象" class="headerlink" title="传入数据为多层对象"></a>传入数据为多层对象</h3><p>传入的数据如果是多层对象，有一定的可能结构层级不一致，这时就会报错，阻止程序的继续运行<br>比如正常格式为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">	a: &#123;</div><div class="line">		b: &apos;123&apos;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果后台数据返回的是<code>var obj = {}</code><br>此时如果采用obj.a.b就会报错。需要避免此类的报错就需要对即将要处理的数据进行过滤</p>
+<h3 id="传入数据为数组"><a href="#传入数据为数组" class="headerlink" title="传入数据为数组"></a>传入数据为数组</h3><p>所需数据格式为数组，就需要考虑</p>
+<ol>
+<li>数组为空</li>
+<li>数组长度与所需长度不符</li>
+</ol>
+<ul>
+<li>过长如何处理<br>假如需要显示一个排行的前5位，那么返回数据过长就不能直接采用数据遍历生成dom节点，需要对数据进行裁剪</li>
+<li>过短如何处理<br>问题同上，如果数据长度过短，也需要处理</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[模拟ajax对接数据]]></title>
+      <url>http://emloxe.github.io/2018/12/02/%E6%A8%A1%E6%8B%9Fajax%E5%AF%B9%E6%8E%A5%E6%95%B0%E6%8D%AE/</url>
+      <content type="html"><![CDATA[<p>平常日常中总是需要与后台数据对接，但如果当前后台接口如法提供，该如何处理呢？<br>以下是参与项目时公司大佬写的处理方法，觉得很好用，就记录下来了<br><a id="more"></a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 封装好的Ajax</span></div><div class="line">cis.api.ajax = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">(resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> url = options.url;</div><div class="line">    <span class="keyword">let</span> method = options.method || <span class="string">'get'</span>;</div><div class="line">    <span class="keyword">let</span> data = options.data;</div><div class="line">    <span class="keyword">if</span> (method === <span class="string">'get'</span>) &#123;</div><div class="line">      <span class="keyword">let</span> query = cis.api.param(data);</div><div class="line">      url = query ? <span class="string">`<span class="subst">$&#123;url&#125;</span>?<span class="subst">$&#123;query&#125;</span>`</span> : url;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.readyState === <span class="number">4</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.status === <span class="number">200</span>) &#123;</div><div class="line">          <span class="keyword">let</span> result = xhr.response;</div><div class="line">          <span class="keyword">if</span> (options.responseType === <span class="string">'json'</span> &amp;&amp; <span class="keyword">typeof</span> result === <span class="string">'string'</span>) &#123;</div><div class="line">            result = <span class="built_in">JSON</span>.parse(result);</div><div class="line">          &#125;</div><div class="line">          resolve(result);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          reject(<span class="keyword">this</span>.statusText);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">    xhr.open(method, url);</div><div class="line">    xhr.responseType = options.responseType || <span class="string">'json'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (method === <span class="string">'get'</span>) &#123;</div><div class="line">      xhr.send();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</div><div class="line">      <span class="built_in">Object</span>.keys(data).forEach(<span class="function">(<span class="params">key</span>) =&gt;</span> &#123;</div><div class="line">        formData.append(key, data[key]);</div><div class="line">      &#125;);</div><div class="line">      xhr.send(formData);</div><div class="line">    &#125;</div><div class="line">  &#125;));</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 模拟的ajax</span></div><div class="line">cis.api.ajax = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">let</span> prefix = options.prefix || cis.datas;</div><div class="line">      <span class="keyword">let</span> result = prefix[options.url];</div><div class="line">      <span class="keyword">if</span> (options.data) &#123;</div><div class="line">        result = <span class="built_in">Object</span>.keys(options.data).reduce(<span class="function">(<span class="params">results, key</span>) =&gt;</span> &#123;</div><div class="line">          <span class="keyword">if</span> (results == <span class="literal">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">          &#125;</div><div class="line">          <span class="keyword">return</span> results[options.data[key]];</div><div class="line">        &#125;, result);</div><div class="line">      &#125;</div><div class="line">      resolve(result);</div><div class="line">    &#125;, <span class="built_in">Math</span>.random() * <span class="number">200</span> + <span class="number">100</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>cis.api.ajax</code>写两次，在开发环境的时候，下面的方式直接覆盖了真正ajax的请求,采用模拟的ajax请求。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[vscode使用]]></title>
+      <url>http://emloxe.github.io/2018/11/15/vscode%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>windows</p>
+<ul>
+<li><p>Alt 多行游标</p>
+</li>
+<li><p>Ctrl+f  查找</p>
+</li>
+<li><p>Ctrl+h  替换</p>
+</li>
+<li><p>Ctrl+z  倒退</p>
+</li>
+<li><p>Ctrl+y  向前</p>
+</li>
+<li><p>Ctrl+/  注释代码</p>
+</li>
+<li><p>Ctrl+[  减小缩进</p>
+</li>
+<li><p>Ctrl+]  增加缩进</p>
+</li>
+<li><p>鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑</p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><h3 id="插件管理"><a href="#插件管理" class="headerlink" title="插件管理"></a>插件管理</h3><p>左侧第5个图标<br>可以在输入框中进行搜索</p>
+<h4 id="JS-CSS-HTML-Formatter-代码格式化插件"><a href="#JS-CSS-HTML-Formatter-代码格式化插件" class="headerlink" title="JS-CSS-HTML Formatter 代码格式化插件"></a>JS-CSS-HTML Formatter 代码格式化插件</h4><h4 id="fileheader-注释快速生成插件"><a href="#fileheader-注释快速生成插件" class="headerlink" title="fileheader 注释快速生成插件"></a>fileheader 注释快速生成插件</h4>]]></content>
+      
+        <categories>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js-color颜色汇总]]></title>
+      <url>http://emloxe.github.io/2018/11/11/js-color%E9%A2%9C%E8%89%B2%E6%B1%87%E6%80%BB/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 表示一个颜色</div><div class="line"> * @param &#123;Number&#125; [red=0]   范围为[0, 255]，默认值为0</div><div class="line"> * @param &#123;Number&#125; [green=0] 范围为[0, 255]，默认值为0</div><div class="line"> * @param &#123;Number&#125; [blue=0]  范围为[0, 255]，默认值为0</div><div class="line"> * @param &#123;Number&#125; [alpha=0] 范围为[0, 1]，默认值为1</div><div class="line"> * </div><div class="line"> * @constructor</div><div class="line"> * @alias Color</div><div class="line"> */</div><div class="line"><span class="comment">/**</span></div><div class="line"> * [Color description]</div><div class="line"> * @param &#123;[type]&#125; red   [description]</div><div class="line"> * @param &#123;[type]&#125; green [description]</div><div class="line"> * @param &#123;[type]&#125; blue  [description]</div><div class="line"> * @param &#123;[type]&#125; alpha [description]</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Color</span>(<span class="params">red, green, blue, alpha</span>)</span>&#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * The red component.</div><div class="line">   * @type &#123;Number&#125;</div><div class="line">   * @default 255.0</div><div class="line">   */</div><div class="line">  <span class="keyword">this</span>.red = defaultValue(red, <span class="number">1.0</span>);</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * The green component.</div><div class="line">   * @type &#123;Number&#125;</div><div class="line">   * @default 255.0</div><div class="line">   */</div><div class="line">  <span class="keyword">this</span>.green = defaultValue(green, <span class="number">1.0</span>);</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * The blue component.</div><div class="line">   * @type &#123;Number&#125;</div><div class="line">   * @default 255.0</div><div class="line">   */</div><div class="line">  <span class="keyword">this</span>.blue = defaultValue(blue, <span class="number">1.0</span>);</div><div class="line">  <span class="comment">/**</span></div><div class="line">   * The alpha component.</div><div class="line">   * @type &#123;Number&#125;</div><div class="line">   * @default 1.0</div><div class="line">   */</div><div class="line">  <span class="keyword">this</span>.alpha = defaultValue(alpha, <span class="number">1.0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 随机生成颜色</div><div class="line"> * @return &#123;Color&#125; 返回新的颜色</div><div class="line"> */</div><div class="line">Color.fromRandom = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">red</span>: <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*<span class="number">255</span>),</div><div class="line">    <span class="attr">green</span>: <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*<span class="number">255</span>),</div><div class="line">    <span class="attr">blue</span>: <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*<span class="number">255</span>),</div><div class="line">    <span class="attr">alpha</span>: <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*<span class="number">10</span>)/<span class="number">10</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 提亮当前颜色</div><div class="line"> * </div><div class="line"> * @param  &#123;Number&#125; level 提亮指数，应介于 0 与 1 之间，如果小于 0，颜色也会被提亮。</div><div class="line"> * @return &#123;Color&#125;       返回新的颜色</div><div class="line"> */</div><div class="line">Color.prototype.toLift = <span class="function"><span class="keyword">function</span>(<span class="params">level</span>)</span>&#123;</div><div class="line">  <span class="keyword">let</span> red = lift(<span class="keyword">this</span>.red, level);</div><div class="line">  <span class="keyword">let</span> green = lift(<span class="keyword">this</span>.green, level);</div><div class="line">  <span class="keyword">let</span> blue = lift(<span class="keyword">this</span>.blue, level);</div><div class="line"> </div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">red</span>: red,</div><div class="line">    <span class="attr">green</span>: green,</div><div class="line">    <span class="attr">blue</span>: blue,</div><div class="line">    <span class="attr">alpha</span>: <span class="keyword">this</span>.alpha</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js生成随机序列]]></title>
+      <url>http://emloxe.github.io/2018/11/10/js%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%BA%8F%E5%88%97/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * js生成随机序列</div><div class="line"> * @param &#123;Number&#125; len 需要产生随机序列的长度</div><div class="line"> * @return &#123;String&#125; 随机序列</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">id</span>(<span class="params">len</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> chars = <span class="string">'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</span>.split(<span class="string">''</span>);</div><div class="line">  <span class="keyword">var</span> id = [],</div><div class="line">    i;</div><div class="line">  radix = chars.length;</div><div class="line">  <span class="keyword">if</span> (len) &#123;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) id[i] = chars[<span class="number">0</span> | <span class="built_in">Math</span>.random() * radix];</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">var</span> r;</div><div class="line">    id[<span class="number">5</span>] = id[<span class="number">11</span>] = id[<span class="number">17</span>] = id[<span class="number">24</span>] = <span class="string">'-'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) &#123;</div><div class="line">      <span class="keyword">if</span> (!id[i]) &#123;</div><div class="line">        r = <span class="number">0</span> | <span class="built_in">Math</span>.random() * <span class="number">16</span>;</div><div class="line">        id[i] = chars[(i == <span class="number">19</span>) ? (r &amp; <span class="number">0x3</span>) | <span class="number">0x8</span> : r];</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> id.join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[如何写js注释]]></title>
+      <url>http://emloxe.github.io/2018/11/01/%E5%A6%82%E4%BD%95%E5%86%99js%E6%B3%A8%E9%87%8A/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>sublime 推荐插件</p>
+<p><a href="https://emloxe.github.io/2017/04/25/sublime%E4%BD%BF%E7%94%A8/#%E5%BF%AB%E9%80%9F%E6%B3%A8%E9%87%8A%E7%94%9F%E6%88%90-DocBlockr">https://emloxe.github.io/2017/04/25/sublime%E4%BD%BF%E7%94%A8/#%E5%BF%AB%E9%80%9F%E6%B3%A8%E9%87%8A%E7%94%9F%E6%88%90-DocBlockr</a></p>
+<h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>以下为例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * [Color description]</div><div class="line"> * @param &#123;[type]&#125; red   [description]</div><div class="line"> * @param &#123;[type]&#125; green [description]</div><div class="line"> * @param &#123;[type]&#125; blue  [description]</div><div class="line"> * @param &#123;[type]&#125; alpha [description]</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Color</span>(<span class="params">red, green, blue, alpha</span>)</span>&#123;&#125;</div></pre></td></tr></table></figure></p>
+<p><code>[Color description]</code>为对这个函数的描述</p>
+<p><code>{[type]}</code>为类型，在这里就可以写为Number</p>
+<p><code>red</code> 为传入的参数值，当参数值为可选的时候可以用<code>[]</code>包裹在外面，如果有默认值则可以写为<code>[red=0]</code></p>
+<p><code>[description]</code>为对这个参数的描述</p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[gulp]]></title>
+      <url>http://emloxe.github.io/2018/09/07/gulp/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h2><ol>
+<li><p>全局安装 gulp：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --global gulp</div></pre></td></tr></table></figure>
+</li>
+<li><p>作为项目的开发依赖（devDependencies）安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save-dev gulp</div></pre></td></tr></table></figure>
+</li>
+<li><p>在项目根目录下创建一个名为 gulpfile.js 的文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line"></div><div class="line">gulp.task(&apos;default&apos;, function() &#123;</div><div class="line">  // 将你的默认的任务代码放在这</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>运行 gulp：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gulp</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>默认的名为 default 的任务（task）将会被运行，在这里，这个任务并未做任何事情。</p>
+<p>想要单独执行特定的任务（task），请输入 gulp <task> <othertask>。</othertask></task></p>
+<h2 id="处理es6示例"><a href="#处理es6示例" class="headerlink" title="处理es6示例"></a>处理es6示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">var gulp = require(&apos;gulp&apos;);</div><div class="line">var babel = require(&apos;gulp-babel&apos;);</div><div class="line">var concat = require(&apos;gulp-concat&apos;);</div><div class="line">var uglify = require(&apos;gulp-uglify&apos;);</div><div class="line">var rev = require(&apos;gulp-rev&apos;); //- 对文件名加MD5后缀</div><div class="line">var revCollector = require(&apos;gulp-rev-collector&apos;); //- 路径替换</div><div class="line"></div><div class="line">gulp.task(&quot;default&quot;,function()&#123;</div><div class="line">  gulp.src([</div><div class="line">    &quot;./public/js/vi/Vi.js&quot;,</div><div class="line">    &quot;./public/js/a.js&quot;</div><div class="line">  ])</div><div class="line">  .pipe(concat(&apos;main.js&apos;))</div><div class="line">  .pipe(babel(&#123;</div><div class="line">          presets: [&apos;env&apos;]</div><div class="line">      &#125;))</div><div class="line">  .pipe(uglify())</div><div class="line">  .pipe(rev())</div><div class="line">  .pipe(gulp.dest(&apos;./dist/js&apos;))</div><div class="line">  .pipe(rev.manifest()) //- 生成一个rev-manifest.json</div><div class="line">  .pipe(gulp.dest(&apos;./rev&apos;));</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="处理css示例"><a href="#处理css示例" class="headerlink" title="处理css示例"></a>处理css示例</h2><p><code>npm i --save-dev gulp gulp-concat gulp-postcss autoprefixer</code> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">const</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">const</span> postcss = <span class="built_in">require</span>(<span class="string">'gulp-postcss'</span>);</div><div class="line"><span class="keyword">const</span> autoprefixer = <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>);</div><div class="line"><span class="comment">// const cssnext = require('postcss-cssnext');</span></div><div class="line"><span class="keyword">const</span> shortcss = <span class="built_in">require</span>(<span class="string">'postcss-short'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 兼容其他浏览器</span></div><div class="line">gulp.task(<span class="string">'autoprefixer_css'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">let</span> plugins = [</div><div class="line">    shortcss,</div><div class="line">    <span class="comment">// cssnext,</span></div><div class="line">    autoprefixer(&#123; <span class="attr">browsers</span>: [<span class="string">"Android 4.1"</span>, <span class="string">"iOS 7.1"</span>, <span class="string">"Chrome &gt; 31"</span>, <span class="string">"ff &gt; 15"</span>, <span class="string">"ie &gt;= 9"</span>], <span class="attr">cascade</span>: <span class="literal">false</span> &#125;),</div><div class="line">  ];</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'docs/css/*.css'</span>) <span class="comment">// 引入的路径</span></div><div class="line">  	<span class="comment">// .pipe(concat('editor.css')) // 合并代码</span></div><div class="line">    .pipe(postcss(plugins))  <span class="comment">// 使用插件</span></div><div class="line">    .pipe(gulp.dest(<span class="string">'docs/css-editor'</span>)); <span class="comment">// 输出路径</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 合并css</span></div><div class="line">gulp.task(<span class="string">'css'</span>, gulp.parallel(<span class="string">'autoprefixer_css'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">return</span> gulp.src([<span class="string">'docs/css-editor/layout.css'</span>, <span class="string">'docs/css-editor/chart.css'</span>])</div><div class="line">    .pipe(concat(<span class="string">'editor.css'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'docs/css-editor'</span>));</div><div class="line">&#125;));</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> gulp </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 打包 </tag>
+            
+            <tag> gulp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[koa]]></title>
       <url>http://emloxe.github.io/2018/09/07/koa/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -27,23 +409,26 @@
     </entry>
     
     <entry>
-      <title><![CDATA[gulp]]></title>
-      <url>http://emloxe.github.io/2018/09/07/gulp/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
+      <title><![CDATA[js点击dom位置计算]]></title>
+      <url>http://emloxe.github.io/2018/09/01/js%E7%82%B9%E5%87%BBdom%E4%BD%8D%E7%BD%AE%E8%AE%A1%E7%AE%97/</url>
+      <content type="html"><![CDATA[<p>获取dom中内部点击的位置<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'www'</span>);</div><div class="line">a.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> x = ev.clientX; <span class="comment">// x coordinate of a mouse pointer</span></div><div class="line">  <span class="keyword">var</span> y = ev.clientY; <span class="comment">// y coordinate of a mouse pointer</span></div><div class="line">  <span class="keyword">var</span> rect = ev.target.getBoundingClientRect() ;</div><div class="line">  <span class="built_in">console</span>.log(x - rect.left, y - rect.top)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>x - rect.left</code>即鼠标在内部点击的横坐标</p>
+<p><code>y - rect.top</code>即鼠标在内部点击的纵坐标</p>
+<p>坐标系x是右向为正，y是下为正</p>
 ]]></content>
       
         <categories>
             
-            <category> gulp </category>
+            <category> js </category>
             
         </categories>
         
         
         <tags>
             
-            <tag> 打包 </tag>
-            
-            <tag> gulp </tag>
+            <tag> js </tag>
             
         </tags>
         
@@ -73,32 +458,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[js点击dom位置计算]]></title>
-      <url>http://emloxe.github.io/2018/09/01/js%E7%82%B9%E5%87%BBdom%E4%BD%8D%E7%BD%AE%E8%AE%A1%E7%AE%97/</url>
-      <content type="html"><![CDATA[<p>获取dom中内部点击等位置<br><a id="more"></a></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'www'</span>);</div><div class="line">a.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> x = ev.clientX; <span class="comment">// x coordinate of a mouse pointer</span></div><div class="line">  <span class="keyword">var</span> y = ev.clientY; <span class="comment">// y coordinate of a mouse pointer</span></div><div class="line">  <span class="keyword">var</span> rect = ev.target.getBoundingClientRect() ;</div><div class="line">  <span class="built_in">console</span>.log(x - rect.left, y - rect.top)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>x - rect.left</code>即鼠标在内部点击的横坐标</p>
-<p><code>y - rect.top</code>即鼠标在内部点击的纵坐标</p>
-<p>坐标系x是右向为正，y是下为正</p>
-]]></content>
-      
-        <categories>
-            
-            <category> js </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> js </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[requireJS]]></title>
       <url>http://emloxe.github.io/2018/08/23/requireJS/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -113,9 +472,9 @@
         
         <tags>
             
-            <tag> requireJS </tag>
-            
             <tag> 模块化 </tag>
+            
+            <tag> requireJS </tag>
             
         </tags>
         
@@ -920,6 +1279,31 @@
     </entry>
     
     <entry>
+      <title><![CDATA[html处理兼容样式]]></title>
+      <url>http://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
+<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 兼容 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 兼容 </tag>
+            
+            <tag> html </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML 5 Web 存储]]></title>
       <url>http://emloxe.github.io/2017/09/14/HTML%205%20Web%20%E5%AD%98%E5%82%A8/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -961,31 +1345,6 @@
             <tag> html5 </tag>
             
             <tag> 存储 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[html处理兼容样式]]></title>
-      <url>http://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
-<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 兼容 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 兼容 </tag>
-            
-            <tag> html </tag>
             
         </tags>
         
@@ -1423,10 +1782,13 @@
     
     <entry>
       <title><![CDATA[重写css样式]]></title>
-      <url>http://emloxe.github.io/2017/07/13/%E9%87%8D%E5%86%99css%E6%A0%B7%E5%BC%8F/</url>
+      <url>http://emloxe.github.io/2017/07/13/css%E9%87%8D%E5%86%99%E6%A0%B7%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>零碎的css相关知识<br><a id="more"></a></p>
-<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="chrome字体缩放"><a href="#chrome字体缩放" class="headerlink" title="chrome字体缩放"></a>chrome字体缩放</h3><p>-webkit-text-size-adjust<br>当样式表里font-size<12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用 <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html&#123;-webkit-text-size-adjust:none;&#125;</div></pre></td></tr></table></12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用></p>
+<p>-webkit-text-size-adjust放在body上会导致页面缩放失效<br>body会继承定义在html的样式<br>用-webkit-text-size-adjust不要定义成可继承的或全局的</p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="a链接"><a href="#a链接" class="headerlink" title="a链接"></a>a链接</h2><h3 id="消除移动端点击高亮"><a href="#消除移动端点击高亮" class="headerlink" title="消除移动端点击高亮"></a>消除移动端点击高亮</h3><p>-webkit-tap-highlight-color<br>当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。</p>
+<p>示例：设置高亮色为50%透明的红色:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-tap-highlight-color</span>: <span class="selector-tag">rgba</span>(255,0,0,0);</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1446,13 +1808,10 @@
     
     <entry>
       <title><![CDATA[重写css样式]]></title>
-      <url>http://emloxe.github.io/2017/07/13/css%E9%87%8D%E5%86%99%E6%A0%B7%E5%BC%8F/</url>
+      <url>http://emloxe.github.io/2017/07/13/%E9%87%8D%E5%86%99css%E6%A0%B7%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>零碎的css相关知识<br><a id="more"></a></p>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="chrome字体缩放"><a href="#chrome字体缩放" class="headerlink" title="chrome字体缩放"></a>chrome字体缩放</h3><p>-webkit-text-size-adjust<br>当样式表里font-size<12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用 <figure="" class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html&#123;-webkit-text-size-adjust:none;&#125;</div></pre></td></tr></table></12px时，中文版chrome浏览器里字体显示仍为12px，这时可以用></p>
-<p>-webkit-text-size-adjust放在body上会导致页面缩放失效<br>body会继承定义在html的样式<br>用-webkit-text-size-adjust不要定义成可继承的或全局的</p>
-<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="a链接"><a href="#a链接" class="headerlink" title="a链接"></a>a链接</h2><h3 id="消除移动端点击高亮"><a href="#消除移动端点击高亮" class="headerlink" title="消除移动端点击高亮"></a>消除移动端点击高亮</h3><p>-webkit-tap-highlight-color<br>当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。</p>
-<p>示例：设置高亮色为50%透明的红色:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-tap-highlight-color</span>: <span class="selector-tag">rgba</span>(255,0,0,0);</div></pre></td></tr></table></figure></p>
+<h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="文本选中状态"><a href="#文本选中状态" class="headerlink" title="文本选中状态"></a>文本选中状态</h3><p>默认选择文本时为蓝底白字，可通过以下属性更改样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::-moz-selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div><div class="line"><span class="selector-tag">p</span><span class="selector-pseudo">::selection</span>&#123;<span class="attribute">background</span>: transparent;<span class="attribute">color</span>:<span class="number">#494949</span>;&#125;</div></pre></td></tr></table></figure>
 ]]></content>
       
         <categories>
@@ -1533,34 +1892,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[css居中]]></title>
-      <url>http://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
-      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
-<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
-<p>多个block元素可用css3的flex</p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
-<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
-<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div><div class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> css </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> css </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[position总结]]></title>
       <url>http://emloxe.github.io/2017/06/26/position%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>position 一共有static relative absolute fixed等属性值<br><a id="more"></a></p>
@@ -1580,6 +1911,34 @@
 </li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html" target="_blank" rel="external">http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[css居中]]></title>
+      <url>http://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
+      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
+<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
+<p>多个block元素可用css3的flex</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
+<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
+<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</div><div class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</div><div class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</div></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</div><div class="line"><span class="selector-tag">top</span>: 50%;</div><div class="line"><span class="selector-tag">left</span>: 50%;</div><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</div></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -1826,8 +2185,11 @@
     <entry>
       <title><![CDATA[sublime使用]]></title>
       <url>http://emloxe.github.io/2017/04/25/sublime%E4%BD%BF%E7%94%A8/</url>
-      <content type="html"><![CDATA[<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>windows</p>
+      <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><p>windows</p>
 <ul>
+<li><p>Esc 退出</p>
+</li>
 <li><p>Ctrl 多行游标</p>
 </li>
 <li><p>Ctrl+f  查找</p>
@@ -1846,12 +2208,113 @@
 </li>
 <li><p>Ctrl+]  增加缩进</p>
 </li>
+<li><p>鼠标选中文本，按下Ctrl+D  一个一个选择全部的相同文本进行同时编辑</p>
+</li>
 <li><p>鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑</p>
 </li>
 <li><p>Shift+鼠标右键  可以用鼠标进行竖向多行选择</p>
 </li>
 <li><p>Ctrl+鼠标左键  可以手动选择同时要编辑</p>
-<a id="more"></a>
+</li>
+</ul>
+<h3 id="选择类"><a href="#选择类" class="headerlink" title="选择类"></a>选择类</h3><ul>
+<li><p>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。</p>
+</li>
+<li><p>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。</p>
+</li>
+<li><p>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。</p>
+</li>
+<li><p>Ctrl+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</p>
+</li>
+<li><p>Ctrl+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。</p>
+</li>
+<li><p>Ctrl+M 光标移动至括号内结束或开始的位置。</p>
+</li>
+<li><p>Ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</p>
+</li>
+<li><p>Ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</p>
+</li>
+<li><p>Ctrl+Shift+[ 选中代码，按下快捷键，折叠代码。</p>
+</li>
+<li><p>Ctrl+Shift+] 选中代码，按下快捷键，展开代码。</p>
+</li>
+<li><p>Ctrl+K+0 展开所有折叠代码。</p>
+</li>
+<li><p>Ctrl+← 向左单位性地移动光标，快速移动光标。</p>
+</li>
+<li><p>Ctrl+→ 向右单位性地移动光标，快速移动光标。</p>
+</li>
+<li><p>shift+↑ 向上选中多行。</p>
+</li>
+<li><p>shift+↓ 向下选中多行。</p>
+</li>
+<li><p>Shift+← 向左选中文本。</p>
+</li>
+<li><p>Shift+→ 向右选中文本。</p>
+</li>
+<li><p>Ctrl+Shift+← 向左单位性地选中文本。</p>
+</li>
+<li><p>Ctrl+Shift+→ 向右单位性地选中文本。</p>
+</li>
+<li><p>Ctrl+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。</p>
+</li>
+<li><p>Ctrl+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。</p>
+</li>
+<li><p>Ctrl+Alt+↑ 向上添加多行光标，可同时编辑多行。</p>
+</li>
+<li><p>Ctrl+Alt+↓ 向下添加多行光标，可同时编辑多行。</p>
+</li>
+</ul>
+<h3 id="编辑类"><a href="#编辑类" class="headerlink" title="编辑类"></a>编辑类</h3><ul>
+<li><p>Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。</p>
+</li>
+<li><p>Ctrl+Shift+D  复制光标所在整行，插入到下一行。</p>
+</li>
+<li><p>Tab 向右缩进。</p>
+</li>
+<li><p>Shift+Tab 向左缩进。</p>
+</li>
+<li><p>Ctrl+K+K 从光标处开始删除代码至行尾。</p>
+</li>
+<li><p>Ctrl+Shift+K 删除整行。</p>
+</li>
+<li><p>Ctrl+/ 注释单行。</p>
+</li>
+<li><p>Ctrl+Shift+/ 注释多行。</p>
+</li>
+<li><p>Ctrl+K+U 转换大写。</p>
+</li>
+<li><p>Ctrl+K+L 转换小写。</p>
+</li>
+<li><p>Ctrl+Z 撤销。</p>
+</li>
+<li><p>Ctrl+Y 恢复撤销。</p>
+</li>
+<li><p>Ctrl+U 软撤销，感觉和 Gtrl+Z 一样。</p>
+</li>
+<li><p>Ctrl+F2 设置书签</p>
+</li>
+<li><p>Ctrl+T 左右字母互换。</p>
+</li>
+<li><p>F6 单词检测拼写</p>
+</li>
+</ul>
+<h3 id="搜索类"><a href="#搜索类" class="headerlink" title="搜索类"></a>搜索类</h3><ul>
+<li><p>Ctrl+F 打开底部搜索框，查找关键字。</p>
+</li>
+<li><p>Ctrl+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。</p>
+</li>
+<li><p>Ctrl+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。</p>
+</li>
+<li><p>Ctrl+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。</p>
+</li>
+<li><p>Ctrl+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。</p>
+</li>
+<li><p>Ctrl+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。</p>
+</li>
+<li><p>Ctrl+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。</p>
+</li>
+<li><p>Esc 退出光标多行选择，退出搜索框，命令框等。</p>
 </li>
 </ul>
 <h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><h3 id="Package-Control插件管理"><a href="#Package-Control插件管理" class="headerlink" title="Package Control插件管理"></a>Package Control插件管理</h3><p>它是用来管理插件的插件,首次使用前也是需要安装的</p>
@@ -1867,7 +2330,7 @@
 <p>即可使用快捷键<code>Ctrl</code>+<code>Shift</code>+<code>T</code>呼出命令行窗口</p>
 <h3 id="JsFormat-js代码格式化工具"><a href="#JsFormat-js代码格式化工具" class="headerlink" title="JsFormat js代码格式化工具"></a>JsFormat js代码格式化工具</h3><p>同样使用Package Control安装JsFormat插件后</p>
 <p>即可在JS文件中通过鼠标右键-&gt;JsFormat<br>或键盘快捷键<code>Ctrl</code>+<code>Alt</code>+<code>F</code>对JS进行格式化</p>
-<h2 id="设置快捷键"><a href="#设置快捷键" class="headerlink" title="设置快捷键"></a>设置快捷键</h2><h3 id="打开浏览器-快速预览"><a href="#打开浏览器-快速预览" class="headerlink" title="打开浏览器 快速预览"></a>打开浏览器 快速预览</h3><p>点击 菜单上的 <code>Preferences</code> &gt; <code>Key Bindings</code></p>
+<h3 id="Doc​Blockr-注释生成插件"><a href="#Doc​Blockr-注释生成插件" class="headerlink" title="Doc​Blockr 注释生成插件"></a>Doc​Blockr 注释生成插件</h3><h3 id="SublimeLinter-代码校验"><a href="#SublimeLinter-代码校验" class="headerlink" title="SublimeLinter 代码校验"></a>SublimeLinter 代码校验</h3><h3 id="ESLint-formatter-代码格式化工具"><a href="#ESLint-formatter-代码格式化工具" class="headerlink" title="ESLint formatter 代码格式化工具"></a>ESLint formatter 代码格式化工具</h3><h2 id="设置快捷键"><a href="#设置快捷键" class="headerlink" title="设置快捷键"></a>设置快捷键</h2><h3 id="打开浏览器-快速预览"><a href="#打开浏览器-快速预览" class="headerlink" title="打开浏览器 快速预览"></a>打开浏览器 快速预览</h3><p>点击 菜单上的 <code>Preferences</code> &gt; <code>Key Bindings</code></p>
 <p>会打开两个窗口，在user窗口上加入以下代码即可</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line"></div><div class="line"><span class="comment">//firebox</span></div><div class="line">  &#123;</div><div class="line">    <span class="comment">// 设置打开firefox的的快捷键</span></div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"f1"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"side_bar_files_open_with"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;</div><div class="line">      <span class="string">"paths"</span>: [],</div><div class="line">      <span class="comment">// .exe的位置</span></div><div class="line">      <span class="string">"application"</span>: <span class="string">"D:\\一键安装\\Mozilla Firefox\\firefox.exe"</span>,</div><div class="line">      <span class="string">"extensions"</span>: <span class="string">".*"</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line"><span class="comment">//360</span></div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"f10"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"side_bar_files_open_with"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;</div><div class="line">      <span class="string">"paths"</span>: [],</div><div class="line">      <span class="string">"application"</span>: <span class="string">"C:\\Users\\acer\\AppData\\Roaming\\360se6\\Application\\360se.exe"</span>,</div><div class="line">      <span class="string">"extensions"</span>: <span class="string">".*"</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line"></div><div class="line"><span class="comment">//chrome</span></div><div class="line">  &#123;</div><div class="line">    <span class="string">"keys"</span>: [<span class="string">"f2"</span>],</div><div class="line">    <span class="string">"command"</span>: <span class="string">"side_bar_files_open_with"</span>,</div><div class="line">    <span class="string">"args"</span>: &#123;</div><div class="line">      <span class="string">"paths"</span>: [],</div><div class="line">      <span class="string">"application"</span>: <span class="string">"C:\\Users\\acer\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"</span>,</div><div class="line">      <span class="string">"extensions"</span>: <span class="string">".*"</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">]</div></pre></td></tr></table></figure>
 <h3 id="设置页面缩进"><a href="#设置页面缩进" class="headerlink" title="设置页面缩进"></a>设置页面缩进</h3><ol>
@@ -1924,36 +2387,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[canvas图表绘制总结]]></title>
-      <url>http://emloxe.github.io/2017/03/29/canvas%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>最近一直在用canvas绘制统计图表，本记录学习过程和思想<br><a id="more"></a></p>
-<h2 id="方法思路"><a href="#方法思路" class="headerlink" title="方法思路"></a>方法思路</h2><h3 id="预定义配置参数"><a href="#预定义配置参数" class="headerlink" title="预定义配置参数"></a>预定义配置参数</h3><h3 id="位置确定"><a href="#位置确定" class="headerlink" title="位置确定"></a>位置确定</h3><p>每个区域的位置需要事先确定好，图例的位置需要根据标题的占据位置来进行变更，而主体部分需要事先确定标题和图例的位置<br>所以每个绘制后就需要将needH给传递出来</p>
-<p>绘制步骤</p>
-<ol>
-<li>标题绘制，确定其需要的位置</li>
-<li>图例绘制，确定其需要的位置</li>
-<li>中间主体部分的绘制</li>
-</ol>
-<h3 id="图标绘制"><a href="#图标绘制" class="headerlink" title="图标绘制"></a>图标绘制</h3>]]></content>
-      
-        <categories>
-            
-            <category> canvas </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> html5 </tag>
-            
-            <tag> canvas </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[js'='的作用]]></title>
       <url>http://emloxe.github.io/2017/03/24/js'='%E5%A4%8D%E5%88%B6%E8%BF%98%E6%98%AF%E5%BC%95%E7%94%A8/</url>
       <content type="html"><![CDATA[<p>js中’=’是按值传递还是引用？<br><a id="more"></a></p>
@@ -1985,6 +2418,44 @@
 <li>原型链没了，对象就是object，所属的类没了。</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.zhihu.com/question/23031215/answer/46220227" target="_blank" rel="external">javascript中的深拷贝和浅拷贝？</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[数据处理总结]]></title>
+      <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
+<a id="more"></a>
+<h2 id="精度处理"><a href="#精度处理" class="headerlink" title="精度处理"></a>精度处理</h2><p>js计算小数会有很严重精度问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0.1 + 0.05  // 0.15000000000000002</div></pre></td></tr></table></figure></p>
+<p>可以先扩大到整数再缩小回小数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(0.1*100+0.05*100)/100 // 0.15</div></pre></td></tr></table></figure></p>
+<h2 id="二维数组的转置"><a href="#二维数组的转置" class="headerlink" title="二维数组的转置"></a>二维数组的转置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2, 7, 8, 3],</div><div class="line">  [4, 5, 6, 1]</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>转置为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2, 4],</div><div class="line">  [7, 5],</div><div class="line">  [8, 6],</div><div class="line">  [3, 1]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> newArr = [];</div><div class="line"></div><div class="line">  <span class="comment">// 创建二维数组</span></div><div class="line">  <span class="keyword">var</span> len = arr[<span class="number">0</span>].length;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</div><div class="line">    newArr[i] = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>, len2 = arr.length; j &lt; len2; j++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; len; k++)&#123;</div><div class="line">      newArr[k][j] = arr[j][k];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> newArr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="二维数据的累加"><a href="#二维数据的累加" class="headerlink" title="二维数据的累加"></a>二维数据的累加</h2><h3 id="金字塔堆积数据"><a href="#金字塔堆积数据" class="headerlink" title="金字塔堆积数据"></a>金字塔堆积数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var series = [</div><div class="line">  [3, 2, 5, 3],</div><div class="line">  [3, 4, 4, 2],</div><div class="line">  [5, 2, 5, 4]</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [3, 2, 5, 3],</div><div class="line">  [6, 6, 9, 5],</div><div class="line">  [11, 8, 14, 9]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> cloneData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> len = cloneData.length;</div><div class="line">  <span class="keyword">var</span> len2 = cloneData[<span class="number">0</span>].length;  <span class="comment">// 应保证 每一行的数据长度相同，这里默认为数据格式正确</span></div><div class="line"></div><div class="line">  </div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = series.length - <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</div><div class="line"></div><div class="line">      cloneData[i+<span class="number">1</span>][j] = cloneData[i][j] + cloneData[i+<span class="number">1</span>][j]</div><div class="line">    &#125; </div><div class="line"></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> cloneData;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="倒金字塔堆积数据"><a href="#倒金字塔堆积数据" class="headerlink" title="倒金字塔堆积数据"></a>倒金字塔堆积数据</h3><p>例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">  [<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>],</div><div class="line">  [<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">  [<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>需要改变数据的结构为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArr = [</div><div class="line">  [<span class="number">11</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">9</span>],</div><div class="line">  [<span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">6</span>],</div><div class="line">  [<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>即newArr[0] 为arr[0]+arr[1]+arr[2]<br>即newArr[1] 为arr[1]+arr[2]<br>即newArr[2] 为arr[2]</p>
+<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * [spData description]</div><div class="line"> * @param  &#123;数组&#125; series 二维数组对象</div><div class="line"> * @return &#123;数组&#125;        返回新创建二维数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> newData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> arr = [];</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> len = series.length - <span class="number">1</span>, i = len; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">    <span class="keyword">if</span> (i == len) &#123;</div><div class="line">      arr = series[len];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> arrPre = series[i<span class="number">-1</span>];</div><div class="line">    <span class="keyword">var</span> sArr = [];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, lenj = arr.length; j &lt; lenj; j++) &#123;</div><div class="line">       sArr.push(arr[j]+arrPre[j]);</div><div class="line">    &#125; </div><div class="line">    newData[i<span class="number">-1</span>] = sArr;</div><div class="line">    arr = sArr; </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> newData;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 以下方法更好</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData1</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> cloneData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> len = cloneData.length;</div><div class="line">  <span class="keyword">var</span> len2 = cloneData[<span class="number">0</span>].length;  <span class="comment">// 应保证 每一行的数据长度相同，这里默认为数据格式正确</span></div><div class="line"></div><div class="line">  </div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = series.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</div><div class="line"></div><div class="line">      cloneData[i<span class="number">-1</span>][j] = cloneData[i][j] + cloneData[i<span class="number">-1</span>][j]</div><div class="line">    &#125; </div><div class="line"></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> cloneData;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="获取对象的长度"><a href="#获取对象的长度" class="headerlink" title="获取对象的长度"></a>获取对象的长度</h2><p>Object.length没有length属性<br>可以用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(key <span class="keyword">in</span> obj)&#123;</div><div class="line">  <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123;</div><div class="line">    i++</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>方法过于麻烦<br>ES5提供了Object.keys()方法，方法返回对象所有可枚举属性的字符串数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'zhangsan'</span>,</div><div class="line">  <span class="attr">age</span>: <span class="number">12</span>,</div><div class="line">  <span class="attr">sex</span>: <span class="string">'male'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.keys(obj); <span class="comment">// ['name', 'age', 'sex'];</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">Person.prototype.name = <span class="string">'zhangsan'</span>;</div><div class="line">Person.prototype.age = <span class="string">'18'</span>;</div><div class="line">Person.prototype.job = <span class="string">'Software Engineer'</span>;</div><div class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.keys(Person.prototype);  <span class="comment">// ['name', 'age', 'job', 'sayName']</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line">p1.name = <span class="string">'Nicholas'</span>;</div><div class="line"><span class="built_in">Object</span>.keys(p1)  <span class="comment">// ['name']</span></div></pre></td></tr></table></figure>
+<p>转换成为数组就很好计算长度了 Object.keys(obj).length</p>
 ]]></content>
       
         <categories>
@@ -2069,6 +2540,8 @@
 </table>
 <p><img src="/images/2017032306.png" alt="images"></p>
 <h3 id="整体设置透明度"><a href="#整体设置透明度" class="headerlink" title="整体设置透明度"></a>整体设置透明度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.globalAlpha = 0.5;</div></pre></td></tr></table></figure>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p>坐标点（x0,y0）是起点 ，（x1,y1）是终点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 创建渐变</div><div class="line">var grd=ctx.createLinearGradient(x0,y0,x1,y1);</div><div class="line">grd.addColorStop(0,&quot;red&quot;);</div><div class="line">grd.addColorStop(1,&quot;white&quot;);</div></pre></td></tr></table></figure></p>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 创建渐变</div><div class="line">var grd=ctx.createRadialGradient(x0,y0,r0,x1,y1,r1);</div><div class="line">grd.addColorStop(0,&quot;red&quot;);</div><div class="line">grd.addColorStop(1,&quot;white&quot;);</div></pre></td></tr></table></figure>
 <h2 id="清除画布"><a href="#清除画布" class="headerlink" title="清除画布"></a>清除画布</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.clearRect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">50</span>);  <span class="comment">// 以(20, 20)为起点清除宽高为(100, 50)的矩形</span></div></pre></td></tr></table></figure>
 <h2 id="其他方法属性"><a href="#其他方法属性" class="headerlink" title="其他方法属性"></a>其他方法属性</h2><h3 id="获取文本在canvas画布上的长度"><a href="#获取文本在canvas画布上的长度" class="headerlink" title="获取文本在canvas画布上的长度"></a>获取文本在canvas画布上的长度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.measureText(<span class="string">'hello world'</span>).width</div></pre></td></tr></table></figure>
 <p>实际上 <code>ctx.measureText(&#39;hello world&#39;).width</code>获取的是近似值<br><a href="https://emloxe.github.io/e-test/2017032302.html">效果查看</a></p>
@@ -2102,44 +2575,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[数据处理总结]]></title>
-      <url>http://emloxe.github.io/2017/03/23/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%80%BB%E7%BB%93/</url>
-      <content type="html"><![CDATA[<p>项目中常遇到的数据需要处理，总结如下</p>
-<a id="more"></a>
-<h2 id="精度处理"><a href="#精度处理" class="headerlink" title="精度处理"></a>精度处理</h2><p>js计算小数会有很严重精度问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0.1 + 0.05  // 0.15000000000000002</div></pre></td></tr></table></figure></p>
-<p>可以先扩大到整数再缩小回小数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(0.1*100+0.05*100)/100 // 0.15</div></pre></td></tr></table></figure></p>
-<h2 id="二维数组的转置"><a href="#二维数组的转置" class="headerlink" title="二维数组的转置"></a>二维数组的转置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2, 7, 8, 3],</div><div class="line">  [4, 5, 6, 1]</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>转置为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [2, 4],</div><div class="line">  [7, 5],</div><div class="line">  [8, 6],</div><div class="line">  [3, 1]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> newArr = [];</div><div class="line"></div><div class="line">  <span class="comment">// 创建二维数组</span></div><div class="line">  <span class="keyword">var</span> len = arr[<span class="number">0</span>].length;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</div><div class="line">    newArr[i] = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>, len2 = arr.length; j &lt; len2; j++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; len; k++)&#123;</div><div class="line">      newArr[k][j] = arr[j][k];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> newArr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="二维数据的累加"><a href="#二维数据的累加" class="headerlink" title="二维数据的累加"></a>二维数据的累加</h2><h3 id="金字塔堆积数据"><a href="#金字塔堆积数据" class="headerlink" title="金字塔堆积数据"></a>金字塔堆积数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var series = [</div><div class="line">  [3, 2, 5, 3],</div><div class="line">  [3, 4, 4, 2],</div><div class="line">  [5, 2, 5, 4]</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  [3, 2, 5, 3],</div><div class="line">  [6, 6, 9, 5],</div><div class="line">  [11, 8, 14, 9]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> cloneData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> len = cloneData.length;</div><div class="line">  <span class="keyword">var</span> len2 = cloneData[<span class="number">0</span>].length;  <span class="comment">// 应保证 每一行的数据长度相同，这里默认为数据格式正确</span></div><div class="line"></div><div class="line">  </div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = series.length - <span class="number">1</span>; i &lt; len; i++) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</div><div class="line"></div><div class="line">      cloneData[i+<span class="number">1</span>][j] = cloneData[i][j] + cloneData[i+<span class="number">1</span>][j]</div><div class="line">    &#125; </div><div class="line"></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> cloneData;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="倒金字塔堆积数据"><a href="#倒金字塔堆积数据" class="headerlink" title="倒金字塔堆积数据"></a>倒金字塔堆积数据</h3><p>例如<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [</div><div class="line">  [<span class="number">3</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>],</div><div class="line">  [<span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">2</span>],</div><div class="line">  [<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>需要改变数据的结构为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newArr = [</div><div class="line">  [<span class="number">11</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">9</span>],</div><div class="line">  [<span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">6</span>],</div><div class="line">  [<span class="number">5</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>即newArr[0] 为arr[0]+arr[1]+arr[2]<br>即newArr[1] 为arr[1]+arr[2]<br>即newArr[2] 为arr[2]</p>
-<p>代码如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * [spData description]</div><div class="line"> * @param  &#123;数组&#125; series 二维数组对象</div><div class="line"> * @return &#123;数组&#125;        返回新创建二维数组</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> newData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> arr = [];</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> len = series.length - <span class="number">1</span>, i = len; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">    <span class="keyword">if</span> (i == len) &#123;</div><div class="line">      arr = series[len];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> arrPre = series[i<span class="number">-1</span>];</div><div class="line">    <span class="keyword">var</span> sArr = [];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>, lenj = arr.length; j &lt; lenj; j++) &#123;</div><div class="line">       sArr.push(arr[j]+arrPre[j]);</div><div class="line">    &#125; </div><div class="line">    newData[i<span class="number">-1</span>] = sArr;</div><div class="line">    arr = sArr; </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> newData;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 以下方法更好</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">spData1</span>(<span class="params">series</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> cloneData = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(series));  <span class="comment">// 克隆一个对象 </span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> len = cloneData.length;</div><div class="line">  <span class="keyword">var</span> len2 = cloneData[<span class="number">0</span>].length;  <span class="comment">// 应保证 每一行的数据长度相同，这里默认为数据格式正确</span></div><div class="line"></div><div class="line">  </div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = series.length - <span class="number">1</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; len2; j++) &#123;</div><div class="line"></div><div class="line">      cloneData[i<span class="number">-1</span>][j] = cloneData[i][j] + cloneData[i<span class="number">-1</span>][j]</div><div class="line">    &#125; </div><div class="line"></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> cloneData;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="获取对象的长度"><a href="#获取对象的长度" class="headerlink" title="获取对象的长度"></a>获取对象的长度</h2><p>Object.length没有length属性<br>可以用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span>(key <span class="keyword">in</span> obj)&#123;</div><div class="line">  <span class="keyword">if</span>(obj.hasOwnProperty(key))&#123;</div><div class="line">    i++</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>方法过于麻烦<br>ES5提供了Object.keys()方法，方法返回对象所有可枚举属性的字符串数组</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'zhangsan'</span>,</div><div class="line">  <span class="attr">age</span>: <span class="number">12</span>,</div><div class="line">  <span class="attr">sex</span>: <span class="string">'male'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.keys(obj); <span class="comment">// ['name', 'age', 'sex'];</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">Person.prototype.name = <span class="string">'zhangsan'</span>;</div><div class="line">Person.prototype.age = <span class="string">'18'</span>;</div><div class="line">Person.prototype.job = <span class="string">'Software Engineer'</span>;</div><div class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.keys(Person.prototype);  <span class="comment">// ['name', 'age', 'job', 'sayName']</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line">p1.name = <span class="string">'Nicholas'</span>;</div><div class="line"><span class="built_in">Object</span>.keys(p1)  <span class="comment">// ['name']</span></div></pre></td></tr></table></figure>
-<p>转换成为数组就很好计算长度了 Object.keys(obj).length</p>
-]]></content>
-      
-        <categories>
-            
-            <category> js </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> js </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[requireJS学习笔记]]></title>
       <url>http://emloxe.github.io/2017/03/17/requireJS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -2166,9 +2601,9 @@
         
         <tags>
             
-            <tag> js模块加载框架 </tag>
-            
             <tag> requireJS </tag>
+            
+            <tag> js模块加载框架 </tag>
             
         </tags>
         
@@ -2866,7 +3301,7 @@ dist 静态资源文件
 <p>函数renderPageNum传入当前页码和总页码将会生成对应的html返回<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 调用  renderPageNum(7, 20);</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> html = renderPageNum(<span class="number">7</span>, <span class="number">20</span>);</div><div class="line"><span class="keyword">var</span> dom = <span class="built_in">document</span>.getElementById(<span class="string">'page_nav'</span>);</div><div class="line">dom.innerHTML = html;</div></pre></td></tr></table></figure></p>
 <p>css样式可自行编写；示例所返回的html为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"page_nav"</span> <span class="attr">class</span>=<span class="string">"page-nav"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"pre_btn"</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">data-page</span>=<span class="string">"1"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">i</span>&gt;</span>...<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">data-page</span>=<span class="string">"5"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">data-page</span>=<span class="string">"6"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>6<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>7<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">data-page</span>=<span class="string">"8"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>8<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">data-page</span>=<span class="string">"9"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>9<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">i</span>&gt;</span>...<span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">data-page</span>=<span class="string">"20"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>20<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"next_btn"</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h2 id="bootstrap-样式"><a href="#bootstrap-样式" class="headerlink" title="bootstrap 样式"></a>bootstrap 样式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">paginationHtml</span>(<span class="params">n1, n2</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> html = <span class="string">'&lt;ul class="pagination"&gt;'</span>;</div><div class="line">    n1 = n1 * <span class="number">1</span>;</div><div class="line">    n2 = n2 * <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (n2 == <span class="number">1</span>) <span class="keyword">return</span> html;</div><div class="line">    <span class="keyword">if</span> (n1 &gt; n2) <span class="keyword">return</span> html;</div><div class="line">    <span class="keyword">if</span> (n1 != <span class="number">1</span>) &#123;</div><div class="line">      html += <span class="string">'&lt;li&gt;&lt;span id="pre_btn"  href="javascript:;"&gt;« 上一页&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      html += <span class="string">'&lt;li class="disabled"&gt;&lt;span  href="javascript:;"&gt;« 上一页&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (n1 &lt;= <span class="number">4</span>) &#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; n1; i++) &#123;</div><div class="line">        html += <span class="string">'&lt;li&gt;&lt;a class="pnt" data-page="'</span> + i + <span class="string">'" href="javascript:;"&gt;'</span> + i + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      html += <span class="string">'&lt;li&gt;&lt;a class="pnt" data-page="1" href="javascript:;"&gt;1&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;...&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">2</span>; i &gt; <span class="number">0</span>; i--) &#123;</div><div class="line">        html += <span class="string">'&lt;li&gt;&lt;a class="pnt" data-page="'</span> + (n1 - i) + <span class="string">'" href="javascript:;"&gt;'</span> + (n1 - i) + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    html += <span class="string">'&lt;li class="active"&gt;&lt;span&gt;'</span> + n1 + <span class="string">'&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">    <span class="comment">// 当前页码右边判断</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> (n1 != n2) &#123;</div><div class="line">      <span class="keyword">if</span> (n2 - n1 &lt;= <span class="number">3</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = n1 + <span class="number">1</span>; i &lt; n2; i++) &#123;</div><div class="line">          html += <span class="string">'&lt;li&gt;&lt;a class="pnt" data-page="'</span> + i + <span class="string">'" href="javascript:;"&gt;'</span> + i + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">        &#125;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">2</span>; i++) &#123;</div><div class="line">          html += <span class="string">'&lt;li&gt;&lt;a class="pnt" data-page="'</span> + (n1 + i) + <span class="string">'" href="javascript:;"&gt;'</span> + (n1 + i) + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">        &#125;</div><div class="line">        html += <span class="string">'&lt;li&gt;&lt;span&gt;...&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">      &#125;</div><div class="line">      html += <span class="string">'&lt;li&gt;&lt;a class="pnt" data-page="'</span> + n2 + <span class="string">'" href="javascript:;"&gt;'</span> + n2 + <span class="string">'&lt;/a&gt;&lt;/li&gt;'</span>;</div><div class="line">      html += <span class="string">'&lt;li&gt;&lt;span id="next_btn" href="javascript:;"&gt;下一页 »&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      html += <span class="string">'&lt;li class="disabled"&gt;&lt;span href="javascript:;"&gt;下一页 »&lt;/span&gt;&lt;/li&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">    html += <span class="string">'&lt;/ul&gt;'</span>;</div><div class="line">    <span class="keyword">return</span> html;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="测试-源码"><a href="#测试-源码" class="headerlink" title="测试+源码"></a>测试+源码</h2><p><a href="https://emloxe.github.io/function/pagination.html">测试</a><br><a href="https://github.com/emloxe/function/blob/master/pagination.html" target="_blank" rel="external">源码</a></p>
+<h2 id="测试-源码"><a href="#测试-源码" class="headerlink" title="测试+源码"></a>测试+源码</h2><p><a href="https://emloxe.github.io/e-test/pagination.html">测试</a><br><a href="https://github.com/emloxe/e-test/blob/master/pagination.html" target="_blank" rel="external">源码</a></p>
 ]]></content>
       
         <categories>
