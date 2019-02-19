@@ -3042,66 +3042,6 @@ dist 静态资源文件
     </entry>
     
     <entry>
-      <title><![CDATA[页面head优化]]></title>
-      <url>https://emloxe.github.io/2017/02/22/%E9%A1%B5%E9%9D%A2head%E4%BC%98%E5%8C%96/</url>
-      <content type="html"><![CDATA[<p>页面头部优化</p>
-<a id="more"></a>
-<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><h3 id="用favicon在浏览器给网站进行身份标识"><a href="#用favicon在浏览器给网站进行身份标识" class="headerlink" title="用favicon在浏览器给网站进行身份标识"></a>用favicon在浏览器给网站进行身份标识</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;http://image.feeliu.com/web/favicon.ico&quot; rel=&quot;shortcut icon&quot; /&gt;  </span><br><span class="line">&lt;link href=&quot;http://image.feeliu.com/web/favicon.ico&quot; rel=&quot;Bookmark&quot; /&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="搜索引擎优化"><a href="#搜索引擎优化" class="headerlink" title="搜索引擎优化"></a>搜索引擎优化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;手机小游戏,59600小游戏,小游戏大全,在线小游戏&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=&quot;59600.com是全世界最大的原创手机小游戏专业网站,免费为你提供 H5游戏,手机小游戏,游戏在线玩,在线小游戏,在线小游戏等最新小游戏。&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;手机小游戏,59600,在线小游戏, 小游戏在线玩,h5游戏,h5小游戏,手机网页游戏,手机页游,在线游戏&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=&quot;手机小游戏59600.com 在线小游戏提供最流行的在线手机小游戏，最热门的不用下载就可以直接玩的H5小游戏&quot;/&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="http-equiv"><a href="#http-equiv" class="headerlink" title="http-equiv"></a>http-equiv</h3><p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。 </p>
-<blockquote>
-<p>meat标签的http-equiv属性语法格式是：<meta http-equiv="参数" content="参数变量值"> ；其中http-equiv属性主要有以下几种参数：</p>
-</blockquote>
-<h4 id="Expires-期限"><a href="#Expires-期限" class="headerlink" title="Expires(期限)"></a>Expires(期限)</h4><p>说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;Wed, 20 Jun 2007 22:33:00 GMT&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="Pragma-cache模式"><a href="#Pragma-cache模式" class="headerlink" title="Pragma(cache模式)"></a>Pragma(cache模式)</h4><p>说明：是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>注意：这样设定，访问者将无法脱机浏览。 </p>
-<h4 id="Refresh-刷新"><a href="#Refresh-刷新" class="headerlink" title="Refresh(刷新)"></a>Refresh(刷新)</h4><p>说明：自动刷新并指向新页面。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;2；URL=http://www.net.cn/&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>注意：其中的2是指停留2秒钟后自动刷新到URL网址。 </p>
-<h4 id="Set-Cookie-cookie设定"><a href="#Set-Cookie-cookie设定" class="headerlink" title="Set-Cookie(cookie设定)"></a>Set-Cookie(cookie设定)</h4><p>说明：如果网页过期，那么存盘的cookie将被删除。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Set-Cookie&quot; content=&quot;cookievalue=xxx;expires=Wednesday, 20-Jun-2007 22:33:00 GMT； path=/&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>注意：必须使用GMT的时间格式。 </p>
-<h4 id="Window-target-显示窗口的设定"><a href="#Window-target-显示窗口的设定" class="headerlink" title="Window-target(显示窗口的设定)"></a>Window-target(显示窗口的设定)</h4><p>说明：强制页面在当前窗口以独立页面显示。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Window-target&quot; content=&quot;_top&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>注意：用来防止别人在框架里调用自己的页面。 </p>
-<h4 id="content-Type-显示字符集的设定"><a href="#content-Type-显示字符集的设定" class="headerlink" title="content-Type(显示字符集的设定)"></a>content-Type(显示字符集的设定)</h4><p>说明：设定页面使用的字符集。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<h4 id="Pics-label-网页等级评定"><a href="#Pics-label-网页等级评定" class="headerlink" title="Pics-label(网页等级评定)"></a>Pics-label(网页等级评定)</h4><p>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Pics-label&quot; contect=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>说明：在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的。 </p>
-<h4 id="Page-Enter、Page-Exit"><a href="#Page-Enter、Page-Exit" class="headerlink" title="Page_Enter、Page_Exit"></a>Page_Enter、Page_Exit</h4><p>设定进入页面时的特殊效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Page-Enter&quot;    contect=&quot;revealTrans(duration=1.0,transtion=    12)&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>设定离开页面时的特殊效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Page-Exit&quot;    contect=&quot;revealTrans(duration=1.0,transtion=    12)&quot;&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Duration的值为网页动态过渡的时间，单位为秒。<br>Transition是过渡方式，它的值为0到23，分别对应24种过渡方式。如下表：<br>0    盒状收缩    1    盒状放射<br>2    圆形收缩    3    圆形放射<br>4    由下往上    5    由上往下<br>6    从左至右    7    从右至左<br>8    垂直百叶窗    9    水平百叶窗<br>10    水平格状百叶窗    11垂直格状百叶窗<br>12    随意溶解    13从左右两端向中间展开<br>14从中间向左右两端展开    15从上下两端向中间展开<br>16从中间向上下两端展开    17    从右上角向左下角展开<br>18    从右下角向左上角展开    19    从左上角向右下角展开<br>20    从左下角向右上角展开    21    水平线状展开<br>22    垂直线状展开    23    随机产生一种过渡方式  </p>
-<h4 id="清除缓存（再访问这个网站要重新下载！）"><a href="#清除缓存（再访问这个网站要重新下载！）" class="headerlink" title="清除缓存（再访问这个网站要重新下载！）"></a>清除缓存（再访问这个网站要重新下载！）</h4><p>Html代码  收藏代码</p>
-<meta http-equiv="cache-control" content="no-cache">  
-
-
-<h4 id="设定网页的到期时间"><a href="#设定网页的到期时间" class="headerlink" title="设定网页的到期时间"></a>设定网页的到期时间</h4><p>Html代码  收藏代码</p>
-<meta http-equiv="expires" content="0">  
-
-
-
-<h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="苹果浏览器"><a href="#苹果浏览器" class="headerlink" title="苹果浏览器"></a>苹果浏览器</h3><h4 id="apple-touch-icon"><a href="#apple-touch-icon" class="headerlink" title="apple-touch-icon"></a>apple-touch-icon</h4><p>现今移动设备越来越多，苹果为iOS设备配备了apple-touch-icon私有属性，添加该属性，在iPhone,iPad,iTouch的safari浏览器上可以使用添加到主屏按钮将网站添加到主屏幕上，方便用户以后访问。实现方法是在HTML文档的<head><meta name="generator" content="Hexo 3.8.0">标签加入下面代码即可。</head></p>
-<p>apple-touch-icon 标签支持sizes属性，可以用来放置对应不同的设备。</p>
-<p>57×57（默认值）的图标对应320×640的iphone老设备，72×72对应ipad，114×114对应retina屏的iPhone及iTouch。ipad3对应144×144的高分辨率。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;57x57&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;72x72&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;76x76&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;114x114&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;120x120&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;144x144&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;152x152&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.csdn.net/freshlover/article/details/9310437" target="_blank" rel="noopener">关于Apple设备私有的apple-touch-icon属性详解</a><br><a href="http://kinglyhum.iteye.com/blog/827807" target="_blank" rel="noopener">Meta http-equiv属性详解(转)</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> html </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> html </tag>
-            
-            <tag> 优化 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[bootstrap栅格布局探究]]></title>
       <url>https://emloxe.github.io/2017/02/22/bootstrap%E6%A0%85%E6%A0%BC%E5%B8%83%E5%B1%80%E6%8E%A2%E7%A9%B6/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -3174,6 +3114,66 @@ dist 静态资源文件
             <tag> 前端框架 </tag>
             
             <tag> bootstrap </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[页面head优化]]></title>
+      <url>https://emloxe.github.io/2017/02/22/%E9%A1%B5%E9%9D%A2head%E4%BC%98%E5%8C%96/</url>
+      <content type="html"><![CDATA[<p>页面头部优化</p>
+<a id="more"></a>
+<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><h3 id="用favicon在浏览器给网站进行身份标识"><a href="#用favicon在浏览器给网站进行身份标识" class="headerlink" title="用favicon在浏览器给网站进行身份标识"></a>用favicon在浏览器给网站进行身份标识</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=&quot;http://image.feeliu.com/web/favicon.ico&quot; rel=&quot;shortcut icon&quot; /&gt;  </span><br><span class="line">&lt;link href=&quot;http://image.feeliu.com/web/favicon.ico&quot; rel=&quot;Bookmark&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="搜索引擎优化"><a href="#搜索引擎优化" class="headerlink" title="搜索引擎优化"></a>搜索引擎优化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;手机小游戏,59600小游戏,小游戏大全,在线小游戏&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=&quot;59600.com是全世界最大的原创手机小游戏专业网站,免费为你提供 H5游戏,手机小游戏,游戏在线玩,在线小游戏,在线小游戏等最新小游戏。&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;手机小游戏,59600,在线小游戏, 小游戏在线玩,h5游戏,h5小游戏,手机网页游戏,手机页游,在线游戏&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=&quot;手机小游戏59600.com 在线小游戏提供最流行的在线手机小游戏，最热门的不用下载就可以直接玩的H5小游戏&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="http-equiv"><a href="#http-equiv" class="headerlink" title="http-equiv"></a>http-equiv</h3><p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。 </p>
+<blockquote>
+<p>meat标签的http-equiv属性语法格式是：<meta http-equiv="参数" content="参数变量值"> ；其中http-equiv属性主要有以下几种参数：</p>
+</blockquote>
+<h4 id="Expires-期限"><a href="#Expires-期限" class="headerlink" title="Expires(期限)"></a>Expires(期限)</h4><p>说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;expires&quot; content=&quot;Wed, 20 Jun 2007 22:33:00 GMT&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Pragma-cache模式"><a href="#Pragma-cache模式" class="headerlink" title="Pragma(cache模式)"></a>Pragma(cache模式)</h4><p>说明：是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>注意：这样设定，访问者将无法脱机浏览。 </p>
+<h4 id="Refresh-刷新"><a href="#Refresh-刷新" class="headerlink" title="Refresh(刷新)"></a>Refresh(刷新)</h4><p>说明：自动刷新并指向新页面。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;2；URL=http://www.net.cn/&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>注意：其中的2是指停留2秒钟后自动刷新到URL网址。 </p>
+<h4 id="Set-Cookie-cookie设定"><a href="#Set-Cookie-cookie设定" class="headerlink" title="Set-Cookie(cookie设定)"></a>Set-Cookie(cookie设定)</h4><p>说明：如果网页过期，那么存盘的cookie将被删除。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Set-Cookie&quot; content=&quot;cookievalue=xxx;expires=Wednesday, 20-Jun-2007 22:33:00 GMT； path=/&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>注意：必须使用GMT的时间格式。 </p>
+<h4 id="Window-target-显示窗口的设定"><a href="#Window-target-显示窗口的设定" class="headerlink" title="Window-target(显示窗口的设定)"></a>Window-target(显示窗口的设定)</h4><p>说明：强制页面在当前窗口以独立页面显示。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Window-target&quot; content=&quot;_top&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>注意：用来防止别人在框架里调用自己的页面。 </p>
+<h4 id="content-Type-显示字符集的设定"><a href="#content-Type-显示字符集的设定" class="headerlink" title="content-Type(显示字符集的设定)"></a>content-Type(显示字符集的设定)</h4><p>说明：设定页面使用的字符集。<br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;content-Type&quot; content=&quot;text/html; charset=gb2312&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Pics-label-网页等级评定"><a href="#Pics-label-网页等级评定" class="headerlink" title="Pics-label(网页等级评定)"></a>Pics-label(网页等级评定)</h4><p>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Pics-label&quot; contect=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>说明：在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的。 </p>
+<h4 id="Page-Enter、Page-Exit"><a href="#Page-Enter、Page-Exit" class="headerlink" title="Page_Enter、Page_Exit"></a>Page_Enter、Page_Exit</h4><p>设定进入页面时的特殊效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Page-Enter&quot;    contect=&quot;revealTrans(duration=1.0,transtion=    12)&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>设定离开页面时的特殊效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=&quot;Page-Exit&quot;    contect=&quot;revealTrans(duration=1.0,transtion=    12)&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Duration的值为网页动态过渡的时间，单位为秒。<br>Transition是过渡方式，它的值为0到23，分别对应24种过渡方式。如下表：<br>0    盒状收缩    1    盒状放射<br>2    圆形收缩    3    圆形放射<br>4    由下往上    5    由上往下<br>6    从左至右    7    从右至左<br>8    垂直百叶窗    9    水平百叶窗<br>10    水平格状百叶窗    11垂直格状百叶窗<br>12    随意溶解    13从左右两端向中间展开<br>14从中间向左右两端展开    15从上下两端向中间展开<br>16从中间向上下两端展开    17    从右上角向左下角展开<br>18    从右下角向左上角展开    19    从左上角向右下角展开<br>20    从左下角向右上角展开    21    水平线状展开<br>22    垂直线状展开    23    随机产生一种过渡方式  </p>
+<h4 id="清除缓存（再访问这个网站要重新下载！）"><a href="#清除缓存（再访问这个网站要重新下载！）" class="headerlink" title="清除缓存（再访问这个网站要重新下载！）"></a>清除缓存（再访问这个网站要重新下载！）</h4><p>Html代码  收藏代码</p>
+<meta http-equiv="cache-control" content="no-cache">  
+
+
+<h4 id="设定网页的到期时间"><a href="#设定网页的到期时间" class="headerlink" title="设定网页的到期时间"></a>设定网页的到期时间</h4><p>Html代码  收藏代码</p>
+<meta http-equiv="expires" content="0">  
+
+
+
+<h2 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="苹果浏览器"><a href="#苹果浏览器" class="headerlink" title="苹果浏览器"></a>苹果浏览器</h3><h4 id="apple-touch-icon"><a href="#apple-touch-icon" class="headerlink" title="apple-touch-icon"></a>apple-touch-icon</h4><p>现今移动设备越来越多，苹果为iOS设备配备了apple-touch-icon私有属性，添加该属性，在iPhone,iPad,iTouch的safari浏览器上可以使用添加到主屏按钮将网站添加到主屏幕上，方便用户以后访问。实现方法是在HTML文档的<head><meta name="generator" content="Hexo 3.8.0">标签加入下面代码即可。</head></p>
+<p>apple-touch-icon 标签支持sizes属性，可以用来放置对应不同的设备。</p>
+<p>57×57（默认值）的图标对应320×640的iphone老设备，72×72对应ipad，114×114对应retina屏的iPhone及iTouch。ipad3对应144×144的高分辨率。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;57x57&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;72x72&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;76x76&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;114x114&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;120x120&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;144x144&quot;&gt;</span><br><span class="line">&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;//img.59600.com/logo/logo_160.png&quot; sizes=&quot;152x152&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://blog.csdn.net/freshlover/article/details/9310437" target="_blank" rel="noopener">关于Apple设备私有的apple-touch-icon属性详解</a><br><a href="http://kinglyhum.iteye.com/blog/827807" target="_blank" rel="noopener">Meta http-equiv属性详解(转)</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> html </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> html </tag>
+            
+            <tag> 优化 </tag>
             
         </tags>
         
