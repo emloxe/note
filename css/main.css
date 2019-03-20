@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
   font-size: 18px;
   line-height: 2;
   color: #555;
@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
 }
 h2,
 h3,
@@ -452,6 +452,11 @@ body {
   position: relative;
   min-height: 100%;
 }
+@media (min-width: 767px) {
+  .container {
+    background: #f8fafc;
+  }
+}
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
@@ -503,7 +508,7 @@ pre,
 }
 pre,
 code {
-  font-family: consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: consolas, Menlo, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
@@ -855,7 +860,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: #555;
+  background: #fff;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -1019,7 +1024,8 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 20px;
   font-weight: normal;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
+  color: #fff;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1107,7 +1113,10 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
+  font-weight: lighter;
+  line-height: initial;
+  word-break: break-all;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1226,10 +1235,10 @@ pre .javascript .function {
   position: absolute;
   top: 20px;
   left: 0;
-  margin-left: -2px;
-  width: 4px;
+  margin-left: -1px;
+  width: 2px;
   height: 100%;
-  background: #f5f5f5;
+  background: #5cb85c;
   z-index: -1;
 }
 @media (max-width: 767px) {
@@ -1252,11 +1261,12 @@ pre .javascript .function {
   position: absolute;
   left: 0;
   top: 50%;
-  margin-left: -4px;
-  margin-top: -4px;
+  margin-left: -5px;
+  margin-top: -5px;
   width: 8px;
   height: 8px;
-  background: #bbb;
+  border: 1px solid #5cb85c;
+  background: #f8fafc;
   border-radius: 50%;
 }
 .posts-collapse .post {
@@ -1277,10 +1287,9 @@ pre .javascript .function {
   top: 12px;
   width: 6px;
   height: 6px;
-  margin-left: -4px;
+  margin-left: -3px;
   background: #bbb;
   border-radius: 50%;
-  border: 1px solid #fff;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
@@ -1290,7 +1299,7 @@ pre .javascript .function {
   border-bottom-color: #666;
 }
 .posts-collapse .post-header:hover::before {
-  background: #222;
+  background: #5cb85c;
 }
 .posts-collapse .post-meta {
   position: absolute;
@@ -1372,7 +1381,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
   font-size: 12px;
   text-align: center;
 }
@@ -1685,7 +1694,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a2d7b6;
+  background: #c9d1a6;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -2226,9 +2235,8 @@ a.search-result {
   margin-left: -6px;
   width: 10px;
   height: 10px;
-  opacity: 0.5;
-  background: #555;
-  border: 1px solid #fff;
+  background: #5cb85c;
+  border: 1px solid #5cb85c;
   border-radius: 50%;
 }
 .category-all-page .category-all-title {
@@ -2438,7 +2446,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 20px 0 10px;
+  margin: 10px 0 10px;
 }
 p {
   margin: 0 0 25px 0;
@@ -2454,7 +2462,7 @@ hr {
   margin-top: 80px;
 }
 .header {
-  background: #20232a;
+  background: #3367d6;
 }
 .header-inner {
   padding: 5px 0 5px;
@@ -2498,7 +2506,7 @@ hr {
 }
 .site-meta .site-title {
   font-size: 22px;
-  font-weight: bolder;
+  font-weight: lighter;
 }
 @media (max-width: 767px) {
   .site-meta .site-title {
@@ -2517,25 +2525,6 @@ hr {
   .logo-line-after {
     display: none;
   }
-}
-.logo-line-before i,
-.logo-line-after i {
-  position: relative;
-  display: block;
-  height: 2px;
-  background: #222;
-}
-@media (max-width: 767px) {
-  .logo-line-before i,
-  .logo-line-after i {
-    height: 3px;
-  }
-}
-.use-motion .logo-line-before i {
-  left: -100%;
-}
-.use-motion .logo-line-after i {
-  right: -100%;
 }
 .site-subtitle {
   display: none;
@@ -2571,6 +2560,8 @@ hr {
   border: none;
   border-radius: 2px;
   transition-property: background;
+  color: #fff;
+  font-weight: lighter;
 }
 @media (max-width: 767px) {
   .menu .menu-item a {
@@ -2613,7 +2604,15 @@ hr {
   display: none;
 }
 .posts-expand .post {
-  margin-top: 120px;
+  margin-top: 70px;
+}
+@media (min-width: 767px) {
+  .posts-expand .post {
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #fff;
+  }
 }
 .posts-expand .post:first-child {
   margin-top: 0;
