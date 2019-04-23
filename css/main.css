@@ -501,8 +501,8 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 15px;
-  color: #c5c8c6;
-  background: #1d1f21;
+  background: #2d2d2d;
+  color: #ccc;
   line-height: 1.6;
 }
 pre,
@@ -512,8 +512,8 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #555;
-  background: rgba(255,229,100,0.2);
+  color: #c7254e;
+  background: #f9f2f4;
   font-size: 15px;
 }
 pre code {
@@ -565,12 +565,11 @@ pre code {
   padding-right: 10px;
   color: #888f96;
   text-align: right;
-  background-color: #000;
+  background-color: #333;
 }
 .highlight .code pre {
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #1d1f21;
 }
 .highlight .line {
   height: 20px;
@@ -652,6 +651,60 @@ pre .coffeescript .title {
 pre .keyword,
 pre .javascript .function {
   color: #b294bb;
+}
+pre .comment,
+pre .quote {
+  color: #999;
+}
+pre .variable,
+pre .template-variable,
+pre .tag,
+pre .name,
+pre .selector-id,
+pre .selector-class,
+pre .regexp,
+pre .deletion {
+  color: #f2777a;
+}
+pre .number,
+pre .built_in,
+pre .builtin-name,
+pre .literal,
+pre .type,
+pre .params,
+pre .meta,
+pre .link {
+  color: #f99157;
+}
+pre .attribute {
+  color: #fc6;
+}
+pre .string,
+pre .symbol,
+pre .bullet,
+pre .addition {
+  color: #9c9;
+}
+pre .title,
+pre .section {
+  color: #69c;
+}
+pre .keyword,
+pre .selector-tag {
+  color: #c9c;
+}
+pre .hljs {
+  display: block;
+  overflow-x: auto;
+  background: #2d2d2d;
+  color: #ccc;
+  padding: 0.5em;
+}
+pre .emphasis {
+  font-style: italic;
+}
+pre .strong {
+  font-weight: bold;
 }
 .full-image.full-image.full-image {
   border: none;
@@ -1690,7 +1743,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a11286;
+  background: #ccf4ff;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -2559,14 +2612,12 @@ hr {
   transition-property: background;
   color: #fff;
   font-weight: lighter;
+/* &:hover { background: #e1e1e1; } */
 }
 @media (max-width: 767px) {
   .menu .menu-item a {
     text-align: left;
   }
-}
-.menu .menu-item a:hover {
-  background: #e1e1e1;
 }
 .menu a::before {
   display: none;
@@ -2731,7 +2782,7 @@ hr {
 .footer {
   margin-top: 80px;
   padding: 10px 0;
-  background: #f5f5f5;
+  background: #f6f8fa;
   color: #666;
 }
 .footer-inner {
