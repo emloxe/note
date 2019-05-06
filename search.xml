@@ -125,7 +125,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[git 配置换行符]]></title>
+      <title><![CDATA[git bash显示中文]]></title>
       <url>https://emloxe.github.io/2019/04/22/git%20bash%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87/</url>
       <content type="html"><![CDATA[<p>解决 Windows git Bash、Linux 下的中文转码问题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.quotepath false</span><br></pre></td></tr></table></figure>
