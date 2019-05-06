@@ -92,18 +92,20 @@
 <meta property="og:site_name" content="zwj-notes">
 <meta property="og:description" content="canvas基本操作的学习">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://emloxe.github.io/images/images/2017032308.png">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032307.png">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032301.jpg">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032306.png">
+<meta property="og:image" content="https://emloxe.github.io/images/2017032309.png">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032302.jpg">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032303.jpg">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032303.jpg">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032305.jpg">
-<meta property="og:updated_time" content="2019-04-20T15:21:20.871Z">
+<meta property="og:updated_time" content="2019-05-06T00:22:39.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas基本操作">
 <meta name="twitter:description" content="canvas基本操作的学习">
-<meta name="twitter:image" content="https://emloxe.github.io/images/2017032307.png">
+<meta name="twitter:image" content="https://emloxe.github.io/images/images/2017032308.png">
 
 
 
@@ -355,8 +357,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-20T23:21:20+08:00">
-                2019-04-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-06T08:22:39+08:00">
+                2019-05-06
               </time>
             
           </span>
@@ -422,31 +424,102 @@
       
         <p>canvas基本操作的学习</p>
 <a id="more"></a>
-<h2 id="画布创建"><a href="#画布创建" class="headerlink" title="画布创建"></a>画布创建</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag"><span class="attr">style</span>=<span class="string">"border:1px solid #000000;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> c = <span class="built_in">document</span>.getElementById(<span class="string">'myCanvas'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> ctx = c.getContext(<span class="string">'2d'</span>);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="直线"><a href="#直线" class="headerlink" title="直线"></a>直线</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br><span class="line">ctx.lineWidth = <span class="number">1</span>;  <span class="comment">// 线条宽度</span></span><br><span class="line">ctx.lineCap = <span class="string">'butt'</span>;  <span class="comment">// 边缘样式(线的开始点和结束点)，其他属性值还有"round" 圆角，"square" 方角</span></span><br><span class="line">ctx.lineJoin = <span class="string">'miter'</span>;  <span class="comment">// 线条的连接样式，其他属性值还有'round','bevel'</span></span><br><span class="line">ctx.strokeStyle = <span class="string">'#FF0000'</span>; <span class="comment">// 线条颜色</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>,  <span class="number">0</span>);  <span class="comment">// 起始点，移动画笔到(0, 0)</span></span><br><span class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>);  <span class="comment">// 终点</span></span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
-<p>画虚线<br>我们之前用moveTo, lineTo画的都是实线，canvas为我们提供了setLineDash()方法，它可以用来画虚线:</p>
-<p>用法：</p>
-<p>ctx.setLineDash( 数组 )</p>
-<p>参数中这个数组，是由实线和空白组合合成，如：</p>
-<p><code>[ 20, 5 ]</code>: 20px 实线，5px空白</p>
-<p><code>[ 20, 5, 10, 5]</code>: 20px实线，5px空白, 10px实线, 5px空白</p>
+<h2 id="画布创建"><a href="#画布创建" class="headerlink" title="画布创建"></a>画布创建</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"myCanvas"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"100"</span></span></span><br><span class="line"><span class="tag"><span class="attr">style</span>=<span class="string">"border:1px solid #000000;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var c = document.getElementById('myCanvas');</span></span><br><span class="line"><span class="undefined">  var ctx = c.getContext('2d');</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><h3 id="直线"><a href="#直线" class="headerlink" title="直线"></a>直线</h3><p>线条样式</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">lineWidth = value</td>
+<td style="text-align:left">设置线条宽度。</td>
+</tr>
+<tr>
+<td style="text-align:left">lineCap = type</td>
+<td style="text-align:left">设置线条末端样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">lineJoin = type</td>
+<td style="text-align:left">设定线条与线条间接合处的样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">miterLimit = value</td>
+<td style="text-align:left">限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。</td>
+</tr>
+<tr>
+<td style="text-align:left">getLineDash()</td>
+<td style="text-align:left">返回一个包含当前虚线样式，长度为非负偶数的数组。</td>
+</tr>
+<tr>
+<td style="text-align:left">setLineDash(segments)</td>
+<td style="text-align:left">设置当前虚线样式。</td>
+</tr>
+<tr>
+<td style="text-align:left">lineDashOffset = value</td>
+<td style="text-align:left">设置虚线样式的起始偏移量。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br><span class="line">ctx.lineWidth = <span class="number">1</span>;  <span class="comment">// 线条宽度</span></span><br><span class="line">ctx.lineCap = <span class="string">'butt'</span>;  <span class="comment">// 边缘样式(线的开始点和结束点)，其他属性值还有"round" 圆角，"square" 方角</span></span><br><span class="line">ctx.lineJoin = <span class="string">'miter'</span>;  <span class="comment">// 线条的连接样式，其他属性值还有'round','bevel'</span></span><br><span class="line">ctx.strokeStyle = <span class="string">'#FF0000'</span>; <span class="comment">// 线条颜色</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>,  <span class="number">0</span>);  <span class="comment">// 起始点，移动画笔到(0, 0)</span></span><br><span class="line">ctx.lineTo(<span class="number">200</span>, <span class="number">100</span>);  <span class="comment">// 终点</span></span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
+<h4 id="lineCap"><a href="#lineCap" class="headerlink" title="lineCap"></a>lineCap</h4><p><strong>语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineCap = <span class="string">"butt"</span>;</span><br><span class="line">ctx.lineCap = <span class="string">"round"</span>;</span><br><span class="line">ctx.lineCap = <span class="string">"square"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>选项节<br><code>butt</code><br>线段末端以方形结束。<br><code>round</code><br>线段末端以圆形结束。<br><code>square</code><br>线段末端以方形结束，但是增加了一个宽度和线段相同，高度是线段厚度一半的矩形区域。</p>
+<h4 id="lineJoin"><a href="#lineJoin" class="headerlink" title="lineJoin"></a>lineJoin</h4><p><strong>语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineJoin = <span class="string">"bevel"</span>;</span><br><span class="line">ctx.lineJoin = <span class="string">"round"</span>;</span><br><span class="line">ctx.lineJoin = <span class="string">"miter"</span>;</span><br></pre></td></tr></table></figure></p>
+<p><strong>选项</strong><br>此属性有3个值： round, bevel and miter。默认值是 miter。注意：如果2个相连部分在同一方向，那么lineJoin不会产生任何效果，因为在那种情况下不会出现连接区域。</p>
+<p><img src="/images/images/2017032308.png" alt="images"></p>
+<p><code>round</code><br>通过填充一个额外的，圆心在相连部分末端的扇形，绘制拐角的形状。 圆角的半径是线段的宽度。<br><code>bevel</code><br>在相连部分的末端填充一个额外的以三角形为底的区域， 每个部分都有各自独立的矩形拐角。<br><code>miter</code><br>通过延伸相连部分的外边缘，使其相交于一点，形成一个额外的菱形区域。这个设置可以通过 miterLimit 属性看到效果。</p>
+<h4 id="miterLimit"><a href="#miterLimit" class="headerlink" title="miterLimit"></a>miterLimit</h4><p><strong>语法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.miterLimit = value;</span><br></pre></td></tr></table></figure></p>
+<p><strong>选项</strong><br><code>value</code><br>斜接面限制比例的的数字。 0、负数、Infinity 和 NaN 都会被忽略。<br><strong>简释</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineJoin = &quot;miter&quot;  // &quot;miter&quot; &gt;   &quot;round&quot; )   &quot;bevel&quot; ]</span><br></pre></td></tr></table></figure></p>
+<p>只有当 <code>lineJoin = &quot;miter&quot;</code>  显示为 “&gt;”  时，miterLimit 才有效。边角的角度越小，斜接长度就会越大。为了避免斜接长度过长，我们可以使用 miterLimit 属性。如果斜接长度超过 miterLimit 的值，边角会以 lineJoin 的 “ ] “ 类型来显示</p>
+<h4 id="getLineDash"><a href="#getLineDash" class="headerlink" title="getLineDash"></a>getLineDash</h4><p><strong>语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.getLineDash();</span><br></pre></td></tr></table></figure></p>
+<p><strong>返回值</strong><br>一个 Array数组。一组描述交替绘制线段和间距（坐标空间单位）长度的数字。如果数组元素的数量是奇数，数组元素会被复制并重复。 例如， 设置线段为 [5, 15, 25] 将会得到以下返回值 [5, 15, 25, 5, 15, 25]。</p>
+<h4 id="setLineDash-画虚线"><a href="#setLineDash-画虚线" class="headerlink" title="setLineDash 画虚线"></a>setLineDash 画虚线</h4><p>我们之前用moveTo, lineTo画的都是实线，canvas为我们提供了setLineDash()方法，它可以用来画虚线:<br>用法：<br><code>ctx.setLineDash( 数组 )</code><br>参数中这个数组，是由实线和空白组合合成，如：<br><code>[ 20, 5 ]</code>: 20px 实线，5px空白<br><code>[ 20, 5, 10, 5]</code>: 20px实线，5px空白, 10px实线, 5px空白  </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineWidth = <span class="number">5</span>;</span><br><span class="line">ctx.strokeStyle = <span class="string">'#09f'</span>;</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.setLineDash([<span class="number">10</span>, <span class="number">5</span>]);</span><br><span class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">ctx.lineTo(<span class="number">600</span>, <span class="number">100</span>);</span><br><span class="line">ctx.stroke();</span><br><span class="line"></span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.setLineDash([<span class="number">20</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">5</span>]);</span><br><span class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">150</span>);</span><br><span class="line">ctx.lineTo(<span class="number">600</span>, <span class="number">150</span>);</span><br><span class="line">ctx.stroke();</span><br><span class="line"></span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.setLineDash([<span class="number">40</span>, <span class="number">5</span>, <span class="number">20</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">1</span>]);</span><br><span class="line">ctx.moveTo(<span class="number">100</span>, <span class="number">200</span>);</span><br><span class="line">ctx.lineTo(<span class="number">600</span>, <span class="number">200</span>);</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
 <p><img src="/images/2017032307.png" alt="images"></p>
+<h4 id="lineDashOffset"><a href="#lineDashOffset" class="headerlink" title="lineDashOffset"></a>lineDashOffset</h4><p><strong>语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineDashOffset = value;</span><br></pre></td></tr></table></figure></p>
+<p><code>value</code><br>偏移量是float精度的数字。 初始值为 0.0。</p>
+<p>该参数主要与<code>setLineDash</code>结合使用，可以用这个绘制流动线效果</p>
 <h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctx.strokeStyle = <span class="string">'#FF0000'</span>; <span class="comment">// 线条颜色</span></span><br><span class="line">ctx.fillStyle = <span class="string">'#00FF00'</span>; <span class="comment">// 填充颜色</span></span><br><span class="line">ctx.rect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">150</span>, <span class="number">100</span>); <span class="comment">// 以(20, 20)为起点绘制宽高为(150, 100)的矩形</span></span><br><span class="line">ctx.stroke();</span><br><span class="line">ctx.fill();</span><br></pre></td></tr></table></figure>
 <h3 id="圆"><a href="#圆" class="headerlink" title="圆"></a>圆</h3><p>arc(x, y, r, start, stop)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();</span><br><span class="line">ctx.arc(<span class="number">95</span>,<span class="number">50</span>,<span class="number">40</span>,<span class="number">0</span>,<span class="number">2</span>*<span class="built_in">Math</span>.PI);</span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure>
-<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
-<li>font - 定义字体</li>
-<li><code>ctx.textAlign = &#39;start&#39;;</code>  // 绘制的形式</li>
-<li><code>ctx.textBaseline = &#39;bottom&#39;;</code>  // 当前文本基线</li>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>font = value</code></td>
+<td style="text-align:left">当前我们用来绘制文本的样式. 这个字符串使用和 CSS font 属性相同的语法. 默认的字体是 10px sans-serif。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>textAlign = value</code></td>
+<td style="text-align:left">文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值是 start。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>textBaseline = value</code></td>
+<td style="text-align:left">基线对齐选项. 可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>direction = value</code></td>
+<td style="text-align:left">文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit。</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><code>ctx.fillText(text, x, y, width);</code> - 在 canvas 上绘制实心的文本</li>
 <li><code>ctx.strokeText(text, x, y, width);</code> - 在 canvas 上绘制空心的文本</li>
 </ul>
 <p>width为绘制的宽度，当绘制内容大于width时，内容会被压缩，小于width值时，按原来的比例正常显示<br>注意x,y定义的是绘制的起点，默认textAlign为start，但并不是指文本的左上角位置而是左下角</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.font=<span class="string">'30px Arial'</span>;  <span class="comment">// 字号 字体</span></span><br><span class="line">ctx.fillText(<span class="string">'Hello World'</span>, <span class="number">20</span>, <span class="number">50</span>);  <span class="comment">// 内容 起始位置</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/2017032301.jpg" alt="images"></p>
-<p>textAlign值还有start，end，left，center，right<br><a href="https://emloxe.github.io/e-test/2017032301.html">textAlign展示请点击此处</a></p>
-<p>textBaseline</p>
+<p><strong>textAlign</strong><br>textAlign值还有start，end，left，center，right<br><a href="https://emloxe.github.io/e-test/2017032301.html">textAlign展示请点击此处</a></p>
+<p><strong>textBaseline</strong></p>
 <table>
 <thead>
 <tr>
@@ -481,12 +554,25 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/images/2017032306.png" alt="images"></p>
-<h3 id="整体设置透明度"><a href="#整体设置透明度" class="headerlink" title="整体设置透明度"></a>整体设置透明度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.globalAlpha = <span class="number">0.5</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p>坐标点（x0,y0）是起点 ，（x1,y1）是终点<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建渐变</span></span><br><span class="line"><span class="keyword">var</span> grd=ctx.createLinearGradient(x0,y0,x1,y1);</span><br><span class="line">grd.addColorStop(<span class="number">0</span>,<span class="string">'red'</span>);</span><br><span class="line">grd.addColorStop(<span class="number">1</span>,<span class="string">'white'</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建渐变</span></span><br><span class="line"><span class="keyword">var</span> grd=ctx.createRadialGradient(x0,y0,r0,x1,y1,r1);</span><br><span class="line">grd.addColorStop(<span class="number">0</span>,<span class="string">'red'</span>);</span><br><span class="line">grd.addColorStop(<span class="number">1</span>,<span class="string">'white'</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="清除画布"><a href="#清除画布" class="headerlink" title="清除画布"></a>清除画布</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.clearRect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">50</span>);  <span class="comment">// 以(20, 20)为起点清除宽高为(100, 50)的矩形</span></span><br></pre></td></tr></table></figure>
-<h2 id="其他方法属性"><a href="#其他方法属性" class="headerlink" title="其他方法属性"></a>其他方法属性</h2><h3 id="获取文本在canvas画布上的长度"><a href="#获取文本在canvas画布上的长度" class="headerlink" title="获取文本在canvas画布上的长度"></a>获取文本在canvas画布上的长度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.measureText(<span class="string">'hello world'</span>).width</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2017032306.png" alt="images"><br><img src="/images/2017032309.png" alt="images"></p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><h3 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h3><p><code>createLinearGradient(x1, y1, x2, y2)</code><br>createLinearGradient 方法接受 4 个参数，表示渐变的起点 (x1,y1) 与终点 (x2,y2)。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建渐变</span></span><br><span class="line"><span class="keyword">var</span> grd = ctx.createLinearGradient(x1, y1, x2, y2);</span><br><span class="line">grd.addColorStop(<span class="number">0</span>,<span class="string">'red'</span>);</span><br><span class="line">grd.addColorStop(<span class="number">1</span>,<span class="string">'white'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h3><p><code>createRadialGradient(x1, y1, r1, x2, y2, r2)</code><br>createRadialGradient 方法接受 6 个参数，前三个定义一个以 (x1,y1) 为原点，半径为 r1 的圆，后三个参数则定义另一个以 (x2,y2) 为原点，半径为 r2 的圆。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建渐变</span></span><br><span class="line"><span class="keyword">var</span> grd = ctx.createRadialGradient(x1, y1, r1, x2, y2, r2);</span><br><span class="line">grd.addColorStop(<span class="number">0</span>,<span class="string">'red'</span>);</span><br><span class="line">grd.addColorStop(<span class="number">1</span>,<span class="string">'white'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="清除画布"><a href="#清除画布" class="headerlink" title="清除画布"></a>清除画布</h2><p>清楚画布有两种方法</p>
+<ol>
+<li><p>重置canvas画布大小<br><code>canvas.width/height = canvas.width/height</code></p>
+</li>
+<li><p>clearRect</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.clearRect(<span class="number">20</span>, <span class="number">20</span>, <span class="number">100</span>, <span class="number">50</span>);  <span class="comment">// 以(20, 20)为起点清除宽高为(100, 50)的矩形</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="path-路径"><a href="#path-路径" class="headerlink" title="path 路径"></a>path 路径</h2><h2 id="Patterns"><a href="#Patterns" class="headerlink" title="Patterns"></a>Patterns</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">createPattern(image, type)</span><br></pre></td></tr></table></figure>
+<p>该方法接受两个参数。Image 可以是一个 <code>Image</code> 对象的引用，或者另一个 canvas 对象。Type 必须是下面的字符串值之一：<code>repeat</code>，<code>repeat-x</code>，<code>repeat-y</code> 和 <code>no-repeat</code>。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ctx = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>).getContext(<span class="string">'2d'</span>);</span><br><span class="line">  <span class="comment">// 创建新 image 对象，用作图案</span></span><br><span class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</span><br><span class="line">  img.src = <span class="string">'./Canvas_createpattern.png'</span>;</span><br><span class="line">  img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 创建图案</span></span><br><span class="line">    <span class="keyword">var</span> ptrn = ctx.createPattern(img, <span class="string">'repeat'</span>);</span><br><span class="line">    ctx.fillStyle = ptrn;</span><br><span class="line">    ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">150</span>, <span class="number">150</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="阴影-Shadows"><a href="#阴影-Shadows" class="headerlink" title="阴影 Shadows"></a>阴影 Shadows</h3><p><code>shadowOffsetX = float</code><br>shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离，它们是不受变换矩阵所影响的。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0。</p>
+<p><code>shadowOffsetY = float</code><br>shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离，它们是不受变换矩阵所影响的。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0。<br><code>shadowBlur = float</code><br>shadowBlur 用于设定阴影的模糊程度，其数值并不跟像素数量挂钩，也不受变换矩阵的影响，默认为 0。<br><code>shadowColor = color</code><br>shadowColor 是标准的 CSS 颜色值，用于设定阴影颜色效果，默认是全透明的黑色。</p>
+<h2 id="其他方法属性"><a href="#其他方法属性" class="headerlink" title="其他方法属性"></a>其他方法属性</h2><h3 id="整体设置透明度-globalAlpha"><a href="#整体设置透明度-globalAlpha" class="headerlink" title="整体设置透明度 globalAlpha"></a>整体设置透明度 globalAlpha</h3><p>除了可以绘制实色图形，我们还可以用 canvas 来绘制半透明的图形。通过设置 globalAlpha 属性或者使用一个半透明颜色作为轮廓或填充的样式。</p>
+<p><code>globalAlpha = transparencyValue</code><br>这个属性影响到 canvas 里所有图形的透明度，有效的值范围是 0.0 （完全透明）到 1.0（完全不透明），默认是 1.0。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.globalAlpha = <span class="number">0.5</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="获取文本在canvas画布上的长度"><a href="#获取文本在canvas画布上的长度" class="headerlink" title="获取文本在canvas画布上的长度"></a>获取文本在canvas画布上的长度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.measureText(<span class="string">'hello world'</span>).width</span><br></pre></td></tr></table></figure>
 <p>实际上 <code>ctx.measureText(&#39;hello world&#39;).width</code>获取的是近似值<br><a href="https://emloxe.github.io/e-test/2017032302.html">效果查看</a></p>
 <h3 id="beginPath-和closePath"><a href="#beginPath-和closePath" class="headerlink" title="beginPath()和closePath()"></a>beginPath()和closePath()</h3><h4 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath()"></a>beginPath()</h4><p>方法开始一条路径，或重置当前的路径</p>
 <p>如下代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">'myCanvas'</span>);</span><br><span class="line"><span class="keyword">var</span> ctx=c.getContext(<span class="string">'2d'</span>);</span><br><span class="line"><span class="comment">//第一条线            </span></span><br><span class="line">ctx.lineWidth = <span class="number">5</span>;</span><br><span class="line">ctx.strokeStyle = <span class="string">'green'</span>;  <span class="comment">// 绿色路径</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>, <span class="number">75</span>);</span><br><span class="line">ctx.lineTo(<span class="number">150</span>, <span class="number">75</span>);</span><br><span class="line">ctx.stroke();   </span><br><span class="line"><span class="comment">// 第二条线</span></span><br><span class="line">ctx.strokeStyle = <span class="string">'purple'</span>;  <span class="comment">// 紫色的路径</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>, <span class="number">100</span>);</span><br><span class="line">ctx.lineTo(<span class="number">150</span>, <span class="number">100</span>);            </span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure></p>
@@ -617,7 +703,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">89</span>
+                <span class="site-state-item-count">92</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -708,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#画布创建"><span class="nav-number">1.</span> <span class="nav-text">画布创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制"><span class="nav-number">2.</span> <span class="nav-text">绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直线"><span class="nav-number">2.1.</span> <span class="nav-text">直线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩形"><span class="nav-number">2.2.</span> <span class="nav-text">矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆"><span class="nav-number">2.3.</span> <span class="nav-text">圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本"><span class="nav-number">2.4.</span> <span class="nav-text">文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整体设置透明度"><span class="nav-number">2.5.</span> <span class="nav-text">整体设置透明度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐变色"><span class="nav-number">3.</span> <span class="nav-text">渐变色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性渐变"><span class="nav-number">3.1.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#径向渐变"><span class="nav-number">3.2.</span> <span class="nav-text">径向渐变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除画布"><span class="nav-number">4.</span> <span class="nav-text">清除画布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法属性"><span class="nav-number">5.</span> <span class="nav-text">其他方法属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文本在canvas画布上的长度"><span class="nav-number">5.1.</span> <span class="nav-text">获取文本在canvas画布上的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beginPath-和closePath"><span class="nav-number">5.2.</span> <span class="nav-text">beginPath()和closePath()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#beginPath"><span class="nav-number">5.2.1.</span> <span class="nav-text">beginPath()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#closePath"><span class="nav-number">5.2.2.</span> <span class="nav-text">closePath()</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#画布创建"><span class="nav-number">1.</span> <span class="nav-text">画布创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制"><span class="nav-number">2.</span> <span class="nav-text">绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#直线"><span class="nav-number">2.1.</span> <span class="nav-text">直线</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lineCap"><span class="nav-number">2.1.1.</span> <span class="nav-text">lineCap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lineJoin"><span class="nav-number">2.1.2.</span> <span class="nav-text">lineJoin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#miterLimit"><span class="nav-number">2.1.3.</span> <span class="nav-text">miterLimit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getLineDash"><span class="nav-number">2.1.4.</span> <span class="nav-text">getLineDash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setLineDash-画虚线"><span class="nav-number">2.1.5.</span> <span class="nav-text">setLineDash 画虚线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lineDashOffset"><span class="nav-number">2.1.6.</span> <span class="nav-text">lineDashOffset</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩形"><span class="nav-number">2.2.</span> <span class="nav-text">矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#圆"><span class="nav-number">2.3.</span> <span class="nav-text">圆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本"><span class="nav-number">2.4.</span> <span class="nav-text">文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐变色"><span class="nav-number">3.</span> <span class="nav-text">渐变色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性渐变"><span class="nav-number">3.1.</span> <span class="nav-text">线性渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#径向渐变"><span class="nav-number">3.2.</span> <span class="nav-text">径向渐变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清除画布"><span class="nav-number">4.</span> <span class="nav-text">清除画布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#path-路径"><span class="nav-number">5.</span> <span class="nav-text">path 路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Patterns"><span class="nav-number">6.</span> <span class="nav-text">Patterns</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阴影-Shadows"><span class="nav-number">6.1.</span> <span class="nav-text">阴影 Shadows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法属性"><span class="nav-number">7.</span> <span class="nav-text">其他方法属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体设置透明度-globalAlpha"><span class="nav-number">7.1.</span> <span class="nav-text">整体设置透明度 globalAlpha</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文本在canvas画布上的长度"><span class="nav-number">7.2.</span> <span class="nav-text">获取文本在canvas画布上的长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beginPath-和closePath"><span class="nav-number">7.3.</span> <span class="nav-text">beginPath()和closePath()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#beginPath"><span class="nav-number">7.3.1.</span> <span class="nav-text">beginPath()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#closePath"><span class="nav-number">7.3.2.</span> <span class="nav-text">closePath()</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
