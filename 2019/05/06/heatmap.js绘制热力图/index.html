@@ -1,0 +1,1067 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="canvas,heatmap,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0">
+
+
+
+
+
+
+<meta name="description" content="基本用法12345678910111213141516171819202122232425262728293031323334353637&amp;lt;style type=&quot;text/css&quot;&amp;gt;  div &amp;#123;      width:600px; height:400px;border: 1px solid;border-color: grey;  &amp;#125;&amp;lt;/style&amp;gt">
+<meta name="keywords" content="canvas,heatmap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="heatmap.js绘制热力图">
+<meta property="og:url" content="https://emloxe.github.io/2019/05/06/heatmap.js绘制热力图/index.html">
+<meta property="og:site_name" content="zwj-notes">
+<meta property="og:description" content="基本用法12345678910111213141516171819202122232425262728293031323334353637&amp;lt;style type=&quot;text/css&quot;&amp;gt;  div &amp;#123;      width:600px; height:400px;border: 1px solid;border-color: grey;  &amp;#125;&amp;lt;/style&amp;gt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-07T12:16:02.226Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="heatmap.js绘制热力图">
+<meta name="twitter:description" content="基本用法12345678910111213141516171819202122232425262728293031323334353637&amp;lt;style type=&quot;text/css&quot;&amp;gt;  div &amp;#123;      width:600px; height:400px;border: 1px solid;border-color: grey;  &amp;#125;&amp;lt;/style&amp;gt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://emloxe.github.io/2019/05/06/heatmap.js绘制热力图/">
+
+
+
+
+
+  <title> heatmap.js绘制热力图 | zwj-notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?7b7d1f05d7ecce07228c1e25371deb03";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=60635153";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="site-title">zwj-notes</span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://emloxe.github.io/2019/05/06/heatmap.js绘制热力图/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="emloxe">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/images/zwj.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="zwj-notes">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="zwj-notes" src>
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                heatmap.js绘制热力图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T00:00:00+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T20:16:02+08:00">
+                2019-05-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/heatmap/" itemprop="url" rel="index">
+                    <span itemprop="name">heatmap</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2019/05/06/heatmap.js绘制热力图/" class="leancloud_visitors" data-flag-title="heatmap.js绘制热力图">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  div &#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">width</span><span class="selector-pseudo">:600px</span>; <span class="selector-tag">height</span><span class="selector-pseudo">:400px</span>;<span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span>;<span class="selector-tag">border-color</span>: <span class="selector-tag">grey</span>;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"heatmap"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 创建一个heatmap实例对象</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// “h337” 是heatmap.js全局对象的名称.可以使用它来创建热点图实例</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 这里直接指定热点图渲染的div了.heatmap支持自定义的样式方案,网页外包接活具体可看官网api</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> heatmapInstance = h337.create(&#123;</span></span><br><span class="line"><span class="javascript">      container: <span class="built_in">document</span>.querySelector(<span class="string">'#heatmap'</span>),</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="javascript">  <span class="comment">//构建一些随机数据点,网页切图价格这里替换成你的业务数据</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> points = [];</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> max = <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> width = <span class="number">600</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> height = <span class="number">400</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> len = <span class="number">200</span>;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">while</span> (len--) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> val = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">100</span>);</span></span><br><span class="line"><span class="javascript">      max = <span class="built_in">Math</span>.max(max, val);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">var</span> point = &#123;</span></span><br><span class="line"><span class="javascript">          x: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*width),</span></span><br><span class="line"><span class="javascript">          y: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*height),</span></span><br><span class="line"><span class="undefined">          value: val</span></span><br><span class="line"><span class="undefined">      &#125;;</span></span><br><span class="line"><span class="undefined">      points.push(point);</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> data = &#123;</span></span><br><span class="line"><span class="undefined">      max: max,</span></span><br><span class="line"><span class="undefined">      data: points</span></span><br><span class="line"><span class="undefined">  &#125;;</span></span><br><span class="line"><span class="javascript">  <span class="comment">//因为data是一组数据,web切图报价所以直接setData</span></span></span><br><span class="line"><span class="javascript">  heatmapInstance.setData(data); <span class="comment">//数据绑定还可以使用</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="文档介绍"><a href="#文档介绍" class="headerlink" title="文档介绍"></a>文档介绍</h2><p>“h337”是heatmap.js注册的全局对象的名称。您可以使用它来创建热图实例</p>
+<h3 id="h337"><a href="#h337" class="headerlink" title="h337"></a>h337</h3><p>“h337”是heatmap.js注册的全局对象的名称。您可以使用它来创建热图实例</p>
+<h4 id="h337-create-configObject"><a href="#h337-create-configObject" class="headerlink" title="h337.create(configObject)"></a>h337.create(configObject)</h4><p>返回heatmapInstance。</p>
+<p>使用h337.create创建热图实例。可以使用configObject自定义Heatmap。<br>configObject参数是必需的。</p>
+<p>可能的配置属性：</p>
+<ul>
+<li>container(DOMNode)<em> required </em><br>应该附加热图画布的DOM节点(热图将适应节点的大小)</li>
+<li>backgroundColor(string)<em> optional </em><br>十六进制，颜色名称或rgb(a)形式的背景颜色字符串</li>
+<li>gradient(object)<em> optional </em><br>表示渐变的对象(语法：数字字符串[0,1]：颜色字符串)，查看示例</li>
+<li>radius(number)<em>可选</em><br>每个数据点将具有的半径(如果未在数据点本身上指定)<br>不透明度(number)[0,1] <em>可选</em>默认= .6<br>整个热图的全局不透明度。如果设置，这将覆盖maxOpacity和minOpacity！</li>
+<li>maxOpacity(number)[0,1] <em> optional </em><br>热图中最高值的最大不透明度。(如果设置了不透明度，将被覆盖)</li>
+<li>minOpacity(number)[0,1] <em>可选</em><br>热图中最低值的最小不透明度(如果设置了不透明度，将被覆盖)</li>
+<li>onExtremaChange函数回调<br>传递回调以接收极值更改更新。对DOM传说很有用。<br>模糊(number)[0,1] <em>可选</em>默认= 0.85<br>将应用于所有数据点的模糊因子。模糊因子越高，渐变越平滑</li>
+<li>xField(string)<em> optional </em> default =“x”<br>数据点中x坐标的属性名称</li>
+<li>yField(string)<em> optional </em> default =“y”<br>数据点中y坐标的属性名称</li>
+<li>valueField(string)<em> optional </em> default =“value”<br>数据点中y坐标的属性名称<br>示例配置<br>使用标准渐变进行简单配置<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create configuration object</span></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'heatmapContainer'</span>),</span><br><span class="line">  radius: <span class="number">10</span>,</span><br><span class="line">  maxOpacity: <span class="number">.5</span>,</span><br><span class="line">  minOpacity: <span class="number">0</span>,</span><br><span class="line">  blur: <span class="number">.75</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// create heatmap with configuration</span></span><br><span class="line"><span class="keyword">var</span> heatmapInstance = h337.create(config);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>自定义渐变配置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// create configuration object</span></span><br><span class="line"><span class="keyword">var</span> config = &#123;</span><br><span class="line">  container: <span class="built_in">document</span>.getElementById(<span class="string">'heatmapContainer'</span>),</span><br><span class="line">  radius: <span class="number">10</span>,</span><br><span class="line">  maxOpacity: <span class="number">.5</span>,</span><br><span class="line">  minOpacity: <span class="number">0</span>,</span><br><span class="line">  blur: <span class="number">.75</span>,</span><br><span class="line">  gradient: &#123;</span><br><span class="line">    <span class="comment">// enter n keys between 0 and 1 here</span></span><br><span class="line">    <span class="comment">// for gradient color customization</span></span><br><span class="line">    <span class="string">'.5'</span>: <span class="string">'blue'</span>,</span><br><span class="line">    <span class="string">'.8'</span>: <span class="string">'red'</span>,</span><br><span class="line">    <span class="string">'.95'</span>: <span class="string">'white'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> heatmapInstance = h337.create(config);</span><br></pre></td></tr></table></figure></p>
+<h3 id="heatmapInstance"><a href="#heatmapInstance" class="headerlink" title="heatmapInstance"></a>heatmapInstance</h3><p>h337.create返回Heatmap实例。热图实例具有自己的内部数据存储区和渲染器，您可以在其中操作数据。结果，热图得到更新(部分或完全，取决于是否有必要)。</p>
+<h4 id="heatmapInstance-addData-对象-阵列"><a href="#heatmapInstance-addData-对象-阵列" class="headerlink" title="heatmapInstance.addData(对象|阵列)"></a>heatmapInstance.addData(对象|阵列)</h4><p>返回heatmapInstance</p>
+<p>仅将此功能用于动态添加数据点，而不是用于数据初始化！heatmapInstance.addData将单个或多个数据点添加到热图的数据存储区。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a single datapoint</span></span><br><span class="line"><span class="keyword">var</span> dataPoint = &#123; </span><br><span class="line">  x: <span class="number">5</span>, <span class="comment">// x coordinate of the datapoint, a number </span></span><br><span class="line">  y: <span class="number">5</span>, <span class="comment">// y coordinate of the datapoint, a number</span></span><br><span class="line">  value: <span class="number">100</span> <span class="comment">// the value at datapoint(x, y)</span></span><br><span class="line">&#125;;</span><br><span class="line">heatmapInstance.addData(dataPoint);</span><br><span class="line"></span><br><span class="line"><span class="comment">// multiple datapoints (for data initialization use setData!!)</span></span><br><span class="line"><span class="keyword">var</span> dataPoints = [dataPoint, dataPoint, dataPoint, dataPoint];</span><br><span class="line">heatmapInstance.addData(dataPoints);</span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-setData-对象"><a href="#heatmapInstance-setData-对象" class="headerlink" title="heatmapInstance.setData(对象)"></a>heatmapInstance.setData(对象)</h4><p>返回heatmapInstance</p>
+<p>使用数据集初始化热图实例。需要“min”，“max”和“data”属性。<br>setData从热图实例中删除所有先前存在的点，并重新初始化数据存储区。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  max: <span class="number">100</span>,</span><br><span class="line">  min: <span class="number">0</span>,</span><br><span class="line">  data: [</span><br><span class="line">    dataPoint, dataPoint, dataPoint, dataPoint</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line">heatmapInstance.setData(data);</span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-setDataMax-数字"><a href="#heatmapInstance-setDataMax-数字" class="headerlink" title="heatmapInstance.setDataMax(数字)"></a>heatmapInstance.setDataMax(数字)</h4><p>返回heatmapInstance</p>
+<p>更改数据集的上限并触发完全重新呈现。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">heatmapInstance.setDataMax(<span class="number">200</span>);</span><br><span class="line"><span class="comment">// setting the maximum value triggers a complete rerendering of the heatmap</span></span><br><span class="line">heatmapInstance.setDataMax(<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-setDataMin-数字"><a href="#heatmapInstance-setDataMin-数字" class="headerlink" title="heatmapInstance.setDataMin(数字)"></a>heatmapInstance.setDataMin(数字)</h4><p>返回heatmapInstance</p>
+<p>更改数据集的下限并触发完全重新呈现。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">heatmapInstance.setDataMin(<span class="number">10</span>);</span><br><span class="line"><span class="comment">// setting the minimum value triggers a complete rerendering of the heatmap</span></span><br><span class="line">heatmapInstance.setDataMin(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-configure-configObject"><a href="#heatmapInstance-configure-configObject" class="headerlink" title="heatmapInstance.configure(configObject)"></a>heatmapInstance.configure(configObject)</h4><p>返回heatmapInstance</p>
+<p>在初始化热图实例后重新配置它。触发完全重新渲染。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nuConfig = &#123;</span><br><span class="line">  radius: <span class="number">10</span>,</span><br><span class="line">  maxOpacity: <span class="number">.5</span>,</span><br><span class="line">  minOpacity: <span class="number">0</span>,</span><br><span class="line">  blur: <span class="number">.75</span></span><br><span class="line">&#125;;</span><br><span class="line">heatmapInstance.configure(nuConfig);</span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-getValueAt-对象"><a href="#heatmapInstance-getValueAt-对象" class="headerlink" title="heatmapInstance.getValueAt(对象)"></a>heatmapInstance.getValueAt(对象)</h4><p>返回数据点位置处的值</p>
+<p>注意：如果点未存储，则返回值是基于渐变混合的插值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">heatmapInstance.addData(&#123; <span class="attr">x</span>: <span class="number">10</span>, <span class="attr">y</span>: <span class="number">10</span>, <span class="attr">value</span>: <span class="number">100</span>&#125;);</span><br><span class="line"><span class="comment">// get the value at x=10, y=10</span></span><br><span class="line">heatmapInstance.getValueAt(&#123; <span class="attr">x</span>: <span class="number">10</span>, <span class="attr">y</span>: <span class="number">10</span> &#125;); <span class="comment">// returns 100</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-getData"><a href="#heatmapInstance-getData" class="headerlink" title="heatmapInstance.getData()"></a>heatmapInstance.getData()</h4><p>返回一个可持久且可重新导入的(使用setData)JSON对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentData = heatmapInstance.getData();</span><br><span class="line"><span class="comment">// now let's create a new instance and set the data</span></span><br><span class="line"><span class="keyword">var</span> heatmap2 = h337.create(config);</span><br><span class="line">heatmap2.setData(currentData); <span class="comment">// now both heatmap instances have the same content</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-getDataURL"><a href="#heatmapInstance-getDataURL" class="headerlink" title="heatmapInstance.getDataURL()"></a>heatmapInstance.getDataURL()</h4><p>返回dataURL string</p>
+<p>返回的值是热图实例的base64编码dataURL。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">heatmapInstance.getDataURL(); <span class="comment">// data:image/png;base64...</span></span><br><span class="line"><span class="comment">// ready for saving locally or on the server</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="heatmapInstance-repaint"><a href="#heatmapInstance-repaint" class="headerlink" title="heatmapInstance.repaint()"></a>heatmapInstance.repaint()</h4><p>返回heatmapInstance</p>
+<p>重绘整个热图画布</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/canvas/" rel="tag"># canvas</a>
+          
+            <a href="/tags/heatmap/" rel="tag"># heatmap</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/29/canvas修改图像的整体色/" rel="next" title="canvas修改图像的整体色">
+                <i class="fa fa-chevron-left"></i> canvas修改图像的整体色
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+
+<!-- UY BEGIN  友言评论 -->
+
+<!-- UY END -->
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/zwj.jpg" alt="emloxe">
+          <p class="site-author-name" itemprop="name">emloxe</p>
+          <p class="site-description motion-element" itemprop="description">随心，随性</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">93</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/emloxe" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/eugloxe" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/eugloxe" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/emloxe/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档介绍"><span class="nav-number">2.</span> <span class="nav-text">文档介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h337"><span class="nav-number">2.1.</span> <span class="nav-text">h337</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#h337-create-configObject"><span class="nav-number">2.1.1.</span> <span class="nav-text">h337.create(configObject)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#heatmapInstance"><span class="nav-number">2.2.</span> <span class="nav-text">heatmapInstance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-addData-对象-阵列"><span class="nav-number">2.2.1.</span> <span class="nav-text">heatmapInstance.addData(对象|阵列)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-setData-对象"><span class="nav-number">2.2.2.</span> <span class="nav-text">heatmapInstance.setData(对象)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-setDataMax-数字"><span class="nav-number">2.2.3.</span> <span class="nav-text">heatmapInstance.setDataMax(数字)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-setDataMin-数字"><span class="nav-number">2.2.4.</span> <span class="nav-text">heatmapInstance.setDataMin(数字)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-configure-configObject"><span class="nav-number">2.2.5.</span> <span class="nav-text">heatmapInstance.configure(configObject)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-getValueAt-对象"><span class="nav-number">2.2.6.</span> <span class="nav-text">heatmapInstance.getValueAt(对象)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-getData"><span class="nav-number">2.2.7.</span> <span class="nav-text">heatmapInstance.getData()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-getDataURL"><span class="nav-number">2.2.8.</span> <span class="nav-text">heatmapInstance.getDataURL()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heatmapInstance-repaint"><span class="nav-number">2.2.9.</span> <span class="nav-text">heatmapInstance.repaint()</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">emloxe</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JLPrPOuwJ8MDuhAU7loh60iE-gzGzoHsz", "Ykzr4PmcxGvOKtb4AMfzCFnA");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+
+</body>
+</html>

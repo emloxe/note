@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="文档文档的宽高网页正文全文宽： document.body.scrollWidth网页正文全文高： document.body.scrollHeight 被卷去的网页正文全文高： document.body.scrollHeight网页被卷去的高： document.body.scrollTop window可视区域可视区域的宽高网页可见区域宽： document.body.clientWidth">
+<meta name="description" content="文档文档的宽高网页正文全文宽： document.body.scrollWidth网页正文全文高： document.body.scrollHeight 被卷去的网页被卷去的高： document.body.scrollTop网页被卷去的左： document.body.scrollLeft window可视区域可视区域的宽高网页可见区域宽： document.body.clientWidth网页">
 <meta name="keywords" content="js,jq">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js、jq获取距离与宽高">
 <meta property="og:url" content="https://emloxe.github.io/2017/05/08/js、jq获取距离与宽高/index.html">
 <meta property="og:site_name" content="zwj-notes">
-<meta property="og:description" content="文档文档的宽高网页正文全文宽： document.body.scrollWidth网页正文全文高： document.body.scrollHeight 被卷去的网页正文全文高： document.body.scrollHeight网页被卷去的高： document.body.scrollTop window可视区域可视区域的宽高网页可见区域宽： document.body.clientWidth">
+<meta property="og:description" content="文档文档的宽高网页正文全文宽： document.body.scrollWidth网页正文全文高： document.body.scrollHeight 被卷去的网页被卷去的高： document.body.scrollTop网页被卷去的左： document.body.scrollLeft window可视区域可视区域的宽高网页可见区域宽： document.body.clientWidth网页">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-14T14:02:02.000Z">
+<meta property="og:updated_time" content="2019-05-07T13:40:18.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js、jq获取距离与宽高">
-<meta name="twitter:description" content="文档文档的宽高网页正文全文宽： document.body.scrollWidth网页正文全文高： document.body.scrollHeight 被卷去的网页正文全文高： document.body.scrollHeight网页被卷去的高： document.body.scrollTop window可视区域可视区域的宽高网页可见区域宽： document.body.clientWidth">
+<meta name="twitter:description" content="文档文档的宽高网页正文全文宽： document.body.scrollWidth网页正文全文高： document.body.scrollHeight 被卷去的网页被卷去的高： document.body.scrollTop网页被卷去的左： document.body.scrollLeft window可视区域可视区域的宽高网页可见区域宽： document.body.clientWidth网页">
 
 
 
@@ -347,8 +347,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-14T22:02:02+08:00">
-                2017-12-14
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T21:40:18+08:00">
+                2019-05-07
               </time>
             
           </span>
@@ -412,12 +412,14 @@
       
 
       
-        <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="文档的宽高"><a href="#文档的宽高" class="headerlink" title="文档的宽高"></a>文档的宽高</h3><p>网页正文全文宽： document.body.scrollWidth<br>网页正文全文高： document.body.scrollHeight</p>
-<h3 id="被卷去的"><a href="#被卷去的" class="headerlink" title="被卷去的"></a>被卷去的</h3><p>网页正文全文高： document.body.scrollHeight<br>网页被卷去的高： document.body.scrollTop</p>
-<h2 id="window可视区域"><a href="#window可视区域" class="headerlink" title="window可视区域"></a>window可视区域</h2><h3 id="可视区域的宽高"><a href="#可视区域的宽高" class="headerlink" title="可视区域的宽高"></a>可视区域的宽高</h3><p>网页可见区域宽： document.body.clientWidth<br>网页可见区域高： document.body.clientHeight<br>网页可见区域宽： document.body.offsetWidth (包括边线的宽)<br>网页可见区域高： document.body.offsetHeight (包括边线的高)</p>
-<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="元素的宽高"><a href="#元素的宽高" class="headerlink" title="元素的宽高"></a>元素的宽高</h3><p>元素的宽： dom.offsetWidth<br>元素的高： dom.offsetWidth</p>
-<h3 id="被卷去的-1"><a href="#被卷去的-1" class="headerlink" title="被卷去的"></a>被卷去的</h3><p>scrollWidth:获取对象的滚动宽度<br>scrollHeight: 获取对象的滚动高度。<br>scrollLeft:设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<br>scrollTop:设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离</p>
-<h2 id="屏幕"><a href="#屏幕" class="headerlink" title="屏幕"></a>屏幕</h2><p>屏幕分辨率的高：window.screen.height<br>屏幕分辨率的宽：window.screen.width<br>屏幕可用工作区高度： window.screen.availHeight<br>屏幕可用工作区宽度： window.screen.availWidth</p>
+        <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="文档的宽高"><a href="#文档的宽高" class="headerlink" title="文档的宽高"></a>文档的宽高</h3><p>网页正文全文宽： <code>document.body.scrollWidth</code><br>网页正文全文高： <code>document.body.scrollHeight</code></p>
+<h3 id="被卷去的"><a href="#被卷去的" class="headerlink" title="被卷去的"></a>被卷去的</h3><p>网页被卷去的高： <code>document.body.scrollTop</code><br>网页被卷去的左： <code>document.body.scrollLeft</code></p>
+<h2 id="window可视区域"><a href="#window可视区域" class="headerlink" title="window可视区域"></a>window可视区域</h2><h3 id="可视区域的宽高"><a href="#可视区域的宽高" class="headerlink" title="可视区域的宽高"></a>可视区域的宽高</h3><p>网页可见区域宽： <code>document.body.clientWidth</code><br>网页可见区域高： <code>document.body.clientHeight</code><br>网页可见区域宽： <code>document.body.offsetWidth (包括边线的宽)</code><br>网页可见区域高： <code>document.body.offsetHeight (包括边线的高)</code></p>
+<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="元素的宽高"><a href="#元素的宽高" class="headerlink" title="元素的宽高"></a>元素的宽高</h3><p>元素的宽： <code>dom.offsetWidth</code><br>元素的高： <code>dom.offsetWidth</code></p>
+<h3 id="被卷去的-1"><a href="#被卷去的-1" class="headerlink" title="被卷去的"></a>被卷去的</h3><p><code>scrollWidth</code> 获取对象的滚动宽度<br><code>scrollHeight</code> 获取对象的滚动高度。<br><code>scrollLeft</code> 设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<br><code>scrollTop</code> 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离</p>
+<h3 id="元素相对窗口的位置"><a href="#元素相对窗口的位置" class="headerlink" title="元素相对窗口的位置"></a>元素相对窗口的位置</h3><p><code>dom.getBoundingClientRect()</code> 方法返回元素的大小及其相对于视口的位置。</p>
+<p>存储canvas画布相关信息<br>width: 包含padding左右,border左右,content<br>height: 包含padding上下,border上下,content<br>top: canvas左上角在document文档的top - document上下已卷过的高度（上下滚动条已滚过的高度）<br>left: canvas左上角在document文档的left - document左右已卷过的长度（左右滚动条已滚过的左边的长度）</p>
+<h2 id="屏幕"><a href="#屏幕" class="headerlink" title="屏幕"></a>屏幕</h2><p>屏幕分辨率的高：<code>window.screen.height</code><br>屏幕分辨率的宽：<code>window.screen.width</code><br>屏幕可用工作区高度： <code>window.screen.availHeight</code><br>屏幕可用工作区宽度： <code>window.screen.availWidth</code></p>
 <h2 id="API文档相关介绍"><a href="#API文档相关介绍" class="headerlink" title="API文档相关介绍"></a>API文档相关介绍</h2><h3 id="获取宽高"><a href="#获取宽高" class="headerlink" title="获取宽高"></a>获取宽高</h3><p>js</p>
 <table>
 <thead>
@@ -590,8 +592,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/26/css居中/" rel="prev" title="css居中">
-                css居中 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/26/position总结/" rel="prev" title="position总结">
+                position总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -665,7 +667,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">92</span>
+                <span class="site-state-item-count">93</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -674,7 +676,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-count">31</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -683,7 +685,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -756,7 +758,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档"><span class="nav-number">1.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档的宽高"><span class="nav-number">1.1.</span> <span class="nav-text">文档的宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被卷去的"><span class="nav-number">1.2.</span> <span class="nav-text">被卷去的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window可视区域"><span class="nav-number">2.</span> <span class="nav-text">window可视区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可视区域的宽高"><span class="nav-number">2.1.</span> <span class="nav-text">可视区域的宽高</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素"><span class="nav-number">3.</span> <span class="nav-text">元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素的宽高"><span class="nav-number">3.1.</span> <span class="nav-text">元素的宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被卷去的-1"><span class="nav-number">3.2.</span> <span class="nav-text">被卷去的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕"><span class="nav-number">4.</span> <span class="nav-text">屏幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API文档相关介绍"><span class="nav-number">5.</span> <span class="nav-text">API文档相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取宽高"><span class="nav-number">5.1.</span> <span class="nav-text">获取宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取位置"><span class="nav-number">5.2.</span> <span class="nav-text">获取位置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档"><span class="nav-number">1.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档的宽高"><span class="nav-number">1.1.</span> <span class="nav-text">文档的宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被卷去的"><span class="nav-number">1.2.</span> <span class="nav-text">被卷去的</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window可视区域"><span class="nav-number">2.</span> <span class="nav-text">window可视区域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可视区域的宽高"><span class="nav-number">2.1.</span> <span class="nav-text">可视区域的宽高</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素"><span class="nav-number">3.</span> <span class="nav-text">元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素的宽高"><span class="nav-number">3.1.</span> <span class="nav-text">元素的宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被卷去的-1"><span class="nav-number">3.2.</span> <span class="nav-text">被卷去的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素相对窗口的位置"><span class="nav-number">3.3.</span> <span class="nav-text">元素相对窗口的位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕"><span class="nav-number">4.</span> <span class="nav-text">屏幕</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API文档相关介绍"><span class="nav-number">5.</span> <span class="nav-text">API文档相关介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取宽高"><span class="nav-number">5.1.</span> <span class="nav-text">获取宽高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取位置"><span class="nav-number">5.2.</span> <span class="nav-text">获取位置</span></a></li></ol></li></ol></div>
             
 
           </div>
