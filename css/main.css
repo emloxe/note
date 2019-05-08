@@ -180,8 +180,7 @@ th {
   padding: 0;
 }
 ::selection {
-  background: #262a30;
-  color: #fff;
+  background: #f1f8ff;
 }
 body {
   position: relative;
@@ -277,14 +276,14 @@ p {
   margin: 0 0 25px 0;
 }
 a {
-  color: #555;
+  color: #4183c4;
   text-decoration: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #4183c4;
   word-wrap: break-word;
 }
 a:hover {
-  color: #222;
-  border-bottom-color: #222;
+  color: #4183c4;
+  border-bottom-color: #4183c4;
 }
 ul {
   list-style: none;
@@ -309,7 +308,7 @@ hr {
 blockquote {
   padding: 0 15px;
   color: #666;
-  border-left: 4px solid #ddd;
+  border-left: 4px solid #3eaf7c;
 }
 blockquote cite::before {
   content: "-";
@@ -421,7 +420,7 @@ table>tbody>tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 table>tbody>tr:hover {
-  background-color: #f5f5f5;
+  background-color: #f1f8ff;
 }
 caption,
 th,
@@ -515,6 +514,7 @@ code {
   color: #c7254e;
   background: #f9f2f4;
   font-size: 15px;
+  border-radius: 4px;
 }
 pre code {
   padding: 0;
@@ -1162,7 +1162,6 @@ pre .strong {
 }
 .post-body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
-  font-weight: lighter;
   line-height: 1.5em;
   word-break: break-all;
 }
@@ -1666,7 +1665,7 @@ pre .strong {
 .site-author-name {
   margin: 5px 0 0;
   text-align: center;
-  color: #f5f5f5;
+  color: #f1f8ff;
   font-weight: normal;
 }
 .site-description {
@@ -1743,7 +1742,7 @@ pre .strong {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff50;
+  background: #4bf0ff;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -1772,7 +1771,7 @@ pre .strong {
   color: #555;
 }
 .sidebar-nav li:hover {
-  color: #f5f5f5;
+  color: #f1f8ff;
 }
 .page-post-detail .sidebar-nav-toc {
   padding: 0 5px;
@@ -2502,7 +2501,7 @@ p {
   margin: 0 0 25px 0;
 }
 a {
-  border-bottom-color: #ccc;
+  border-bottom-color: #4183c4;
 }
 hr {
   margin: 20px 0;
@@ -2695,7 +2694,7 @@ hr {
 }
 .posts-expand .post-tags a {
   padding: 1px 5px;
-  background: #f5f5f5;
+  background: #f1f8ff;
   border-bottom: none;
 }
 .posts-expand .post-tags a:hover {
