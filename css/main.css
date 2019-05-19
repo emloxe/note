@@ -1742,7 +1742,7 @@ pre .strong {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fff67c;
+  background: #ff9d42;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -2169,6 +2169,8 @@ p.search-result {
 }
 a.search-result-title {
   font-weight: bold;
+  color: #333;
+  border-bottom-color: #888;
 }
 a.search-result {
   border-bottom: transparent;
