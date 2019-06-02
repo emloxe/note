@@ -4,6 +4,138 @@
   
     
     <entry>
+      <title><![CDATA[js数组处理]]></title>
+      <url>https://emloxe.github.io/2019/05/30/js%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>记录js数组处理的一些方法</p>
+<a id="more"></a>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="查找符合条件的数据"><a href="#查找符合条件的数据" class="headerlink" title="查找符合条件的数据"></a>查找符合条件的数据</h3><p>可使用一下方法</p>
+<ul>
+<li>includes</li>
+<li>indexOf</li>
+<li>lastIndexOf</li>
+<li>find</li>
+<li>findIndex</li>
+<li>filter</li>
+<li>every</li>
+<li>some</li>
+</ul>
+<h4 id="整体概述"><a href="#整体概述" class="headerlink" title="整体概述"></a>整体概述</h4><p>includes 传入具体需要查询的数据，如果包含就返回true反之为false<br>indexOf，lastIndexOf 传入具体需要查询的数据，如果存在返回索引值，否则返回-1<br>find，findIndex 传入函数，find返回第一个符合条件的值，findIndex返回第一个符合条件的索引值<br>filter 传入函数，对数组每一个元素进行判断，返回符合条件元素（数组）<br>every，some 传入函数，every需要数组的每一项都通过验证返回true，否者返回false；some只需要有一项通过验证即可返回true</p>
+<h4 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h4><p>方法用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 true，否则返回false。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.includes(valueToFind[, fromIndex])</span><br></pre></td></tr></table></figure>
+<p><strong>参数</strong><br><code>valueToFind</code><br>需要查找的元素值。</p>
+<blockquote>
+<p>Note:  使用 includes()比较字符串和字符时是区分大小写。</p>
+</blockquote>
+<p><code>fromIndex</code> 可选<br>从fromIndex 索引处开始查找 valueToFind。如果为负值，则按升序从 array.length + fromIndex 的索引开始搜 （即使从末尾开始往前跳 fromIndex 的绝对值个索引，然后往后搜寻）。默认为 0。</p>
+<p>示例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(array1.includes(<span class="number">2</span>));</span><br><span class="line"><span class="comment">// expected output: true</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h4><p><code>indexOf()</code>方法返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回-1</p>
+<p><strong>语法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.indexOf(searchElement)</span><br><span class="line">arr.indexOf(searchElement[, fromIndex = 0])</span><br></pre></td></tr></table></figure></p>
+<p><strong>参数</strong><br><code>searchElement</code><br>要查找的元素<br><code>fromIndex</code><br>开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回-1。如果参数中提供的索引值是一个负值，则将其作为数组末尾的一个抵消，即-1表示从最后一个元素开始查找，-2表示从倒数第二个元素开始查找 ，以此类推。 注意：如果参数中提供的索引值是一个负值，并不改变其查找顺序，查找顺序仍然是从前向后查询数组。如果抵消后的索引值仍小于0，则整个数组都将会被查询。其默认值为0.<br><strong>返回值</strong><br>首个被找到的元素在数组中的索引位置; 若没有找到则返回 -1</p>
+<h4 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h4><p><code>lastIndexOf()</code> 方法返回指定元素（也即有效的 JavaScript 值或变量）在数组中的最后一个的索引，如果不存在则返回 -1。从数组的后面向前查找，从 fromIndex 处开始。</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><p><code>find()</code> 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。</p>
+<h3 id="数组去重合并"><a href="#数组去重合并" class="headerlink" title="数组去重合并"></a>数组去重合并</h3><p>单一数组去重<br>可以使用Set数据结构<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">set</span> = new Set([1, 1, 2, 2]); // [1, 2]</span><br><span class="line">Object.prototype.toString.call(<span class="keyword">set</span>); // [object Set]</span><br></pre></td></tr></table></figure></p>
+<p>注意此处返回的是Set格式的数据结构，如果需要使用Array，需要使用<code>Array.from(set)</code>更改为Array</p>
+<p>多个数组合并去重<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">combine</span>(<span class="params">...arg</span>)</span>&#123; </span><br><span class="line">  <span class="keyword">let</span> arr = [].concat.apply([], arg);  <span class="comment">//没有去重复的新数组 </span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> m = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>], n = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>], l = [<span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>]; </span><br><span class="line"><span class="built_in">console</span>.log(combine(m, n, l));                     <span class="comment">// [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">Array - JavaScript | MDN</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> js </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[安装zip格式的mysql]]></title>
+      <url>https://emloxe.github.io/2019/05/29/%E5%AE%89%E8%A3%85zip%E6%A0%BC%E5%BC%8F%E7%9A%84mysql/</url>
+      <content type="html"><![CDATA[<p>官方下载地址为<br><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br><a id="more"></a></p>
+<ol>
+<li>将下载的后zip文件解压，放到合适的位置</li>
+<li>配置环境变量</li>
+</ol>
+<ul>
+<li>我的电脑-&gt;属性-&gt;高级-&gt;环境变量；<br>　　- 选择PATH,在其后面添加: 你的mysql bin文件夹的路径 (如:C:\mysql8\bin )PATH=…….;C:\mysql8\bin (注意是追加,不是覆盖)</li>
+</ul>
+<ol start="3">
+<li><p>配置下 MySQL 的配置文件<br>打开刚刚解压的文件夹 C:\mysql8 ，在该文件夹下创建 my.ini 配置文件，编辑 my.ini 配置以下基本信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[mysql]</span><br><span class="line"># 设置mysql客户端默认字符集</span><br><span class="line">default-character-set=utf8</span><br><span class="line"> </span><br><span class="line">[mysqld]</span><br><span class="line"># 设置3306端口</span><br><span class="line">port = 3306</span><br><span class="line"># 设置mysql的安装目录</span><br><span class="line">basedir=C:\\mysql8</span><br><span class="line"># 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错</span><br><span class="line"># datadir=C:\\mysql8\\data</span><br><span class="line"># 允许最大连接数</span><br><span class="line">max_connections=20</span><br><span class="line"># 服务端使用的字符集默认为8比特编码的latin1字符集</span><br><span class="line">character-set-server=utf8</span><br><span class="line"># 创建新表时将使用的默认存储引擎</span><br><span class="line">default-storage-engine=INNODB</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动MySQL数据库<br>以管理员身份打开 cmd 命令行工具，切换目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd C:\mysql8\bin</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>初始化数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld --initialize --console</span><br></pre></td></tr></table></figure></p>
+<p>行完成后，会输出 root 用户的初始默认密码，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">2018-04-20T02:35:05.464644Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: APWCY5ws&amp;hjQ</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>APWCY5ws&amp;hjQ 就是初始密码，后续登录需要用到，你也可以在登陆后修改密码。<br>同时密码也可以在data目录下的.err文件中找到</p>
+<p>输入以下安装命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqld install</span><br></pre></td></tr></table></figure></p>
+<p>启动输入以下命令即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure></p>
+<ol start="5">
+<li>修改密码<br>输入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后输入初始密码，就会进入mysql命令<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password=PASSWORD(&apos;新密码&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>以上mysql就完成了安装</p>
+]]></content>
+      
+        <categories>
+            
+            <category> mysql </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[NPM设置淘宝镜像]]></title>
+      <url>https://emloxe.github.io/2019/05/17/NPM%E8%AE%BE%E7%BD%AE%E6%B7%98%E5%AE%9D%E9%95%9C%E5%83%8F/</url>
+      <content type="html"><![CDATA[<h2 id="NPM设置淘宝镜像"><a href="#NPM设置淘宝镜像" class="headerlink" title="NPM设置淘宝镜像"></a>NPM设置淘宝镜像</h2><p>1.查询当前配置的镜像</p>
+<p>npm get registry </p>
+<blockquote>
+<p><a href="https://registry.npmjs.org/" target="_blank" rel="noopener">https://registry.npmjs.org/</a></p>
+</blockquote>
+<p>设置成淘宝镜像<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="keyword">set</span> registry http://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure></p>
+<p>2.换成原来的</p>
+<p>npm config set registry <a href="https://registry.npmjs.org/" target="_blank" rel="noopener">https://registry.npmjs.org/</a></p>
+<h2 id="Yarn-设置淘宝镜像"><a href="#Yarn-设置淘宝镜像" class="headerlink" title="Yarn 设置淘宝镜像"></a>Yarn 设置淘宝镜像</h2><p>1.查询当前配置的镜像</p>
+<p>yarn config get registry</p>
+<blockquote>
+<p><a href="https://registry.yarnpkg.com" target="_blank" rel="noopener">https://registry.yarnpkg.com</a></p>
+</blockquote>
+<p>设置成淘宝镜像<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn config <span class="keyword">set</span> registry http://registry.npm.taobao.org/</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> npm </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> npm </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[js设置页面关闭提示]]></title>
       <url>https://emloxe.github.io/2019/05/08/js%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E5%85%B3%E9%97%AD%E6%8F%90%E7%A4%BA/</url>
       <content type="html"><![CDATA[<p>在输入表单等相关页面的时候，如果不小心点击关闭了标签页，会导致输入的内容丢失，可以设置如下代码<br><a id="more"></a></p>
@@ -311,9 +443,9 @@
         
         <tags>
             
-            <tag> js </tag>
-            
             <tag> html5 </tag>
+            
+            <tag> js </tag>
             
             <tag> canvas </tag>
             
@@ -604,9 +736,9 @@
             
             <tag> js </tag>
             
-            <tag> 国际化 </tag>
-            
             <tag> ajax </tag>
+            
+            <tag> 国际化 </tag>
             
         </tags>
         
@@ -816,8 +948,14 @@
 </ul>
 <a id="more"></a>
 <h2 id="设置setting-json"><a href="#设置setting-json" class="headerlink" title="设置setting.json"></a>设置setting.json</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;editor.tabSize&quot;: 2,</span><br><span class="line">&quot;files.eol&quot;: &quot;\n&quot;,</span><br></pre></td></tr></table></figure>
-<h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><h3 id="插件管理"><a href="#插件管理" class="headerlink" title="插件管理"></a>插件管理</h3><p>左侧第5个图标<br>可以在输入框中进行搜索</p>
-<h4 id="JS-CSS-HTML-Formatter-代码格式化插件"><a href="#JS-CSS-HTML-Formatter-代码格式化插件" class="headerlink" title="JS-CSS-HTML Formatter 代码格式化插件"></a>JS-CSS-HTML Formatter 代码格式化插件</h4><h4 id="fileheader-注释快速生成插件"><a href="#fileheader-注释快速生成插件" class="headerlink" title="fileheader 注释快速生成插件"></a>fileheader 注释快速生成插件</h4>]]></content>
+<h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><p>左侧第5个图标<br>可以在输入框中进行搜索</p>
+<h3 id="Beautify"><a href="#Beautify" class="headerlink" title="Beautify"></a>Beautify</h3><p>代码格式化</p>
+<h3 id="Prettier"><a href="#Prettier" class="headerlink" title="Prettier"></a>Prettier</h3><p>代码格式化，可以配合eslint使用</p>
+<h3 id="Document-This"><a href="#Document-This" class="headerlink" title="Document This"></a>Document This</h3><p>注释生成</p>
+<h3 id="fileheader"><a href="#fileheader" class="headerlink" title="fileheader"></a>fileheader</h3><p>注释快速生成插件</p>
+<h3 id="Bracket-Pair-Colorizer"><a href="#Bracket-Pair-Colorizer" class="headerlink" title="Bracket Pair Colorizer"></a>Bracket Pair Colorizer</h3><p>更改括号颜色</p>
+<h3 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h3><p>代码检测</p>
+]]></content>
       
         <categories>
             
@@ -989,9 +1127,9 @@
         
         <tags>
             
-            <tag> requireJS </tag>
-            
             <tag> 模块化 </tag>
+            
+            <tag> requireJS </tag>
             
         </tags>
         
@@ -1062,7 +1200,8 @@
 <p>如果a,b同时调用，a、b有一个完成即可调用c<br>可写成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Promise.race([promise1(), promise2()]).then(c)</span><br></pre></td></tr></table></figure></p>
 <p>用setTimeout模拟基本上都会成功，事实上promise提供了失败的回调，可以用reject来触发失败的回调<br>jquery ajax写法如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> promise1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">      url: <span class="string">'127.0.0.1/usr'</span>,</span><br><span class="line">      type: <span class="string">'POST'</span>,</span><br><span class="line">      data: &#123;&#125;,</span><br><span class="line">      success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(data.code == <span class="number">0</span>)&#123;  <span class="comment">// 根据状态码判断是否成功，这里0表示成功</span></span><br><span class="line">          resolve();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          reject();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      error: reject</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="改写promiseAll"><a href="#改写promiseAll" class="headerlink" title="改写promiseAll"></a>改写promiseAll</h2><p>promiseAll 如果有一个promise发生错误，那么所有成功的数据也获取不到，可以通过以下方式进行改写<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">promiseAll(promises) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> result = [];</span><br><span class="line">    promises.forEach(<span class="function">(<span class="params">promise, i</span>) =&gt;</span> &#123;</span><br><span class="line">      promise.then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">        count++;</span><br><span class="line">        result[i] = value;</span><br><span class="line">        <span class="keyword">if</span> (count === promises.length) &#123;</span><br><span class="line">          resolve(result);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;).catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">        count++;</span><br><span class="line">        result[i] = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (count === promises.length) &#123;</span><br><span class="line">          resolve(result);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="图片异步加载方法封装"><a href="#图片异步加载方法封装" class="headerlink" title="图片异步加载方法封装"></a>图片异步加载方法封装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> image = <span class="keyword">new</span> Image();</span><br><span class="line">  image.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(image);</span><br><span class="line">  &#125;;</span><br><span class="line">  image.onerror = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Could not load image at <span class="subst">$&#123;url&#125;</span>`</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">  image.src = url;</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    self._image = value;</span><br><span class="line">    self.createWall();</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    self.createWall();</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="图片异步加载方法封装"><a href="#图片异步加载方法封装" class="headerlink" title="图片异步加载方法封装"></a>图片异步加载方法封装</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> image = <span class="keyword">new</span> Image();</span><br><span class="line">  image.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    resolve(image);</span><br><span class="line">  &#125;;</span><br><span class="line">  image.onerror = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Could not load image at <span class="subst">$&#123;url&#125;</span>`</span>));</span><br><span class="line">  &#125;;</span><br><span class="line">  image.src = url;</span><br><span class="line">&#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    self._image = value;</span><br><span class="line">    self.createWall();</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err);</span><br><span class="line">    self.createWall();</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="按顺序运行Promise"><a href="#按顺序运行Promise" class="headerlink" title="按顺序运行Promise"></a>按顺序运行Promise</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Runs promises from array of functions that can return promises</span></span><br><span class="line"><span class="comment"> * in chained manner</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param &#123;array&#125; arr - promise arr</span></span><br><span class="line"><span class="comment"> * @return &#123;Object&#125; promise object</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runPromiseInSequence</span>(<span class="params">arr, input</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.reduce(</span><br><span class="line">    (promiseChain, currentFunction) =&gt; promiseChain.then(currentFunction),</span><br><span class="line">    <span class="built_in">Promise</span>.resolve(input)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// promise function 1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">p1</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(a * <span class="number">5</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// promise function 2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">p2</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(a * <span class="number">2</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// function 3  - will be wrapped in a resolved promise by .then()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> a * <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// promise function 4</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">p4</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve(a * <span class="number">4</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> promiseArr = [p1, p2, f3, p4];</span><br><span class="line">runPromiseInSequence(promiseArr, <span class="number">10</span>)</span><br><span class="line">  .then(<span class="built_in">console</span>.log);   <span class="comment">// 1200</span></span><br></pre></td></tr></table></figure>]]></content>
       
         <categories>
             
@@ -1881,6 +2020,31 @@
     </entry>
     
     <entry>
+      <title><![CDATA[html处理兼容样式]]></title>
+      <url>https://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
+<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 兼容 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 兼容 </tag>
+            
+            <tag> html </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML 5 Web 存储]]></title>
       <url>https://emloxe.github.io/2017/09/14/HTML%205%20Web%20%E5%AD%98%E5%82%A8/</url>
       <content type="html"><![CDATA[<a id="more"></a>
@@ -1922,31 +2086,6 @@
             <tag> html5 </tag>
             
             <tag> 存储 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[html处理兼容样式]]></title>
-      <url>https://emloxe.github.io/2017/09/14/html%E5%A4%84%E7%90%86%E5%85%BC%E5%AE%B9%E6%A0%B7%E5%BC%8F/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p>在查看网页的时候发现了一个非常好处理兼容样式的例子<br>网站采用（此图为谷歌下查看的结果）<br><img src="/images/2017091401.png" alt="images"></p>
-<p>在IE8下查看，html的class名称为<br><img src="/images/2017091402.png" alt="images"><br>可以通过这种形式来给兼容的样式做特殊处理</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 兼容 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 兼容 </tag>
-            
-            <tag> html </tag>
             
         </tags>
         
@@ -2494,6 +2633,34 @@
     </entry>
     
     <entry>
+      <title><![CDATA[css居中]]></title>
+      <url>https://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
+      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
+<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
+<p>多个block元素可用css3的flex</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
+<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
+<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">left</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[position总结]]></title>
       <url>https://emloxe.github.io/2017/06/26/position%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>position 一共有static relative absolute fixed等属性值<br><a id="more"></a></p>
@@ -2513,34 +2680,6 @@
 </li>
 </ol>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html" target="_blank" rel="noopener">http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> css </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> css </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[css居中]]></title>
-      <url>https://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
-      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
-<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
-<p>多个block元素可用css3的flex</p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
-<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
-<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">left</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       
         <categories>
@@ -3299,9 +3438,9 @@
         
         <tags>
             
-            <tag> js模块加载框架 </tag>
-            
             <tag> requireJS </tag>
+            
+            <tag> js模块加载框架 </tag>
             
         </tags>
         
@@ -3532,56 +3671,6 @@ dist 静态资源文件
     </entry>
     
     <entry>
-      <title><![CDATA[markdown语法]]></title>
-      <url>https://emloxe.github.io/2017/02/26/markdown%E8%AF%AD%E6%B3%95/</url>
-      <content type="html"><![CDATA[<p>常用的markdown语法<br><a id="more"></a></p>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p># 代表一级标题<br>## 代表二级标题<br>以此类推</p>
-<p>除此之外<br>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">This is an H1</span><br><span class="line">=============</span><br><span class="line"></span><br><span class="line">This is an H2</span><br><span class="line">-------------</span><br><span class="line"></span><br><span class="line"># 这是 H1</span><br><span class="line"></span><br><span class="line">## 这是 H2</span><br><span class="line"></span><br><span class="line">###### 这是 H6</span><br></pre></td></tr></table></figure>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表使用星号、加号或是减号作为列表标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">*   Red</span><br><span class="line">*   Green</span><br><span class="line">*   Blue</span><br><span class="line"></span><br><span class="line">等同于：</span><br><span class="line"></span><br><span class="line">+   Red</span><br><span class="line">+   Green</span><br><span class="line">+   Blue</span><br><span class="line"></span><br><span class="line">也等同于：</span><br><span class="line"></span><br><span class="line">-   Red</span><br><span class="line">-   Green</span><br><span class="line">-   Blue</span><br></pre></td></tr></table></figure></p>
-<p>有序列表则使用数字接着一个英文句点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.  Bird</span><br><span class="line">2.  McHale</span><br><span class="line">3.  Parish</span><br><span class="line"></span><br><span class="line">等同于：</span><br><span class="line"></span><br><span class="line">1.  Bird</span><br><span class="line">1.  McHale</span><br><span class="line">1.  Parish</span><br><span class="line"></span><br><span class="line">等同于：</span><br><span class="line"></span><br><span class="line">2.  Bird</span><br><span class="line">1.  McHale</span><br><span class="line">3.  Parish</span><br></pre></td></tr></table></figure></p>
-<p>列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  This is a list item with two paragraphs. Lorem ipsum dolor</span><br><span class="line">    sit amet, consectetuer adipiscing elit. Aliquam hendrerit</span><br><span class="line">    mi posuere lectus.</span><br><span class="line"></span><br><span class="line">    Vestibulum enim wisi, viverra nec, fringilla in, laoreet</span><br><span class="line">    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</span><br><span class="line">    sit amet velit.</span><br><span class="line"></span><br><span class="line">2.  Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure></p>
-<p>如果要在列表项目内放进引用，那 &gt; 就需要缩进：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*   A list item with a blockquote:</span><br><span class="line"></span><br><span class="line">    &gt; This is a blockquote</span><br><span class="line">    &gt; inside a list item.</span><br></pre></td></tr></table></figure></p>
-<p>如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*   一列表项包含一个列表区块：</span><br><span class="line"></span><br><span class="line">        &lt;代码写在这&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>第一行为标题栏，<code>:---:</code>表示居中对齐，<code>:---</code>左对齐，<code>---:</code>右对齐<br>写表格时前面需要先空一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 名称          | 默认值        |说明  |</span><br><span class="line">|:-------------:|:-------------:|:-----|</span><br><span class="line">| dom           |无默认值，必填 | 传入的dom |</span><br><span class="line">| speed       | 40            | 滚动速度|</span><br></pre></td></tr></table></figure></p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><strong>地址链接</strong> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](https://www.baidu.com)</span><br></pre></td></tr></table></figure></p>
-<p><strong>图片链接</strong> <br><br>括号内可用相对地址，也可用绝对地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](/path/to/img.jpg)</span><br></pre></td></tr></table></figure></p>
-<p><strong>自动链接</strong> <br></p>
-<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://example.com/&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Markdown 会转为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;address@example.com&gt;</span><br></pre></td></tr></table></figure></p>
-<p>Markdown 会转成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;</span><br><span class="line">&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;</span><br><span class="line">&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;</span><br><span class="line">&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在浏览器里面，这段字串（其实是<code>&lt;a href=&quot;mailto:address@example.com&quot;&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「<a href="mailto:address@example.com" target="_blank" rel="noopener">address@example.com</a>」链接。</p>
-<h3 id="文本样式"><a href="#文本样式" class="headerlink" title="文本样式"></a>文本样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">加粗 :**Bold**</span><br><span class="line">斜体字 :*Italics*</span><br><span class="line">删除线 :~~text~~</span><br><span class="line">高亮 :==text==</span><br><span class="line">段落 : 段落之间空一行</span><br><span class="line">换行符 : 一行结束时输入两个空格</span><br><span class="line">列表 :* 添加星号成为一个新的列表项。</span><br></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>如果要标记一小段行内代码，你可以用反引号把它包起来`，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Use the `printf()` function.</span><br></pre></td></tr></table></figure></p>
-<p>会产生：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* * *</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">---------------------------------------</span><br></pre></td></tr></table></figure></p>
-<h3 id="区块引用-Blockquotes"><a href="#区块引用-Blockquotes" class="headerlink" title="区块引用 Blockquotes"></a>区块引用 Blockquotes</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span><br><span class="line">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br></pre></td></tr></table></figure>
-<p>Markdown 也允许你偷懒只在整个段落的第一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span><br><span class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br></pre></td></tr></table></figure></p>
-<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt; ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is the first level of quoting.</span><br><span class="line">&gt;</span><br><span class="line">&gt; &gt; This is nested blockquote.</span><br><span class="line">&gt;</span><br><span class="line">&gt; Back to the first level.</span><br></pre></td></tr></table></figure></p>
-<p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; ## 这是一个标题。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1.   这是第一行列表项。</span><br><span class="line">&gt; 2.   这是第二行列表项。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 给出一些例子代码：</span><br><span class="line">&gt; </span><br><span class="line">&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</code></pre></p>
-<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这是一个普通段落：</span><br><span class="line"></span><br><span class="line">    这是一个代码区块。</span><br></pre></td></tr></table></figure></p>
-<h2 id="github代码用法"><a href="#github代码用法" class="headerlink" title="github代码用法"></a>github代码用法</h2><h3 id="文章内部定位"><a href="#文章内部定位" class="headerlink" title="文章内部定位"></a>文章内部定位</h3><p>当文章过长时，可在文章开始时插入目录，<br>在文章内部进行快速跳转</p>
-<p>用标签进行包裹，id用于绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">目录</span><br><span class="line">[jQuery Lazy Load 图片延迟加载](#lazyLoad)</span><br><span class="line"></span><br><span class="line">需要跳转的地方</span><br><span class="line">&lt;a id=&quot;lazyLoad&quot;&gt;jQuery Lazy Load 图片延迟加载&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> markdown </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> markdown </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[css背景-background]]></title>
       <url>https://emloxe.github.io/2017/02/26/css%E8%83%8C%E6%99%AF-background/</url>
       <content type="html"><![CDATA[<p>css背景-background基本属性<br><a id="more"></a></p>
@@ -3650,6 +3739,56 @@ dist 静态资源文件
             <tag> css </tag>
             
             <tag> background </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[markdown语法]]></title>
+      <url>https://emloxe.github.io/2017/02/26/markdown%E8%AF%AD%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>常用的markdown语法<br><a id="more"></a></p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p># 代表一级标题<br>## 代表二级标题<br>以此类推</p>
+<p>除此之外<br>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">This is an H1</span><br><span class="line">=============</span><br><span class="line"></span><br><span class="line">This is an H2</span><br><span class="line">-------------</span><br><span class="line"></span><br><span class="line"># 这是 H1</span><br><span class="line"></span><br><span class="line">## 这是 H2</span><br><span class="line"></span><br><span class="line">###### 这是 H6</span><br></pre></td></tr></table></figure>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表使用星号、加号或是减号作为列表标记：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">*   Red</span><br><span class="line">*   Green</span><br><span class="line">*   Blue</span><br><span class="line"></span><br><span class="line">等同于：</span><br><span class="line"></span><br><span class="line">+   Red</span><br><span class="line">+   Green</span><br><span class="line">+   Blue</span><br><span class="line"></span><br><span class="line">也等同于：</span><br><span class="line"></span><br><span class="line">-   Red</span><br><span class="line">-   Green</span><br><span class="line">-   Blue</span><br></pre></td></tr></table></figure></p>
+<p>有序列表则使用数字接着一个英文句点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.  Bird</span><br><span class="line">2.  McHale</span><br><span class="line">3.  Parish</span><br><span class="line"></span><br><span class="line">等同于：</span><br><span class="line"></span><br><span class="line">1.  Bird</span><br><span class="line">1.  McHale</span><br><span class="line">1.  Parish</span><br><span class="line"></span><br><span class="line">等同于：</span><br><span class="line"></span><br><span class="line">2.  Bird</span><br><span class="line">1.  McHale</span><br><span class="line">3.  Parish</span><br></pre></td></tr></table></figure></p>
+<p>列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.  This is a list item with two paragraphs. Lorem ipsum dolor</span><br><span class="line">    sit amet, consectetuer adipiscing elit. Aliquam hendrerit</span><br><span class="line">    mi posuere lectus.</span><br><span class="line"></span><br><span class="line">    Vestibulum enim wisi, viverra nec, fringilla in, laoreet</span><br><span class="line">    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</span><br><span class="line">    sit amet velit.</span><br><span class="line"></span><br><span class="line">2.  Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure></p>
+<p>如果要在列表项目内放进引用，那 &gt; 就需要缩进：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">*   A list item with a blockquote:</span><br><span class="line"></span><br><span class="line">    &gt; This is a blockquote</span><br><span class="line">    &gt; inside a list item.</span><br></pre></td></tr></table></figure></p>
+<p>如果要放代码区块的话，该区块就需要缩进两次，也就是 8 个空格或是 2 个制表符：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*   一列表项包含一个列表区块：</span><br><span class="line"></span><br><span class="line">        &lt;代码写在这&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>第一行为标题栏，<code>:---:</code>表示居中对齐，<code>:---</code>左对齐，<code>---:</code>右对齐<br>写表格时前面需要先空一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 名称          | 默认值        |说明  |</span><br><span class="line">|:-------------:|:-------------:|:-----|</span><br><span class="line">| dom           |无默认值，必填 | 传入的dom |</span><br><span class="line">| speed       | 40            | 滚动速度|</span><br></pre></td></tr></table></figure></p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><strong>地址链接</strong> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[百度](https://www.baidu.com)</span><br></pre></td></tr></table></figure></p>
+<p><strong>图片链接</strong> <br><br>括号内可用相对地址，也可用绝对地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![Alt text](/path/to/img.jpg)</span><br></pre></td></tr></table></figure></p>
+<p><strong>自动链接</strong> <br></p>
+<p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://example.com/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Markdown 会转为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;address@example.com&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Markdown 会转成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;</span><br><span class="line">&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;</span><br><span class="line">&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;</span><br><span class="line">&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在浏览器里面，这段字串（其实是<code>&lt;a href=&quot;mailto:address@example.com&quot;&gt;address@example.com&lt;/a&gt;</code>）会变成一个可以点击的「<a href="mailto:address@example.com" target="_blank" rel="noopener">address@example.com</a>」链接。</p>
+<h3 id="文本样式"><a href="#文本样式" class="headerlink" title="文本样式"></a>文本样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">加粗 :**Bold**</span><br><span class="line">斜体字 :*Italics*</span><br><span class="line">删除线 :~~text~~</span><br><span class="line">高亮 :==text==</span><br><span class="line">段落 : 段落之间空一行</span><br><span class="line">换行符 : 一行结束时输入两个空格</span><br><span class="line">列表 :* 添加星号成为一个新的列表项。</span><br></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>如果要标记一小段行内代码，你可以用反引号把它包起来`，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Use the `printf()` function.</span><br></pre></td></tr></table></figure></p>
+<p>会产生：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* * *</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">---------------------------------------</span><br></pre></td></tr></table></figure></p>
+<h3 id="区块引用-Blockquotes"><a href="#区块引用-Blockquotes" class="headerlink" title="区块引用 Blockquotes"></a>区块引用 Blockquotes</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span><br><span class="line">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br></pre></td></tr></table></figure>
+<p>Markdown 也允许你偷懒只在整个段落的第一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span><br><span class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br></pre></td></tr></table></figure></p>
+<p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt; ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; This is the first level of quoting.</span><br><span class="line">&gt;</span><br><span class="line">&gt; &gt; This is nested blockquote.</span><br><span class="line">&gt;</span><br><span class="line">&gt; Back to the first level.</span><br></pre></td></tr></table></figure></p>
+<p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; ## 这是一个标题。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 1.   这是第一行列表项。</span><br><span class="line">&gt; 2.   这是第二行列表项。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 给出一些例子代码：</span><br><span class="line">&gt; </span><br><span class="line">&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown 会用 <pre> 和 <code> 标签来把代码区块包起来。</code></pre></p>
+<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这是一个普通段落：</span><br><span class="line"></span><br><span class="line">    这是一个代码区块。</span><br></pre></td></tr></table></figure></p>
+<h2 id="github代码用法"><a href="#github代码用法" class="headerlink" title="github代码用法"></a>github代码用法</h2><h3 id="文章内部定位"><a href="#文章内部定位" class="headerlink" title="文章内部定位"></a>文章内部定位</h3><p>当文章过长时，可在文章开始时插入目录，<br>在文章内部进行快速跳转</p>
+<p>用标签进行包裹，id用于绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">目录</span><br><span class="line">[jQuery Lazy Load 图片延迟加载](#lazyLoad)</span><br><span class="line"></span><br><span class="line">需要跳转的地方</span><br><span class="line">&lt;a id=&quot;lazyLoad&quot;&gt;jQuery Lazy Load 图片延迟加载&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> markdown </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> markdown </tag>
             
         </tags>
         
