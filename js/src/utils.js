@@ -12,7 +12,9 @@ NexT.utils = NexT.$u = {
       var $imageWrapLink = $image.parent('a');
 
       if ($imageWrapLink.size() < 1) {
-        $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        // todo note
+        $imageWrapLink = $image.wrap('<a href="/note/' + this.getAttribute('src') + '"></a>').parent('a');
+        $image.attr('src', '/note/'+$image.attr('src')); // 可以删除此行
       }
 
       $imageWrapLink.addClass('fancybox');
