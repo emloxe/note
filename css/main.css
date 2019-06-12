@@ -525,6 +525,9 @@ pre code {
 .highlight {
   border-radius: 1px;
 }
+.highlight ::selection {
+  background: #222;
+}
 .highlight pre {
   border: none;
   margin: 0;
@@ -999,6 +1002,7 @@ pre .strong {
 .tag-cloud a {
   display: inline-block;
   margin: 10px;
+  border-bottom-color: #333;
 }
 .back-to-top {
   box-sizing: border-box;
@@ -1354,6 +1358,9 @@ pre .strong {
   font-size: 12px;
   left: 20px;
   top: 5px;
+}
+.posts-collapse .post-meta .about {
+  color: #333;
 }
 .posts-collapse .post-comments-count {
   display: none;
@@ -1742,7 +1749,7 @@ pre .strong {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #17d9af;
+  background: #7199f6;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -2303,6 +2310,9 @@ a.search-result {
 .category-all-page .category-list-item {
   float: left;
   margin: 5px 10px;
+}
+.category-all-page .category-list-item a {
+  color: #333;
 }
 .category-all-page .category-list-count {
   color: #bbb;
