@@ -1750,7 +1750,7 @@ pre .strong {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0ef9e5;
+  background: #21d136;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -2314,7 +2314,7 @@ a.search-result {
 }
 .category-all-page .category-list-item a {
   color: #555;
-  border-color: #333;
+  border-color: #888;
 }
 .category-all-page .category-list-count {
   color: #bbb;

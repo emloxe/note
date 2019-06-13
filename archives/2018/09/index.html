@@ -298,7 +298,7 @@
       
        
         
-      很好! 目前共计 97 篇日志。 努力努力再努力。
+      很好! 目前共计 98 篇日志。 努力努力再努力。
     </span>
 
     
@@ -425,7 +425,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/note/archives">
-                <span class="site-state-item-count">97</span>
+                <span class="site-state-item-count">98</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -696,7 +696,9 @@
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
                 var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
+                // todo note
+                const data_arr = decodeURIComponent(data.url).split('io/');
+                var data_url = data_arr.join('io/note/')
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;

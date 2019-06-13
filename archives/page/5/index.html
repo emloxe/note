@@ -298,7 +298,7 @@
       
        
         
-      很好! 目前共计 97 篇日志。 努力努力再努力。
+      很好! 目前共计 98 篇日志。 努力努力再努力。
     </span>
 
     
@@ -312,6 +312,41 @@
         <div class="collection-title">
           <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
         </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/note/2018/05/30/解锁多种JavaScript数组去重姿势/" itemprop="url">
+              
+                <span itemprop="name">解锁多种JavaScript数组去重姿势</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2018-05-30T00:00:00+08:00" content="2018-05-30">
+          05-30
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
       
       
 
@@ -628,41 +663,6 @@
 
     
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/note/2017/11/27/meta-dns-prefetch/" itemprop="url">
-              
-                <span itemprop="name">meta-dns-prefetch</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-11-27T00:00:00+08:00" content="2017-11-27">
-          11-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
   </section>
 
   
@@ -714,7 +714,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/note/archives">
-                <span class="site-state-item-count">97</span>
+                <span class="site-state-item-count">98</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -985,7 +985,9 @@
                 var content_index = [];
                 var data_title = data.title.trim().toLowerCase();
                 var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                var data_url = decodeURIComponent(data.url);
+                // todo note
+                const data_arr = decodeURIComponent(data.url).split('io/');
+                var data_url = data_arr.join('io/note/')
                 var index_title = -1;
                 var index_content = -1;
                 var first_occur = -1;
