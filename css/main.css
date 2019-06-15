@@ -217,6 +217,9 @@ h6 {
   line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "PingFang SC", "Microsoft YaHei";
 }
+h2 {
+  border-bottom: 1px solid #eee;
+}
 h2,
 h3,
 h4,
@@ -225,27 +228,27 @@ h6 {
   margin: 20px 0 15px;
 }
 h1 {
-  font-size: 24px;
+  font-size: 30px;
 }
 @media (max-width: 767px) {
   h1 {
-    font-size: 20px;
+    font-size: 26px;
   }
 }
 h2 {
-  font-size: 22px;
+  font-size: 26px;
 }
 @media (max-width: 767px) {
   h2 {
-    font-size: 18px;
+    font-size: 22px;
   }
 }
 h3 {
-  font-size: 20px;
+  font-size: 22px;
 }
 @media (max-width: 767px) {
   h3 {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 h4 {
@@ -257,19 +260,19 @@ h4 {
   }
 }
 h5 {
-  font-size: 16px;
-}
-@media (max-width: 767px) {
-  h5 {
-    font-size: 12px;
-  }
-}
-h6 {
   font-size: 14px;
 }
 @media (max-width: 767px) {
-  h6 {
+  h5 {
     font-size: 10px;
+  }
+}
+h6 {
+  font-size: 10px;
+}
+@media (max-width: 767px) {
+  h6 {
+    font-size: 6px;
   }
 }
 p {
@@ -1750,7 +1753,7 @@ pre .strong {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #21d136;
+  background: #f7ffa7;
 }
 .links-of-blogroll {
   font-size: 16px;
@@ -2684,17 +2687,17 @@ hr {
 }
 .posts-expand .post-title {
   position: relative;
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 400;
 }
 @media (max-width: 767px) {
   .posts-expand .post-title {
-    font-size: 20px;
+    font-size: 26px;
   }
 }
 @media (min-width: 1600px) {
   .posts-expand .post-title {
-    font-size: 26px;
+    font-size: 38px;
   }
 }
 .posts-expand .post-title:hover:before {
