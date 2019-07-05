@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[node同步遍历目录]]></title>
+      <url>https://emloxe.github.io/2019/07/01/node%E5%90%8C%E6%AD%A5%E9%81%8D%E5%8E%86%E7%9B%AE%E5%BD%95/</url>
+      <content type="html"><![CDATA[<p>通过node内置的fs模块，遍历文件目录</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> judgePath = <span class="function">(<span class="params">filePath</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> stats = fs.statSync(filePath);</span><br><span class="line">  <span class="keyword">let</span> isFile = stats.isFile(); <span class="comment">//是文件</span></span><br><span class="line">  <span class="keyword">let</span> isDir = stats.isDirectory(); <span class="comment">//是文件夹</span></span><br><span class="line">  <span class="keyword">if</span> (isFile) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(path.join(filePath));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isDir) &#123;</span><br><span class="line">    <span class="keyword">const</span> files = fs.readdirSync(filePath); </span><br><span class="line">    files.forEach(<span class="function">(<span class="params">filename</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> filedir = path.join(filePath, filename);</span><br><span class="line">      judgePath(filedir);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getCatalog = <span class="function">(<span class="params">filePath</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> isExists = fs.existsSync(filePath);</span><br><span class="line">  <span class="keyword">if</span>(isExists)&#123;</span><br><span class="line">    judgePath(filePath);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'over'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'路径输入有误'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用方式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getCatalog(<span class="string">'C:\\Users\\Administrator\\Documents\\mygit\\replace-name'</span>);</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> node </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> js </tag>
+            
+            <tag> node </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[js防抖和节流]]></title>
       <url>https://emloxe.github.io/2019/06/27/js%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81/</url>
       <content type="html"><![CDATA[<p>在代码中，我们经常遇到有些点击或者某些监听在一定时间内多次触发，我们需要阻止类似的时间多次触发，就需要用到防抖和节流。<br>防抖与节流区别就是，假设一个用户一直触发这个函数，且每次触发函数的间隔小于wait，防抖的情况下只会调用一次，而节流的 情况会每隔一定时间（参数wait）调用函数</p>
@@ -2829,34 +2855,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[css居中]]></title>
-      <url>https://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
-      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
-<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
-<p>多个block元素可用css3的flex</p>
-<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
-<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
-<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
-<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">left</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> css </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> css </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[position总结]]></title>
       <url>https://emloxe.github.io/2017/06/26/position%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>position 一共有static relative absolute fixed等属性值<br><a id="more"></a></p>
@@ -2894,12 +2892,40 @@
     </entry>
     
     <entry>
+      <title><![CDATA[css居中]]></title>
+      <url>https://emloxe.github.io/2017/06/26/css%E5%B1%85%E4%B8%AD/</url>
+      <content type="html"><![CDATA[<p>对固定宽高和非固定宽高的div，进行居中的探讨<br><a id="more"></a></p>
+<h2 id="左右居中"><a href="#左右居中" class="headerlink" title="左右居中"></a>左右居中</h2><h3 id="元素为inline-inline-block"><a href="#元素为inline-inline-block" class="headerlink" title="元素为inline inline-block"></a>元素为inline inline-block</h3><h3 id="元素为block"><a href="#元素为block" class="headerlink" title="元素为block"></a>元素为block</h3><p>单个block元素设置 margin: auto</p>
+<p>多个block元素可用css3的flex</p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><h3 id="父元素高度不固定"><a href="#父元素高度不固定" class="headerlink" title="父元素高度不固定"></a>父元素高度不固定</h3><p>可设置父元素<code>padding: 10px 0;</code>元素只适应高度，可做到垂直居中</p>
+<h3 id="父元素高度固定"><a href="#父元素高度固定" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
+<h2 id="左右上下居中"><a href="#左右上下居中" class="headerlink" title="左右上下居中"></a>左右上下居中</h2><h3 id="父元素高度固定-1"><a href="#父元素高度固定-1" class="headerlink" title="父元素高度固定"></a>父元素高度固定</h3><p>已知子元素高度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">height</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-top</span>: <span class="selector-tag">-50px</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 100<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">-50px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>子元素高度不固定<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 50%;</span><br><span class="line"><span class="selector-tag">left</span>: 50%;</span><br><span class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%,, <span class="selector-tag">-50</span>%);</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[js、jq获取距离与宽高]]></title>
       <url>https://emloxe.github.io/2017/05/08/js%E3%80%81jq%E8%8E%B7%E5%8F%96%E8%B7%9D%E7%A6%BB%E4%B8%8E%E5%AE%BD%E9%AB%98/</url>
       <content type="html"><![CDATA[<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="文档的宽高"><a href="#文档的宽高" class="headerlink" title="文档的宽高"></a>文档的宽高</h3><p>网页正文全文宽： <code>document.body.scrollWidth</code><br>网页正文全文高： <code>document.body.scrollHeight</code></p>
 <h3 id="被卷去的"><a href="#被卷去的" class="headerlink" title="被卷去的"></a>被卷去的</h3><p>网页被卷去的高： <code>document.body.scrollTop</code><br>网页被卷去的左： <code>document.body.scrollLeft</code></p>
 <h2 id="window可视区域"><a href="#window可视区域" class="headerlink" title="window可视区域"></a>window可视区域</h2><h3 id="可视区域的宽高"><a href="#可视区域的宽高" class="headerlink" title="可视区域的宽高"></a>可视区域的宽高</h3><p>网页可见区域宽： <code>document.body.clientWidth</code><br>网页可见区域高： <code>document.body.clientHeight</code><br>网页可见区域宽： <code>document.body.offsetWidth (包括边线的宽)</code><br>网页可见区域高： <code>document.body.offsetHeight (包括边线的高)</code></p>
-<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="元素的宽高"><a href="#元素的宽高" class="headerlink" title="元素的宽高"></a>元素的宽高</h3><p>元素的宽： <code>dom.offsetWidth</code><br>元素的高： <code>dom.offsetWidth</code></p>
+<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="元素的宽高"><a href="#元素的宽高" class="headerlink" title="元素的宽高"></a>元素的宽高</h3><p>元素的宽：<br><code>dom.clientWidth</code> width+左右padding+左右border<br><code>dom.offsetWidth</code> width+左右padding+左右border<br>元素的高：<br> <code>dom.clientHeight</code> height+上下padding<br> <code>dom.offsetHeight</code> height+上下padding+上下border</p>
 <h3 id="被卷去的-1"><a href="#被卷去的-1" class="headerlink" title="被卷去的"></a>被卷去的</h3><p><code>scrollWidth</code> 获取对象的滚动宽度<br><code>scrollHeight</code> 获取对象的滚动高度。<br><code>scrollLeft</code> 设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<br><code>scrollTop</code> 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离</p>
 <h3 id="元素相对窗口的位置"><a href="#元素相对窗口的位置" class="headerlink" title="元素相对窗口的位置"></a>元素相对窗口的位置</h3><p><code>dom.getBoundingClientRect()</code> 方法返回元素的大小及其相对于视口的位置。</p>
 <p>存储canvas画布相关信息<br>width: 包含padding左右,border左右,content<br>height: 包含padding上下,border上下,content<br>top: canvas左上角在document文档的top - document上下已卷过的高度（上下滚动条已滚过的高度）<br>left: canvas左上角在document文档的left - document左右已卷过的长度（左右滚动条已滚过的左边的长度）</p>
