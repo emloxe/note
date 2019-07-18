@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="ssh登录lunix输入以下，name为用户名，url为地址，地址可以是域名或IPv41$ ssh name@url windows的CMD无法通过ssh连接，可以用git bash连接 WinSCP如果你使用的是windows电脑，文件传输其实可以通过桌面应用进行文件快速的管理 下载地址链接: https://pan.baidu.com/s/1ry3W7YPJn69gG5_Gp2j6sQ 密码">
+<meta name="description" content="在lunix快速搭载简单node服务">
 <meta name="keywords" content="lunix">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在lunix搭载node服务">
 <meta property="og:url" content="https://emloxe.github.io/2018/04/03/在lunix搭载node服务/index.html">
 <meta property="og:site_name" content="zwj-notes">
-<meta property="og:description" content="ssh登录lunix输入以下，name为用户名，url为地址，地址可以是域名或IPv41$ ssh name@url windows的CMD无法通过ssh连接，可以用git bash连接 WinSCP如果你使用的是windows电脑，文件传输其实可以通过桌面应用进行文件快速的管理 下载地址链接: https://pan.baidu.com/s/1ry3W7YPJn69gG5_Gp2j6sQ 密码">
+<meta property="og:description" content="在lunix快速搭载简单node服务">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://emloxe.github.io/images/2018040301.png">
-<meta property="og:updated_time" content="2019-06-18T15:20:05.941Z">
+<meta property="og:updated_time" content="2019-07-16T14:23:47.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在lunix搭载node服务">
-<meta name="twitter:description" content="ssh登录lunix输入以下，name为用户名，url为地址，地址可以是域名或IPv41$ ssh name@url windows的CMD无法通过ssh连接，可以用git bash连接 WinSCP如果你使用的是windows电脑，文件传输其实可以通过桌面应用进行文件快速的管理 下载地址链接: https://pan.baidu.com/s/1ry3W7YPJn69gG5_Gp2j6sQ 密码">
+<meta name="twitter:description" content="在lunix快速搭载简单node服务">
 <meta name="twitter:image" content="https://emloxe.github.io/images/2018040301.png">
 
 
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-18T23:20:05+08:00">
-                2019-06-18
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-16T22:23:47+08:00">
+                2019-07-16
               </time>
             
           </span>
@@ -424,7 +424,7 @@
       
 
       
-        <a id="more"></a>
+        <p>在lunix快速搭载简单node服务<br><a id="more"></a></p>
 <h2 id="ssh登录lunix"><a href="#ssh登录lunix" class="headerlink" title="ssh登录lunix"></a>ssh登录lunix</h2><p>输入以下，name为用户名，url为地址，地址可以是域名或IPv4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh name@url</span><br></pre></td></tr></table></figure></p>
 <p>windows的CMD无法通过ssh连接，可以用git bash连接</p>
 <h2 id="WinSCP"><a href="#WinSCP" class="headerlink" title="WinSCP"></a>WinSCP</h2><p>如果你使用的是windows电脑，文件传输其实可以通过桌面应用进行文件快速的管理</p>
@@ -452,6 +452,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># npm install forever -g        #安装</span><br></pre></td></tr></table></figure>
 <p>全局安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ln -s /app/software/nodejs/lib/node_modules/forever/bin/forever /usr/local/bin/</span><br></pre></td></tr></table></figure></p>
 <p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># forever start app.js          #启动</span><br><span class="line"># forever stop app.js           #关闭</span><br><span class="line"># forever start -l forever.log -o out.log -e err.log app.js   #输出日志和错误</span><br></pre></td></tr></table></figure></p>
+<p>其他常用操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">forever restart app.js   #重启应用</span><br><span class="line">forever stopall          #关闭所有应用</span><br><span class="line">forever restartall       #重启所有应用</span><br><span class="line">forever list             #显示所有运行的应用</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -569,7 +570,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/note/archives">
-                <span class="site-state-item-count">104</span>
+                <span class="site-state-item-count">107</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -578,7 +579,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/note/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -587,7 +588,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/note/tags">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">63</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
