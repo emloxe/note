@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://emloxe.github.io/images/2017032303.jpg">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032303.jpg">
 <meta property="og:image" content="https://emloxe.github.io/images/2017032305.jpg">
-<meta property="og:updated_time" content="2019-05-07T14:12:49.000Z">
+<meta property="og:updated_time" content="2019-07-27T02:44:15.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas基本操作">
 <meta name="twitter:description" content="canvas基本操作的学习">
@@ -367,8 +367,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-07T22:12:49+08:00">
-                2019-05-07
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-27T10:44:15+08:00">
+                2019-07-27
               </time>
             
           </span>
@@ -529,7 +529,7 @@
 <p>width为绘制的宽度，当绘制内容大于width时，内容会被压缩，小于width值时，按原来的比例正常显示<br>注意x,y定义的是绘制的起点，默认textAlign为start，但并不是指文本的左上角位置而是左下角</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctx.font=<span class="string">'30px Arial'</span>;  <span class="comment">// 字号 字体</span></span><br><span class="line">ctx.fillText(<span class="string">'Hello World'</span>, <span class="number">20</span>, <span class="number">50</span>);  <span class="comment">// 内容 起始位置</span></span><br></pre></td></tr></table></figure>
 <p><img src="/images/2017032301.jpg" alt="images"></p>
-<h4 id="textAlign"><a href="#textAlign" class="headerlink" title="textAlign"></a>textAlign</h4><p>textAlign值还有start，end，left，center，right<br><a href="https://emloxe.github.io/e-test/2017032301.html">textAlign展示请点击此处</a></p>
+<h4 id="textAlign"><a href="#textAlign" class="headerlink" title="textAlign"></a>textAlign</h4><p>textAlign值还有start，end，left，center，right<br><a href="https://emloxe.github.io/test/2017032301.html">textAlign展示请点击此处</a></p>
 <h4 id="textBaseline"><a href="#textBaseline" class="headerlink" title="textBaseline"></a>textBaseline</h4><table>
 <thead>
 <tr>
@@ -581,11 +581,11 @@
 <h3 id="阴影-Shadows"><a href="#阴影-Shadows" class="headerlink" title="阴影 Shadows"></a>阴影 Shadows</h3><p><code>shadowOffsetX = float</code><br>shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离，它们是不受变换矩阵所影响的。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0。</p>
 <p><code>shadowOffsetY = float</code><br>shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离，它们是不受变换矩阵所影响的。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0。<br><code>shadowBlur = float</code><br>shadowBlur 用于设定阴影的模糊程度，其数值并不跟像素数量挂钩，也不受变换矩阵的影响，默认为 0。<br><code>shadowColor = color</code><br>shadowColor 是标准的 CSS 颜色值，用于设定阴影颜色效果，默认是全透明的黑色。</p>
 <h3 id="globalCompositeOperation"><a href="#globalCompositeOperation" class="headerlink" title="globalCompositeOperation"></a>globalCompositeOperation</h3><p><code>globalCompositeOperation = type</code><br>这个属性设定了在画新图形时采用的遮盖策略，其值是一个标识12种遮盖方式的字符串。</p>
-<p><a href="https://emloxe.github.io/e-test/compositing.html">效果展示</a></p>
+<p><a href="https://emloxe.github.io/test/compositing.html">效果展示</a></p>
 <h2 id="其他方法属性"><a href="#其他方法属性" class="headerlink" title="其他方法属性"></a>其他方法属性</h2><h3 id="整体设置透明度-globalAlpha"><a href="#整体设置透明度-globalAlpha" class="headerlink" title="整体设置透明度 globalAlpha"></a>整体设置透明度 globalAlpha</h3><p>除了可以绘制实色图形，我们还可以用 canvas 来绘制半透明的图形。通过设置 globalAlpha 属性或者使用一个半透明颜色作为轮廓或填充的样式。</p>
 <p><code>globalAlpha = transparencyValue</code><br>这个属性影响到 canvas 里所有图形的透明度，有效的值范围是 0.0 （完全透明）到 1.0（完全不透明），默认是 1.0。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.globalAlpha = <span class="number">0.5</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="获取文本在canvas画布上的长度"><a href="#获取文本在canvas画布上的长度" class="headerlink" title="获取文本在canvas画布上的长度"></a>获取文本在canvas画布上的长度</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.measureText(<span class="string">'hello world'</span>).width</span><br></pre></td></tr></table></figure>
-<p>实际上 <code>ctx.measureText(&#39;hello world&#39;).width</code>获取的是近似值<br><a href="https://emloxe.github.io/e-test/2017032302.html">效果查看</a></p>
+<p>实际上 <code>ctx.measureText(&#39;hello world&#39;).width</code>获取的是近似值<br><a href="https://emloxe.github.io/test/2017032302.html">效果查看</a></p>
 <h3 id="beginPath-和closePath"><a href="#beginPath-和closePath" class="headerlink" title="beginPath()和closePath()"></a>beginPath()和closePath()</h3><h4 id="beginPath"><a href="#beginPath" class="headerlink" title="beginPath()"></a>beginPath()</h4><p>方法开始一条路径，或重置当前的路径</p>
 <p>如下代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c=<span class="built_in">document</span>.getElementById(<span class="string">'myCanvas'</span>);</span><br><span class="line"><span class="keyword">var</span> ctx=c.getContext(<span class="string">'2d'</span>);</span><br><span class="line"><span class="comment">//第一条线            </span></span><br><span class="line">ctx.lineWidth = <span class="number">5</span>;</span><br><span class="line">ctx.strokeStyle = <span class="string">'green'</span>;  <span class="comment">// 绿色路径</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>, <span class="number">75</span>);</span><br><span class="line">ctx.lineTo(<span class="number">150</span>, <span class="number">75</span>);</span><br><span class="line">ctx.stroke();   </span><br><span class="line"><span class="comment">// 第二条线</span></span><br><span class="line">ctx.strokeStyle = <span class="string">'purple'</span>;  <span class="comment">// 紫色的路径</span></span><br><span class="line">ctx.moveTo(<span class="number">0</span>, <span class="number">100</span>);</span><br><span class="line">ctx.lineTo(<span class="number">150</span>, <span class="number">100</span>);            </span><br><span class="line">ctx.stroke();</span><br></pre></td></tr></table></figure></p>
 <p>会画出如下的图<br><img src="/images/2017032302.jpg" alt="images"><br>并不是一条绿色一条紫色的线<br><code>ctx.strokeStyle = &#39;purple&#39;</code>覆盖了<code>ctx.strokeStyle = &#39;green&#39;</code></p>
@@ -631,8 +631,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/note/2017/03/17/requireJS学习笔记/" rel="next" title="requireJS学习笔记">
-                <i class="fa fa-chevron-left"></i> requireJS学习笔记
+              <a href="/note/2017/03/23/数据处理总结/" rel="next" title="数据处理总结">
+                <i class="fa fa-chevron-left"></i> 数据处理总结
               </a>
             
           </div>
@@ -641,8 +641,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/note/2017/03/23/数据处理总结/" rel="prev" title="数据处理总结">
-                数据处理总结 <i class="fa fa-chevron-right"></i>
+              <a href="/note/2017/03/24/js'='复制还是引用/" rel="prev" title="js'='的作用">
+                js'='的作用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -725,7 +725,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/note/categories">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -734,7 +734,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/note/tags">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
