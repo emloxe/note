@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[vue表单组件使用v-model传递数据]]></title>
+      <url>https://emloxe.github.io/2019/08/27/vue%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8v-model%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE/</url>
+      <content type="html"><![CDATA[<p>vue组件直接采用v-model触发<br><a id="more"></a></p>
+<p>MyComponent.vue<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">:value</span>=<span class="string">"value"</span> @<span class="attr">input</span>=<span class="string">"handleInput"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  props: [<span class="string">'value'</span>],</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    handleInput() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> value = event.target.value;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">this</span>.$emit(<span class="string">'input'</span>, value);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;my-component v-model=&quot;someRootProperty&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> vue </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 框架 </tag>
+            
+            <tag> vue </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[css等待动效]]></title>
       <url>https://emloxe.github.io/2019/08/01/css%E7%AD%89%E5%BE%85%E5%8A%A8%E6%95%88/</url>
       <content type="html"><![CDATA[<p>在打开一个新页面，等待资源加载的时候，会出现白屏的现，我们可以给一个全局的遮罩，等待加载完成的时候给遮罩取消就好了。<br><a id="more"></a><br>代码如下：</p>
@@ -1593,7 +1618,8 @@
 <h3 id="项目下安装"><a href="#项目下安装" class="headerlink" title="项目下安装"></a>项目下安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint&quot;: &quot;^5.16.0&quot;,</span><br><span class="line">&quot;eslint-config-airbnb-base&quot;: &quot;^13.1.0&quot;,</span><br><span class="line">&quot;eslint-plugin-import&quot;: &quot;^2.16.0&quot;,</span><br><span class="line">&quot;eslint-plugin-prettier&quot;: &quot;^3.0.1&quot;</span><br></pre></td></tr></table></figure>
 <p><code>npm i --save-dev eslint eslint-config-airbnb-base eslint-plugin-import eslint-plugin-prettier</code></p>
 <h3 id="配置eslint的文档"><a href="#配置eslint的文档" class="headerlink" title="配置eslint的文档"></a>配置eslint的文档</h3><p>在需要的项目下<br>.eslintrc.json 配置如下<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"airbnb-base"</span>,</span><br><span class="line">  <span class="attr">"plugins"</span>: [<span class="string">"prettier"</span>],</span><br><span class="line">  <span class="attr">"env"</span>: &#123;</span><br><span class="line">    <span class="attr">"browser"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"globals"</span>: &#123;</span><br><span class="line">    <span class="attr">"$"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"echarts"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"twaver"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    <span class="attr">"class-methods-use-this"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"func-names"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"import/extensions"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"import/prefer-default-export"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"max-len"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-bitwise"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-console"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-lonely-if"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-param-reassign"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-plusplus"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-multi-assign"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-nested-ternary"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-this-before-super"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-use-before-define"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-empty"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"eol-last"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"linebreak-style"</span>: [<span class="string">"off"</span>, <span class="string">"windows"</span>],</span><br><span class="line">    <span class="attr">"no-underscore-dangle"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-control-regex"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-restricted-properties"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-unused-vars"</span>: [</span><br><span class="line">      <span class="string">"error"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"vars"</span>: <span class="string">"all"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: <span class="string">"none"</span>,</span><br><span class="line">        <span class="attr">"ignoreRestSiblings"</span>: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"one-var"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"prefer-const"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"prefer-destructuring"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"settings"</span>: &#123;</span><br><span class="line">    <span class="attr">"import/resolver"</span>: &#123;</span><br><span class="line">      <span class="attr">"node"</span>: &#123;</span><br><span class="line">        <span class="attr">"moduleDirectory"</span>: [<span class="string">"node_modules"</span>, <span class="string">"docs/js/libs/"</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>项目配置后<br>打开文件eslint就直接对文档进行检验<br>组合键 <code>shift+ctrl+p</code>输入<code>format document</code>回车<br><img src="/images/2019031301.png" alt="images"><br>格式化插件会根据eslint规范对代码进行格式化，不仅仅是美化</p>
+<p>项目配置后<br>打开文件eslint就直接对文档进行检验<br>组合键 <code>shift+ctrl+p</code>输入<code>format document</code>回车<br>根据图片提示<code>shift+alt+f</code>这样输入也是可以的<br><img src="/images/2019031301.png" alt="images"><br>格式化插件会根据eslint规范对代码进行格式化，不仅仅是美化</p>
+<p>也可以设置自动格式化<br><img src="/images/2019031302.png" alt="images"></p>
 <h2 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h2><h3 id="安装sublime插件"><a href="#安装sublime插件" class="headerlink" title="安装sublime插件"></a>安装sublime插件</h3><p><em>SublimeLinter</em><br>是一个代码检查框架插件，功能非常强大，支持各种语言的检查。但是它本身并没有代码检查的功能，需要借助 ESLint 这样的特定语言检查支持。</p>
 <p><em>SublimeLinter-eslint</em> 与SublimeLinter搭配使用</p>
 <p><em>ESLint formatter</em> 代码格式化 代码格式化使用<code>ctrol+shift+h</code></p>
@@ -1616,9 +1642,9 @@
             
             <tag> sublime </tag>
             
-            <tag> vscode </tag>
-            
             <tag> eslint </tag>
+            
+            <tag> vscode </tag>
             
         </tags>
         
@@ -1726,9 +1752,9 @@
             
             <tag> js </tag>
             
-            <tag> 国际化 </tag>
-            
             <tag> ajax </tag>
+            
+            <tag> 国际化 </tag>
             
         </tags>
         
@@ -1933,6 +1959,8 @@
 </li>
 <li><p>Ctrl+]  增加缩进</p>
 </li>
+<li><p>Ctrl+</p>
+</li>
 <li><p>鼠标选中文本，按下Alt+F3  一次性选择全部的相同文本进行同时编辑</p>
 </li>
 </ul>
@@ -1947,6 +1975,8 @@
 <h3 id="ESLint"><a href="#ESLint" class="headerlink" title="ESLint"></a>ESLint</h3><p>代码检测</p>
 <h3 id="One-Monokai"><a href="#One-Monokai" class="headerlink" title="One Monokai"></a>One Monokai</h3><p>颜色主题</p>
 <h3 id="GitLens-—-Git-supercharged"><a href="#GitLens-—-Git-supercharged" class="headerlink" title="GitLens — Git supercharged"></a>GitLens — Git supercharged</h3><p>可以查看当前文件，每一行修改的记录</p>
+<h3 id="Auto-Rename-Tag"><a href="#Auto-Rename-Tag" class="headerlink" title="Auto Rename Tag"></a>Auto Rename Tag</h3><p>tag 同步修改</p>
+<h3 id="Bracket-Pair-Colorizer-1"><a href="#Bracket-Pair-Colorizer-1" class="headerlink" title="Bracket Pair Colorizer"></a>Bracket Pair Colorizer</h3><p>对称更改括号颜色</p>
 ]]></content>
       
         <categories>
@@ -3572,7 +3602,8 @@
       <content type="html"><![CDATA[<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="文档的宽高"><a href="#文档的宽高" class="headerlink" title="文档的宽高"></a>文档的宽高</h3><p>网页正文全文宽： <code>document.body.scrollWidth</code><br>网页正文全文高： <code>document.body.scrollHeight</code></p>
 <h3 id="被卷去的"><a href="#被卷去的" class="headerlink" title="被卷去的"></a>被卷去的</h3><p>网页被卷去的高： <code>document.body.scrollTop</code><br>网页被卷去的左： <code>document.body.scrollLeft</code></p>
 <h2 id="window可视区域"><a href="#window可视区域" class="headerlink" title="window可视区域"></a>window可视区域</h2><h3 id="可视区域的宽高"><a href="#可视区域的宽高" class="headerlink" title="可视区域的宽高"></a>可视区域的宽高</h3><p>网页可见区域宽： <code>document.body.clientWidth</code><br>网页可见区域高： <code>document.body.clientHeight</code><br>网页可见区域宽： <code>document.body.offsetWidth (包括边线的宽)</code><br>网页可见区域高： <code>document.body.offsetHeight (包括边线的高)</code></p>
-<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="元素的宽高"><a href="#元素的宽高" class="headerlink" title="元素的宽高"></a>元素的宽高</h3><p>元素的宽：<br><code>dom.clientWidth</code> width+左右padding+左右border<br><code>dom.offsetWidth</code> width+左右padding+左右border<br>元素的高：<br> <code>dom.clientHeight</code> height+上下padding<br> <code>dom.offsetHeight</code> height+上下padding+上下border</p>
+<h2 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h2><h3 id="元素的宽高"><a href="#元素的宽高" class="headerlink" title="元素的宽高"></a>元素的宽高</h3><p>元素的宽：<br><code>dom.clientWidth</code> width+左右padding<br><code>dom.offsetWidth</code> width+左右padding+左右border<br>元素的高：<br> <code>dom.clientHeight</code> height+上下padding<br> <code>dom.offsetHeight</code> height+上下padding+上下border</p>
+<p>还可以通过方法 <code>getComputedStyle()</code>， 方法返回一个对象，该对象在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有CSS属性的值。</p>
 <h3 id="被卷去的-1"><a href="#被卷去的-1" class="headerlink" title="被卷去的"></a>被卷去的</h3><p><code>scrollWidth</code> 获取对象的滚动宽度<br><code>scrollHeight</code> 获取对象的滚动高度。<br><code>scrollLeft</code> 设置或获取位于对象左边界和窗口中目前可见内容的最左端之间的距离<br><code>scrollTop</code> 设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离</p>
 <h3 id="元素相对窗口的位置"><a href="#元素相对窗口的位置" class="headerlink" title="元素相对窗口的位置"></a>元素相对窗口的位置</h3><p><code>dom.getBoundingClientRect()</code> 方法返回元素的大小及其相对于视口的位置。</p>
 <p>存储canvas画布相关信息<br>width: 包含padding左右,border左右,content<br>height: 包含padding上下,border上下,content<br>top: canvas左上角在document文档的top - document上下已卷过的高度（上下滚动条已滚过的高度）<br>left: canvas左上角在document文档的left - document左右已卷过的长度（左右滚动条已滚过的左边的长度）</p>

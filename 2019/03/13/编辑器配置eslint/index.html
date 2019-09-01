@@ -68,7 +68,7 @@
 <link href="/note/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="sublime,vscode,eslint,">
+  <meta name="keywords" content="sublime,eslint,vscode,">
 
 
 
@@ -85,7 +85,7 @@
 
 
 <meta name="description" content="vs code安装vs code插件eslintPrettier - Code formatter 项目下安装1234&amp;quot;eslint&amp;quot;: &amp;quot;^5.16.0&amp;quot;,&amp;quot;eslint-config-airbnb-base&amp;quot;: &amp;quot;^13.1.0&amp;quot;,&amp;quot;eslint-plugin-import&amp;quot;: &amp;quot;^2">
-<meta name="keywords" content="sublime,vscode,eslint">
+<meta name="keywords" content="sublime,eslint,vscode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编辑器配置eslint">
 <meta property="og:url" content="https://emloxe.github.io/2019/03/13/编辑器配置eslint/index.html">
@@ -93,7 +93,8 @@
 <meta property="og:description" content="vs code安装vs code插件eslintPrettier - Code formatter 项目下安装1234&amp;quot;eslint&amp;quot;: &amp;quot;^5.16.0&amp;quot;,&amp;quot;eslint-config-airbnb-base&amp;quot;: &amp;quot;^13.1.0&amp;quot;,&amp;quot;eslint-plugin-import&amp;quot;: &amp;quot;^2">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://emloxe.github.io/images/2019031301.png">
-<meta property="og:updated_time" content="2019-04-23T14:05:07.000Z">
+<meta property="og:image" content="https://emloxe.github.io/images/2019031302.png">
+<meta property="og:updated_time" content="2019-08-20T13:51:38.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编辑器配置eslint">
 <meta name="twitter:description" content="vs code安装vs code插件eslintPrettier - Code formatter 项目下安装1234&amp;quot;eslint&amp;quot;: &amp;quot;^5.16.0&amp;quot;,&amp;quot;eslint-config-airbnb-base&amp;quot;: &amp;quot;^13.1.0&amp;quot;,&amp;quot;eslint-plugin-import&amp;quot;: &amp;quot;^2">
@@ -359,8 +360,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-23T22:05:07+08:00">
-                2019-04-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-20T21:51:38+08:00">
+                2019-08-20
               </time>
             
           </span>
@@ -428,7 +429,8 @@
 <h3 id="项目下安装"><a href="#项目下安装" class="headerlink" title="项目下安装"></a>项目下安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;eslint&quot;: &quot;^5.16.0&quot;,</span><br><span class="line">&quot;eslint-config-airbnb-base&quot;: &quot;^13.1.0&quot;,</span><br><span class="line">&quot;eslint-plugin-import&quot;: &quot;^2.16.0&quot;,</span><br><span class="line">&quot;eslint-plugin-prettier&quot;: &quot;^3.0.1&quot;</span><br></pre></td></tr></table></figure>
 <p><code>npm i --save-dev eslint eslint-config-airbnb-base eslint-plugin-import eslint-plugin-prettier</code></p>
 <h3 id="配置eslint的文档"><a href="#配置eslint的文档" class="headerlink" title="配置eslint的文档"></a>配置eslint的文档</h3><p>在需要的项目下<br>.eslintrc.json 配置如下<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"airbnb-base"</span>,</span><br><span class="line">  <span class="attr">"plugins"</span>: [<span class="string">"prettier"</span>],</span><br><span class="line">  <span class="attr">"env"</span>: &#123;</span><br><span class="line">    <span class="attr">"browser"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"globals"</span>: &#123;</span><br><span class="line">    <span class="attr">"$"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"echarts"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"twaver"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"rules"</span>: &#123;</span><br><span class="line">    <span class="attr">"class-methods-use-this"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"func-names"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"import/extensions"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"import/prefer-default-export"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"max-len"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-bitwise"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-console"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-lonely-if"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-param-reassign"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-plusplus"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-multi-assign"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-nested-ternary"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-this-before-super"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-use-before-define"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-empty"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"eol-last"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"linebreak-style"</span>: [<span class="string">"off"</span>, <span class="string">"windows"</span>],</span><br><span class="line">    <span class="attr">"no-underscore-dangle"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-control-regex"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-restricted-properties"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-useless-escape"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"no-unused-vars"</span>: [</span><br><span class="line">      <span class="string">"error"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">"vars"</span>: <span class="string">"all"</span>,</span><br><span class="line">        <span class="attr">"args"</span>: <span class="string">"none"</span>,</span><br><span class="line">        <span class="attr">"ignoreRestSiblings"</span>: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"one-var"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"prefer-const"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"prefer-destructuring"</span>: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"settings"</span>: &#123;</span><br><span class="line">    <span class="attr">"import/resolver"</span>: &#123;</span><br><span class="line">      <span class="attr">"node"</span>: &#123;</span><br><span class="line">        <span class="attr">"moduleDirectory"</span>: [<span class="string">"node_modules"</span>, <span class="string">"docs/js/libs/"</span>]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>项目配置后<br>打开文件eslint就直接对文档进行检验<br>组合键 <code>shift+ctrl+p</code>输入<code>format document</code>回车<br><img src="/images/2019031301.png" alt="images"><br>格式化插件会根据eslint规范对代码进行格式化，不仅仅是美化</p>
+<p>项目配置后<br>打开文件eslint就直接对文档进行检验<br>组合键 <code>shift+ctrl+p</code>输入<code>format document</code>回车<br>根据图片提示<code>shift+alt+f</code>这样输入也是可以的<br><img src="/images/2019031301.png" alt="images"><br>格式化插件会根据eslint规范对代码进行格式化，不仅仅是美化</p>
+<p>也可以设置自动格式化<br><img src="/images/2019031302.png" alt="images"></p>
 <h2 id="sublime"><a href="#sublime" class="headerlink" title="sublime"></a>sublime</h2><h3 id="安装sublime插件"><a href="#安装sublime插件" class="headerlink" title="安装sublime插件"></a>安装sublime插件</h3><p><em>SublimeLinter</em><br>是一个代码检查框架插件，功能非常强大，支持各种语言的检查。但是它本身并没有代码检查的功能，需要借助 ESLint 这样的特定语言检查支持。</p>
 <p><em>SublimeLinter-eslint</em> 与SublimeLinter搭配使用</p>
 <p><em>ESLint formatter</em> 代码格式化 代码格式化使用<code>ctrol+shift+h</code></p>
@@ -463,9 +465,9 @@
           
             <a href="/note/tags/sublime/" rel="tag"># sublime</a>
           
-            <a href="/note/tags/vscode/" rel="tag"># vscode</a>
-          
             <a href="/note/tags/eslint/" rel="tag"># eslint</a>
+          
+            <a href="/note/tags/vscode/" rel="tag"># vscode</a>
           
         </div>
       
@@ -559,7 +561,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/note/archives">
-                <span class="site-state-item-count">110</span>
+                <span class="site-state-item-count">111</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
