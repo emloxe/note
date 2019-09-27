@@ -68,7 +68,7 @@
 <link href="/note/css/main.css?v=5.1.0" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="js,">
 
 
 
@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="随心，随性">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zwj-notes">
-<meta property="og:url" content="https://emloxe.github.io/tags/webpack/index.html">
+<meta name="description" content="导出一个方法文件(test1.js)只需要导出一个方法或其他配置12const test1 = () =&amp;gt; &amp;#123;&amp;#125;;export default test1; 引入时1import test1 from &apos;./test1&apos;; 导出多个方法文件(test2.js)只需要导出多个方法或其他配置12export const test2 = () =&amp;gt; &amp;#123;&amp;#125">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6的模块导入导出">
+<meta property="og:url" content="https://emloxe.github.io/2019/09/25/es6的模块导入导出/index.html">
 <meta property="og:site_name" content="zwj-notes">
-<meta property="og:description" content="随心，随性">
+<meta property="og:description" content="导出一个方法文件(test1.js)只需要导出一个方法或其他配置12const test1 = () =&amp;gt; &amp;#123;&amp;#125;;export default test1; 引入时1import test1 from &apos;./test1&apos;; 导出多个方法文件(test2.js)只需要导出多个方法或其他配置12export const test2 = () =&amp;gt; &amp;#123;&amp;#125">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-27T15:22:56.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zwj-notes">
-<meta name="twitter:description" content="随心，随性">
+<meta name="twitter:title" content="es6的模块导入导出">
+<meta name="twitter:description" content="导出一个方法文件(test1.js)只需要导出一个方法或其他配置12const test1 = () =&amp;gt; &amp;#123;&amp;#125;;export default test1; 引入时1import test1 from &apos;./test1&apos;; 导出多个方法文件(test2.js)只需要导出多个方法或其他配置12export const test2 = () =&amp;gt; &amp;#123;&amp;#125">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://emloxe.github.io/tags/webpack/">
+  <link rel="canonical" href="https://emloxe.github.io/2019/09/25/es6的模块导入导出/">
 
 
 
 
 
-  <title> 标签: webpack | zwj-notes </title>
+  <title> es6的模块导入导出 | zwj-notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -167,7 +169,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -290,44 +292,201 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2>
-        webpack
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://emloxe.github.io/note/2019/09/25/es6的模块导入导出/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="emloxe">
+    <meta itemprop="description" content>
+    <meta itemprop="image" content="/note/images/zwj.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="zwj-notes">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="zwj-notes" src="/images/">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                es6的模块导入导出
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-25T00:00:00+08:00">
+                2019-09-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-27T23:22:56+08:00">
+                2019-09-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/note/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/note/2019/09/25/es6的模块导入导出/" class="leancloud_visitors" data-flag-title="es6的模块导入导出">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="导出一个方法"><a href="#导出一个方法" class="headerlink" title="导出一个方法"></a>导出一个方法</h2><p>文件(test1.js)只需要导出一个方法或其他配置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test1 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> test1;</span><br></pre></td></tr></table></figure></p>
+<p>引入时<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> test1 <span class="keyword">from</span> <span class="string">'./test1'</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="导出多个方法"><a href="#导出多个方法" class="headerlink" title="导出多个方法"></a>导出多个方法</h2><p>文件(test2.js)只需要导出多个方法或其他配置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> test2 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> test22 = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>引入时全部引入<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> test <span class="keyword">from</span> <span class="string">'./test2'</span>;</span><br><span class="line">test.test2();</span><br></pre></td></tr></table></figure></p>
+<p>或者只引入需要的函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;test2&#125; <span class="keyword">from</span> <span class="string">'./test2'</span>;</span><br><span class="line">test1();</span><br></pre></td></tr></table></figure></p>
+<h2 id="导入汇总后导出"><a href="#导入汇总后导出" class="headerlink" title="导入汇总后导出"></a>导入汇总后导出</h2><p>还是以以上文件为例<br>在uitls文件夹下，有<code>test1.js</code> <code>test2.js</code><br>每次需要某个方法，就哪个引入文件，如果同时需要以上多个文件的方法，一个一个引入会比较麻烦<br>可以在utils文件夹下创建<code>index.js</code>，在该文件中把所有方法引入</p>
+<pre><code>export { default as test1 } from &apos;./test1&apos;;
+export * from &apos;./test2&apos;;
+</code></pre>
+      
+    </div>
 
-      <h1 class="post-title">
+    <div>
+      
         
-            <a class="post-title-link" href="/note/2017/03/15/webpack快速搭建/" itemprop="url">
-              
-                <span itemprop="name">webpack快速搭建</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-03-15T00:00:00+08:00" content="2017-03-15">
-          03-15
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/note/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/note/2019/09/12/vue表单回车触发提交/" rel="next" title="vue表单回车触发提交">
+                <i class="fa fa-chevron-left"></i> vue表单回车触发提交
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -335,6 +494,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
 
 <!-- UY BEGIN  友言评论 -->
@@ -359,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/note/images/zwj.jpg" alt="emloxe">
           <p class="site-author-name" itemprop="name">emloxe</p>
@@ -452,6 +624,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#导出一个方法"><span class="nav-number">1.</span> <span class="nav-text">导出一个方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出多个方法"><span class="nav-number">2.</span> <span class="nav-text">导出多个方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入汇总后导出"><span class="nav-number">3.</span> <span class="nav-text">导入汇总后导出</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -551,6 +739,10 @@
   
 
   
+  <script type="text/javascript" src="/note/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/note/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -582,6 +774,10 @@
 
   
 
+  
+      <!-- UY BEGIN -->
+      
+      <!-- UY END -->
   
 
 
