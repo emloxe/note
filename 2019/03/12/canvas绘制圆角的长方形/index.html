@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="zwj-notes">
 <meta property="og:description" content="arcTo简介arcTo() 方法在画布上创建介于两个切线之间的弧/曲线。 JavaScript 语法： context.arcTo(x1,y1,x2,y2,r); 参数值    参数 描述     x1 弧的起点的 x 坐标。   y1 弧的起点的 y 坐标。   x2 弧的终点的 x 坐标。   y2 弧的终点的 y 坐标。   r 弧的半径。    代码1234567891011121314">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-06T00:22:39.000Z">
+<meta property="og:updated_time" content="2019-11-19T22:31:37.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas绘制圆角的长方形">
 <meta name="twitter:description" content="arcTo简介arcTo() 方法在画布上创建介于两个切线之间的弧/曲线。 JavaScript 语法： context.arcTo(x1,y1,x2,y2,r); 参数值    参数 描述     x1 弧的起点的 x 坐标。   y1 弧的起点的 y 坐标。   x2 弧的终点的 x 坐标。   y2 弧的终点的 y 坐标。   r 弧的半径。    代码1234567891011121314">
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-06T08:22:39+08:00">
-                2019-05-06
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-20T06:31:37+08:00">
+                2019-11-20
               </time>
             
           </span>
@@ -486,6 +486,7 @@
 </tbody>
 </table>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 绘制带弧度的长方形</span></span><br><span class="line"><span class="comment"> * @param  &#123;Object&#125; ctx  2d画布</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; left 绘制起点x</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; top  绘制起点y</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; w    宽度</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; h    高度</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; radius 圆角半径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">roundedRect</span>(<span class="params">ctx, left, top, w, h, radius</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> maxRadius = <span class="built_in">Math</span>.min(width, height) / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">if</span>(radius &gt; maxRadius)&#123;</span><br><span class="line">    radius = maxRadius;</span><br><span class="line">  &#125;</span><br><span class="line">  ctx.moveTo(left, top + radius);</span><br><span class="line">  ctx.quadraticCurveTo(left, top, left + radius, top);</span><br><span class="line">  ctx.lineTo(left + w - radius, top);</span><br><span class="line">  ctx.quadraticCurveTo(left + w, top, left + w, top + radius);</span><br><span class="line">  ctx.lineTo(left + w, top + h - radius);</span><br><span class="line">  ctx.quadraticCurveTo(left + w, top + h, left + w - radius, top + h);</span><br><span class="line">  ctx.lineTo(left + radius, top + h);</span><br><span class="line">  ctx.quadraticCurveTo(left, top + h, left, top + h - radius);</span><br><span class="line">  ctx.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="绘制气泡"><a href="#绘制气泡" class="headerlink" title="绘制气泡"></a>绘制气泡</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> createBackground = <span class="function">(<span class="params">ctx, x, y, width, height, lineWidth, radius</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.fillStyle = <span class="string">'#3e76aa'</span>;</span><br><span class="line">  ctx.strokeStyle = <span class="string">'#1dceb7'</span>;</span><br><span class="line">  ctx.lineWidth = lineWidth;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> offset = lineWidth + <span class="number">2</span>;</span><br><span class="line">  width -= offset;</span><br><span class="line">  height -= offset;</span><br><span class="line">  x += offset / <span class="number">2</span>;</span><br><span class="line">  y += offset / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> maxRadius = <span class="built_in">Math</span>.min(width, height) / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">if</span> (radius &gt; maxRadius) &#123;</span><br><span class="line">    radius = maxRadius;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> interval = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">const</span> rx = x + width;</span><br><span class="line">  <span class="keyword">const</span> ry = y + height - interval;</span><br><span class="line"></span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.moveTo(x, y + radius);</span><br><span class="line">  ctx.lineTo(x, ry - radius);</span><br><span class="line">  ctx.arcTo(x, ry, x + radius, ry, radius);</span><br><span class="line"></span><br><span class="line">  ctx.lineTo((x + rx) / <span class="number">2</span> - interval, ry);</span><br><span class="line">  ctx.lineTo((x + rx) / <span class="number">2</span>, ry + interval - offset / <span class="number">2</span>);</span><br><span class="line">  ctx.lineTo((x + rx) / <span class="number">2</span> + interval, ry);</span><br><span class="line">  ctx.lineTo(rx - radius, ry);</span><br><span class="line"></span><br><span class="line">  ctx.arcTo(rx, ry, rx, ry - radius, radius);</span><br><span class="line">  ctx.lineTo(rx, y + radius);</span><br><span class="line">  ctx.arcTo(rx, y, rx - radius, y, radius);</span><br><span class="line">  ctx.lineTo(x + radius, y);</span><br><span class="line">  ctx.arcTo(x, y, x, y + radius, radius);</span><br><span class="line">  ctx.closePath();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -603,7 +604,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/note/archives">
-                <span class="site-state-item-count">117</span>
+                <span class="site-state-item-count">118</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -612,7 +613,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/note/categories">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -621,7 +622,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/note/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">68</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -694,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#arcTo"><span class="nav-number">1.</span> <span class="nav-text">arcTo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quadraticCurveTo"><span class="nav-number">2.</span> <span class="nav-text">quadraticCurveTo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#arcTo"><span class="nav-number">1.</span> <span class="nav-text">arcTo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#quadraticCurveTo"><span class="nav-number">2.</span> <span class="nav-text">quadraticCurveTo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介-1"><span class="nav-number">2.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制气泡"><span class="nav-number">3.</span> <span class="nav-text">绘制气泡</span></a></li></ol></div>
             
 
           </div>
